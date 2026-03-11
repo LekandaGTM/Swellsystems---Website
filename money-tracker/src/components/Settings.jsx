@@ -1,14 +1,16 @@
 import { useState } from 'react'
-import { CATEGORIES, CURRENCIES, formatCurrency, autoGenerateBudgets, generateId } from '../utils/data'
+import { CATEGORIES, CURRENCIES, BUDGET_TEMPLATES, formatCurrency, autoGenerateBudgets, generateId } from '../utils/data'
 
 export default function Settings({ settings, onUpdate }) {
   const { currency, monthlyIncome, budgets, knownExpenses = {} } = settings
   const [incomeInput, setIncomeInput] = useState(monthlyIncome || '')
   const [knownInputs, setKnownInputs] = useState(
-    Object.fromEntries(CATEGORIES.map(c => [c.id, knownExpenses[c.id] || '']))
+    Object.fromEntries(CATEGORIES.map(c => [c.id, knownExpenses[c.id] !== undefined ? String(knownExpenses[c.id]) : '']))
   )
   const [saved, setSaved] = useState(false)
   const [knownSaved, setKnownSaved] = useState(false)
+  const [selectedTemplate, setSelectedTemplate] = useState('50-30-20')
+  const [customRatios, setCustomRatios] = useState({ needs: 50, wants: 30 })
 
   const cur = CURRENCIES[currency] || CURRENCIES.EUR
 
@@ -30,8 +32,10 @@ export default function Settings({ settings, onUpdate }) {
   function handleKnownSave() {
     const cleaned = {}
     Object.entries(knownInputs).forEach(([id, val]) => {
-      const n = parseFloat(val)
-      if (n > 0) cleaned[id] = n
+      const str = String(val).trim()
+      if (str === '') return
+      const n = parseFloat(str)
+      if (!isNaN(n)) cleaned[id] = n  // includes 0
     })
     onUpdate({ knownExpenses: cleaned })
     setKnownSaved(true)
@@ -41,12 +45,28 @@ export default function Settings({ settings, onUpdate }) {
   function handleAutoGenerate() {
     const income = parseFloat(incomeInput) || monthlyIncome || 0
     if (!income) return alert('Please enter your monthly income first.')
+
+    let needsPct, wantsPct
+    if (selectedTemplate === 'custom') {
+      const n = Number(customRatios.needs)
+      const w = Number(customRatios.wants)
+      if (n + w >= 100) return alert('Needs + Wants must total less than 100% to leave room for savings.')
+      needsPct = n / 100
+      wantsPct = w / 100
+    } else {
+      const tpl = BUDGET_TEMPLATES.find(t => t.id === selectedTemplate)
+      needsPct = (tpl?.needs ?? 50) / 100
+      wantsPct = (tpl?.wants ?? 30) / 100
+    }
+
     const known = {}
     Object.entries(knownInputs).forEach(([id, val]) => {
-      const n = parseFloat(val)
-      if (n > 0) known[id] = n
+      const str = String(val).trim()
+      if (str === '') return
+      const n = parseFloat(str)
+      if (!isNaN(n)) known[id] = n
     })
-    const generated = autoGenerateBudgets(income, known)
+    const generated = autoGenerateBudgets(income, known, needsPct, wantsPct)
     onUpdate({ budgets: generated, monthlyIncome: income, knownExpenses: known })
   }
 
@@ -266,12 +286,69 @@ export default function Settings({ settings, onUpdate }) {
       <div className="settings-section">
         <div className="settings-section-title">Category Budgets</div>
 
-        <button className="auto-btn" onClick={handleAutoGenerate}>
-          ✨ Auto-generate with 50/30/20 rule
-        </button>
-        <p style={{ fontSize: 12, color: 'var(--text-2)', marginBottom: 12, lineHeight: 1.5 }}>
-          Locks in your known expenses above · distributes the rest as 50% Needs / 30% Wants / 20% Savings
+        {/* Template picker */}
+        <div className="template-grid">
+          {BUDGET_TEMPLATES.map(t => {
+            return (
+              <div
+                key={t.id}
+                className={`template-card ${selectedTemplate === t.id ? 'active' : ''}`}
+                onClick={() => setSelectedTemplate(t.id)}
+              >
+                <div className="template-name">{t.name}</div>
+                <div className="template-badge">{t.badge}</div>
+                <div className="template-savings">
+                  {t.savings !== null ? `Save ${t.savings}%` : 'Custom'}
+                </div>
+              </div>
+            )
+          })}
+        </div>
+
+        {selectedTemplate === 'custom' && (
+          <div className="custom-ratios">
+            <div className="ratio-row">
+              <span className="ratio-label">Needs %</span>
+              <input
+                className="budget-setting-input"
+                type="number"
+                inputMode="decimal"
+                min="0" max="99"
+                value={customRatios.needs}
+                onChange={e => setCustomRatios(p => ({ ...p, needs: Number(e.target.value) }))}
+              />
+            </div>
+            <div className="ratio-row">
+              <span className="ratio-label">Wants %</span>
+              <input
+                className="budget-setting-input"
+                type="number"
+                inputMode="decimal"
+                min="0" max="99"
+                value={customRatios.wants}
+                onChange={e => setCustomRatios(p => ({ ...p, wants: Number(e.target.value) }))}
+              />
+            </div>
+            <div className="ratio-row">
+              <span className="ratio-label">Savings %</span>
+              <input
+                className="budget-setting-input"
+                type="number"
+                readOnly
+                value={Math.max(100 - customRatios.needs - customRatios.wants, 0)}
+                style={{ opacity: 0.5 }}
+              />
+            </div>
+          </div>
+        )}
+
+        <p style={{ fontSize: 12, color: 'var(--text-2)', margin: '10px 0 10px', lineHeight: 1.5 }}>
+          {BUDGET_TEMPLATES.find(t => t.id === selectedTemplate)?.desc}
         </p>
+
+        <button className="auto-btn" onClick={handleAutoGenerate} style={{ marginBottom: 16 }}>
+          ✨ Apply {BUDGET_TEMPLATES.find(t => t.id === selectedTemplate)?.name} Template
+        </button>
 
         <div className="budget-settings">
           {CATEGORIES.map(cat => (

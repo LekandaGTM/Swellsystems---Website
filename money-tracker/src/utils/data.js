@@ -12,6 +12,51 @@ export const CATEGORIES = [
   { id: 'divers',        label: 'Divers',                  icon: '🗂️', color: '#94a3b8', needs: false },
 ]
 
+export const BUDGET_TEMPLATES = [
+  {
+    id: '50-30-20',
+    name: '50/30/20',
+    badge: 'Popular',
+    needs: 50, wants: 30, savings: 20,
+    desc: 'The classic. 50% necessities · 30% lifestyle · 20% savings. Best starting point for most people.',
+  },
+  {
+    id: '60-20-20',
+    name: '60/20/20',
+    badge: 'High Cost City',
+    needs: 60, wants: 20, savings: 20,
+    desc: 'When rent and bills eat more than half. Trims lifestyle spending to protect 20% savings.',
+  },
+  {
+    id: '50-20-30',
+    name: '50/20/30',
+    badge: 'Wealth Builder',
+    needs: 50, wants: 20, savings: 30,
+    desc: 'Cut back on lifestyle to save 30%. Great for early retirement or aggressive financial goals.',
+  },
+  {
+    id: '40-30-30',
+    name: '40/30/30',
+    badge: 'High Earner',
+    needs: 40, wants: 30, savings: 30,
+    desc: 'When income easily covers basics. Max out wealth-building without sacrificing lifestyle.',
+  },
+  {
+    id: '70-20-10',
+    name: '70/20/10',
+    badge: 'Debt Mode',
+    needs: 60, wants: 10, savings: 30,
+    desc: '70% for living expenses · 20% savings · 10% fun money. Focused on crushing debt fast.',
+  },
+  {
+    id: 'custom',
+    name: 'Custom',
+    badge: 'My Rules',
+    needs: null, wants: null, savings: null,
+    desc: 'Define your own needs/wants/savings split. Must add up to 100%.',
+  },
+]
+
 export const CURRENCIES = {
   EUR: { symbol: '€', name: 'Euro',         prefix: false },
   CHF: { symbol: 'CHF', name: 'Swiss Franc', prefix: true  },
@@ -88,8 +133,12 @@ const CATEGORY_WEIGHTS = {
 
 // 50/30/20 split — respects knownExpenses by subtracting them first,
 // then distributes the remainder proportionally among the other categories.
-export function autoGenerateBudgets(monthlyIncome, knownExpenses = {}) {
-  const knowIds = Object.keys(knownExpenses).filter(id => Number(knownExpenses[id]) > 0)
+export function autoGenerateBudgets(monthlyIncome, knownExpenses = {}, needsPct = 0.50, wantsPct = 0.30) {
+  // Include zero as a valid "known" value — filter only undefined/null/empty
+  const knowIds = Object.keys(knownExpenses).filter(id => {
+    const v = knownExpenses[id]
+    return v !== undefined && v !== null && String(v) !== '' && !isNaN(Number(v))
+  })
 
   // Split known amounts into needs / wants buckets
   const knownNeeds = knowIds
@@ -99,13 +148,13 @@ export function autoGenerateBudgets(monthlyIncome, knownExpenses = {}) {
     .filter(id => CATEGORY_WEIGHTS[id]?.needs === false)
     .reduce((s, id) => s + Number(knownExpenses[id]), 0)
 
-  // Available pots after removing known amounts (20% savings always reserved)
-  const variableNeedsPot = Math.max(monthlyIncome * 0.50 - knownNeeds, 0)
-  const variableWantsPot = Math.max(monthlyIncome * 0.30 - knownWants, 0)
+  // Available pots after removing known amounts (savings = remainder)
+  const variableNeedsPot = Math.max(monthlyIncome * needsPct - knownNeeds, 0)
+  const variableWantsPot = Math.max(monthlyIncome * wantsPct - knownWants, 0)
 
-  // Non-known categories
-  const nonKnownNeeds = CATEGORIES.filter(c => CATEGORY_WEIGHTS[c.id]?.needs !== false && !knownExpenses[c.id])
-  const nonKnownWants = CATEGORIES.filter(c => CATEGORY_WEIGHTS[c.id]?.needs === false && !knownExpenses[c.id])
+  // Non-known categories — use knowIds to correctly handle zero values
+  const nonKnownNeeds = CATEGORIES.filter(c => CATEGORY_WEIGHTS[c.id]?.needs !== false && !knowIds.includes(c.id))
+  const nonKnownWants = CATEGORIES.filter(c => CATEGORY_WEIGHTS[c.id]?.needs === false && !knowIds.includes(c.id))
 
   const needsTotalWeight = nonKnownNeeds.reduce((s, c) => s + (CATEGORY_WEIGHTS[c.id]?.weight || 20), 0)
   const wantsTotalWeight = nonKnownWants.reduce((s, c) => s + (CATEGORY_WEIGHTS[c.id]?.weight || 20), 0)
