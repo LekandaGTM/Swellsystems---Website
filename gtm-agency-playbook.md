@@ -4,6 +4,18 @@ This is everything you need to go from zero to a running agency. No fluff.
 
 ---
 
+## Open Topics — Needs Discussion Before Closing
+
+> These are decisions that came up during planning but haven't been fully resolved yet. Work through each one before treating the playbook as final. Check them off only once a clear decision has been made.
+
+- [ ] **Positioning & ICP** — Who exactly is Swellsystems targeting? Industry, company size, job title. Needed before Zefix workflow and campaign copy can be built.
+- [ ] **Service model** — Which Clay hosting model to use (client owns / you host / hybrid)? See Section 2 for options. Needs deeper thinking before first client proposal.
+- [ ] **Clay pricing** — New Growth plan is $495/mo. Grandfathered Explorer at $349 stays for Swellsystems own use, but client accounts will be on new pricing. Decide how this affects pass-through pricing in proposals.
+- [ ] **LinkedIn strategy** — Profile optimization and content cadence. Defer until positioning is locked.
+- [ ] **Outreach language** — German Sie-form confirmed for Swiss market. Confirm whether any English outreach is needed (e.g. for international companies based in Switzerland).
+
+---
+
 ## 1. Positioning — The Most Important Decision You'll Make
 
 ### The Core Problem
@@ -85,6 +97,33 @@ Never price hourly. It caps your income and misaligns incentives.
 - Setup fee is not "onboarding cost" — it's "infrastructure investment" (frame it as building an asset)
 - Never discount the monthly, discount the setup fee if needed
 - Minimum 3-month commitment from day 1 — one-month clients don't compound
+
+### Clay Hosting Model — ⚠️ Needs Deeper Thinking Before First Client Proposal
+
+Three options exist for how Clay is set up with clients. Each has a different impact on ownership, pricing, and what happens when the contract ends. No final decision made yet — needs more thought.
+
+**Option A — Client owns Clay from day one**
+- Client subscribes to Clay Growth ($495/mo) directly in their own name
+- You get admin access to build and run inside their account
+- When contract ends: they keep everything — tables, automations, Claygent prompts, all of it
+- Clean ownership, clean exit, strongest value proposition
+- Risk: $495 is a hard sell on top of your retainer. May filter out smaller clients.
+
+**Option B — You host, client pays a seat fee**
+- Client pays you a smaller monthly fee (e.g. €150-200) for access to your Clay
+- You run their tables alongside other clients in your own account
+- Lower barrier to entry, easier to close
+- When contract ends: you can export a CSV of their contacts, but the system, automations, and workflow logic stay in your account — they get nothing functional
+- Risk: breaks the ownership promise. Must be disclosed clearly in the contract.
+
+**Option C — Hybrid (build in your Clay, migrate later)**
+- You run the build phase (month 1-2) inside your own Clay account
+- Once client commits long-term, you rebuild the tables inside their own Clay account
+- Lower barrier to start, full ownership at the end
+- Risk: migration is manual and painful — you rebuild everything from scratch in their account. No native export of workflow logic, only CSV data.
+- Could work as a "trial to full" model: lower commitment to start, upgrade once they see results
+
+---
 
 ### Tool Stack Pass-Through (Done-For-You)
 
