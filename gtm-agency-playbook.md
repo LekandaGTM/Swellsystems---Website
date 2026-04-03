@@ -4,15 +4,60 @@ This is everything you need to go from zero to a running agency. No fluff.
 
 ---
 
-## Open Topics — Needs Discussion Before Closing
+## Topics Index
 
-> These are decisions that came up during planning but haven't been fully resolved yet. Work through each one before treating the playbook as final. Check them off only once a clear decision has been made.
+> Full log of every topic discussed. Use this as the master reference — nothing should live only in someone's head.
+>
+> **Legend:** ✅ Decided | ⚠️ Needs deeper thinking | 🔲 Backlog / deferred
 
-- [ ] **Positioning & ICP** — Who exactly is Swellsystems targeting? Industry, company size, job title. Needed before Zefix workflow and campaign copy can be built.
-- [ ] **Service model** — Which Clay hosting model to use (client owns / you host / hybrid)? See Section 2 for options. Needs deeper thinking before first client proposal.
-- [ ] **Clay pricing** — New Growth plan is $495/mo. Grandfathered Explorer at $349 stays for Swellsystems own use, but client accounts will be on new pricing. Decide how this affects pass-through pricing in proposals.
-- [ ] **LinkedIn strategy** — Profile optimization and content cadence. Defer until positioning is locked.
-- [ ] **Outreach language** — German Sie-form confirmed for Swiss market. Confirm whether any English outreach is needed (e.g. for international companies based in Switzerland).
+### Agency Fundamentals
+| Status | Topic | Decision / Notes |
+|--------|-------|-----------------|
+| ✅ | Agency name | Swellsystems |
+| ✅ | Market | German-speaking Switzerland |
+| ✅ | Outreach language | German, Sie-form |
+| ✅ | Phase 1 outreach channel | Email only. LinkedIn outreach deferred to phase 2. |
+| ✅ | Monthly tool budget (own use) | ~700 CHF/mo ceiling |
+| ⚠️ | Positioning & ICP | Not defined yet. Needed before Zefix workflow and campaign copy can be built. Separate session planned. |
+
+### Tool Stack
+| Status | Topic | Decision / Notes |
+|--------|-------|-----------------|
+| ✅ | Clay | Explorer plan at $349/mo (grandfathered). Use own account for Swellsystems outreach. |
+| ✅ | Apollo | Not needed. Clay's built-in enrichment providers (Prospeo, Hunter) replace it. |
+| ✅ | Email infrastructure | Zapmail (~$97/mo). Handles domain registration, mailboxes, DNS, warmup in one place. |
+| ✅ | Sending domains | 3-4 burner domains (swellsys.ch, swell-systems.com, etc.). Never send from swellsystems.ch. |
+| ✅ | Email sending | Instantly Growth ($47/mo) |
+| ✅ | Prospect discovery | LinkedIn Sales Navigator Core ($99/mo) until Zefix workflow is live |
+| ✅ | Clay AI credits | Own OpenAI API key (~$30/mo) — cheaper than Clay's native AI |
+| ✅ | AI assistant | Claude Pro ($20/mo) |
+| ✅ | Bookkeeping | Bexio (49 CHF/mo) — required for Swiss invoicing and VAT |
+| ✅ | CRM | HubSpot Free |
+| ⚠️ | Clay new pricing | Clay Growth is now $495/mo for new accounts. Grandfathered Explorer stays at $349 for own use. Impact on client pass-through pricing not yet decided. |
+| 🔲 | Trigify | Phase 2. LinkedIn social signal layer for intent-based targeting (~$99-199/mo). |
+| 🔲 | Heyreach | Phase 2. LinkedIn outreach automation for email + LinkedIn combo (~$79-99/mo). |
+| 🔲 | AI Ark | Evaluate only if Clay email find rate on Swiss companies drops below 50%. |
+
+### Service & Pricing Model
+| Status | Topic | Decision / Notes |
+|--------|-------|-----------------|
+| ✅ | Pricing structure | Setup fee + monthly retainer. No hourly pricing. |
+| ✅ | Tool costs for clients | Client pays for all tools directly in their own name. Tools not included in retainer. |
+| ✅ | Ownership model | Client owns everything from day one. When contract ends, their infrastructure stays live. |
+| ✅ | No Apollo for clients | Client stack mirrors Swellsystems own stack — no Apollo needed. |
+| ⚠️ | Clay hosting model | Three options exist — client owns ($495/mo), you host (seat fee, CSV exit only), hybrid (build in your Clay then migrate). No final decision. Needs resolving before first client proposal. See Section 2. |
+
+### Prospecting & Data
+| Status | Topic | Decision / Notes |
+|--------|-------|-----------------|
+| ✅ | Primary prospecting source | LinkedIn Sales Navigator (for now) |
+| 🔲 | Zefix scraping workflow | Build Clay workflow pulling from zefix.ch + Moneyhouse to replace LinkedIn SalesNav ($99/mo saved). Blocked on ICP definition. |
+
+### LinkedIn & Content
+| Status | Topic | Decision / Notes |
+|--------|-------|-----------------|
+| 🔲 | LinkedIn profile | Calvin Heim profile needs to reflect Swellsystems positioning. Deferred until positioning is locked. |
+| 🔲 | LinkedIn content | 3-4 posts/week cadence. Deferred until positioning is defined. |
 
 ---
 
