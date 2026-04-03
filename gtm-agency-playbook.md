@@ -86,6 +86,27 @@ Never price hourly. It caps your income and misaligns incentives.
 - Never discount the monthly, discount the setup fee if needed
 - Minimum 3-month commitment from day 1 — one-month clients don't compound
 
+### Tool Stack Pass-Through (Done-For-You)
+
+For done-for-you clients, tool costs are **not included in the retainer** — they are billed separately on top as a pass-through. This keeps your retainer clean and ensures you never absorb infrastructure costs.
+
+**How to present it:**
+- Retainer = your time, strategy, and execution
+- Tool stack = client's infrastructure investment, billed at cost
+
+**Typical tool pass-through for a DFY client:**
+
+| Tool | Cost/mo |
+|------|---------|
+| Clay Explorer | $349 |
+| Zapmail (email infrastructure) | ~$97 |
+| Instantly Growth | $47 |
+| LinkedIn Sales Navigator | $99 |
+| OpenAI API | ~$30 |
+| **Total pass-through** | **~$622/mo** |
+
+Present this as a one-line addition in the proposal: *"Tool infrastructure: ~€600/mo, billed at cost, no markup."* Clients respect the transparency and it removes price objections on the retainer itself.
+
 ### What Clients Are Actually Buying
 
 They're not buying "emails" or "Clay workflows." They're buying:
