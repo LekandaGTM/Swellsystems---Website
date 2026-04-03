@@ -299,3 +299,169 @@ Even if they don't buy, you get deep intel. And most people who go through a rea
 | **Tool to master first** | Clay |
 | **First 90 days goal** | 2 case studies with measurable numbers |
 | **Biggest mistake** | Going broad too early |
+
+---
+
+---
+
+# Swellsystems — Launch Execution Plan
+
+**Market:** German-speaking Switzerland
+**Outreach:** Email only (phase 1)
+**Language:** German, Sie-form
+**Budget ceiling:** ~700 CHF/mo tooling
+
+---
+
+## Tool Stack & Monthly Costs
+
+| Tool | Purpose | Cost/mo |
+|------|---------|---------|
+| Clay Explorer | Enrich, personalize, verify | $349 |
+| Zapmail | Email infrastructure (domains + mailboxes + warmup) | ~$97 |
+| Instantly Growth | Campaign sending | $47 |
+| LinkedIn Sales Navigator | Prospect discovery (until Zefix workflow is live) | $99 |
+| OpenAI API | Clay AI credits (cheaper than Clay's native AI) | ~$30 |
+| Claude Pro | Research, copy, agents | $20 |
+| Bexio | Swiss bookkeeping + invoicing | 49 CHF |
+| HubSpot Free | CRM / pipeline tracking | $0 |
+| **Total** | | **~$642 + 49 CHF** |
+
+> **Note:** Once the Zefix scraping workflow is live and proven, drop LinkedIn SalesNav ($99/mo saved). See Backlog.
+
+---
+
+## Phase 0 — Business Setup (Day 1)
+
+- [ ] Confirm business entity is registered (Einzelfirma minimum)
+- [ ] Sign up for Bexio (49 CHF/mo)
+  - Connect Swiss bank account
+  - Set up Swellsystems invoice template
+  - Configure VAT settings (if VAT-registered)
+- [ ] Confirm swellsystems.ch DNS is accessible and you have registrar access
+
+---
+
+## Phase 1 — Email Infrastructure (Day 1–3)
+
+> Start this first. Warmup takes 3–4 weeks. Nothing else can launch until mailboxes are warm.
+
+- [ ] Sign up for Zapmail
+- [ ] Register 3–4 sending domains — variations of your brand, never swellsystems.ch:
+  - swellsys.ch
+  - swell-systems.com
+  - swellsystems.io
+  - swellsys.com
+- [ ] Connect all domains to Zapmail
+- [ ] Create 2 mailboxes per domain (6–8 total)
+  - Naming: calvin@, hello@, team@, info@
+- [ ] Zapmail configures SPF, DKIM, DMARC on each domain — verify all pass
+- [ ] Sign up for Instantly Growth ($47/mo)
+- [ ] Connect all mailboxes from Zapmail into Instantly
+- [ ] Enable warmup on every mailbox in Instantly immediately
+  - Start: 5 emails/day per mailbox
+  - Ramp target: 30 emails/day per mailbox by week 4
+- [ ] Do NOT send any campaigns until warmup is at least 3 weeks in
+
+---
+
+## Phase 2 — Tool Setup (Day 1–3, parallel to Phase 1)
+
+- [ ] Subscribe to LinkedIn Sales Navigator Core ($99/mo)
+- [ ] Sign up for OpenAI API (platform.openai.com)
+  - Add $50 starting credits
+  - Copy API key
+  - In Clay: Settings → AI → paste OpenAI API key
+- [ ] Confirm Claude Pro subscription is active ($20/mo)
+- [ ] Set up HubSpot free account
+  - Create pipeline with stages: Prospect → Replied → Meeting Booked → Proposal → Closed Won → Closed Lost
+  - Add Swellsystems branding
+
+---
+
+## Phase 3 — Clay Setup (Week 1–2)
+
+- [ ] Create new Clay table: `Swellsystems — Swiss ICP Prospects`
+- [ ] Import initial prospect list from LinkedIn Sales Navigator
+  - Filter: Switzerland, German-speaking cantons, [ICP industry — TBD in positioning session], [ICP company size — TBD], [ICP job title — TBD]
+- [ ] Add company enrichment columns:
+  - [ ] Website (Clay native)
+  - [ ] LinkedIn company URL (Clay native)
+  - [ ] Employee count (Clay enrichment)
+  - [ ] Industry / sector
+- [ ] Add contact enrichment columns:
+  - [ ] Decision maker name
+  - [ ] LinkedIn profile URL
+  - [ ] Email (via Prospeo → Hunter waterfall)
+  - [ ] Email verification status (only use `valid`)
+- [ ] Build first-line personalization Claygent
+  - Language: German, Sie-form
+  - Goal: 1 sentence referencing something specific to the company
+  - Use OpenAI API key (not Clay native AI) to cut costs
+  - Test on 10 companies first, refine until output is natural
+- [ ] Set up export to Instantly
+  - Filter: only rows where email status = `valid`
+  - Map fields: first name, last name, email, company, personalized first line
+
+---
+
+## Phase 4 — Campaign Copy (Week 2–3)
+
+- [ ] Define ICP for first campaign (fill in from positioning session: industry, size, title)
+- [ ] Read ALL mandatory files before writing a single word of copy:
+  - [ ] `intelligence/cold-outreach-best-practices-dach.md`
+  - [ ] `intelligence/cold-outreach-spam-triggers-dach.md`
+  - [ ] `intelligence/cold-outreach-spam-triggers.md`
+  - [ ] `intelligence/no-brainer-offers.md`
+- [ ] Design a Tier 1 or Tier 2 no-brainer offer — something the prospect would normally pay for
+- [ ] Write email sequence (3 emails):
+  - Email 1: Hook (personalized first line) + offer
+  - Email 2: Follow-up — different angle, shorter
+  - Email 3: Soft break-up
+- [ ] Run every email through German spam trigger checklist
+- [ ] CTA rules (non-negotiable):
+  - NO call/meeting/demo requests
+  - NO Calendly links
+  - Lead with value gift: "Darf ich Ihnen die Analyse zusenden?"
+  - Use interest-based soft CTA: "Ist das gerade ein Thema bei Ihnen?"
+- [ ] Test send all 3 emails to your own inbox — check formatting, links, signature
+
+---
+
+## Phase 5 — Instantly Campaign Setup (Week 3–4)
+
+- [ ] Create new campaign in Instantly
+- [ ] Upload verified leads exported from Clay
+- [ ] Configure sending settings:
+  - Max 30 emails/day per mailbox
+  - Sending window: Monday–Friday, 08:00–18:00 CET
+  - Random delays between sends: on
+- [ ] Enable reply detection
+- [ ] Set up unsubscribe handling (required under nDSG + GDPR)
+- [ ] Activate campaign — only once mailboxes have 3+ weeks of warmup
+
+---
+
+## Phase 6 — Reply Management (Week 4+)
+
+- [ ] Set up reply notification (email alert or Slack) so you see positive replies within minutes
+- [ ] Define personal SLA: respond to positive replies within 2 hours
+- [ ] When a positive reply comes in:
+  - [ ] Log company + contact in HubSpot as a new deal
+  - [ ] Move to "Replied" stage
+  - [ ] Respond manually — no automation for replies
+- [ ] Weekly: review reply rates per campaign, per email, per sending domain
+- [ ] Monthly: review domain health in Instantly (spam rate, bounce rate)
+
+---
+
+## Backlog
+
+> Ideas confirmed but not needed for launch. Prioritize after first campaign is running.
+
+- [ ] **Zefix scraping workflow** — Build a Clay workflow that pulls Swiss companies directly from zefix.ch filtered by ICP criteria, cross-references Moneyhouse for management names, and feeds into the enrichment pipeline. Goal: replace LinkedIn Sales Navigator and save $99/mo. Requires ICP definition first.
+- [ ] **Trigify** — Add LinkedIn social signal layer for signal-based targeting. Add once outbound is running and capacity exists to act on real-time signals (~$99–199/mo).
+- [ ] **Heyreach** — LinkedIn outreach automation for email + LinkedIn combo sequences. Phase 2 once email channel is proven (~$79–99/mo).
+- [ ] **AI Ark evaluation** — If Clay email find rate on Swiss companies drops below 50%, evaluate AI Ark as an additional data source.
+- [ ] **LinkedIn profile optimization** — Calvin Heim profile updated to reflect Swellsystems positioning. Defer until positioning session is done.
+- [ ] **LinkedIn content** — 3–4 posts/week once positioning is defined. Use `/linkedin-post` skill.
