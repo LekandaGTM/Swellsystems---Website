@@ -41,11 +41,20 @@ This is everything you need to go from zero to a running agency. No fluff.
 ### Service & Pricing Model
 | Status | Topic | Decision / Notes |
 |--------|-------|-----------------|
-| ✅ | Pricing structure | Setup fee + monthly retainer. No hourly pricing. |
-| ✅ | Tool costs for clients | Client pays for all tools directly in their own name. Tools not included in retainer. |
-| ✅ | Ownership model | Client owns everything from day one. When contract ends, their infrastructure stays live. |
+| ✅ | Pricing structure | Monthly retainer only. No setup fee — onboarding and infra setup is included in retainer. No hourly pricing. |
+| ✅ | Tool costs for clients | Client pays for all tools directly in their own name. Not included in retainer. |
+| ✅ | Ownership model | Client owns everything. When contract ends, infrastructure stays live without Swellsystems. |
 | ✅ | No Apollo for clients | Client stack mirrors Swellsystems own stack — no Apollo needed. |
-| ⚠️ | Clay hosting model | Three options exist — client owns ($495/mo), you host (seat fee, CSV exit only), hybrid (build in your Clay then migrate). No final decision. Needs resolving before first client proposal. See Section 2. |
+| ✅ | Two service products | Product A: DFY (you host in your Clay, seat fee). Product B: Build & Transfer (build in your Clay, migrate to theirs after 3 months). See Section 2. |
+| ✅ | Clay hosting model | Resolved via two-product model. DFY = hosted in your Clay. Build & Transfer = migrates to client's Clay ($495/mo) after trial. Migration included in retainer, no extra fee. |
+| ✅ | Base retainer | €3-4K/mo standard. First 2-3 clients at €2-3K in exchange for video testimonial. |
+| ✅ | No setup fee | Onboarding is part of the service, not a separate charge. |
+| ✅ | No migration fee | Migration to client Clay account included in retainer for Build & Transfer clients. |
+| ✅ | Performance fallback | If client pushes back on retainer: lower base + % of ACV per meeting booked. % TBD per client based on their ACV. |
+| ✅ | Meeting booked definition | A meeting counts as booked when a positive reply from Swellsystems campaign results in a scheduled call/demo — regardless of who handles the follow-up call. |
+| ✅ | Follow-up calls | Client handles internally. Agree on follow-up SLA per client (target: reply within 2 hours of positive reply). |
+| ✅ | Testimonial clause | For discounted first clients: include explicit contract clause — video testimonial delivered within 30 days of contract end. |
+| ⚠️ | Performance % | % of ACV per meeting booked not yet defined. Needs to be set per client based on their ACV. Industry range: 3-10% of ACV. |
 
 ### Prospecting & Data
 | Status | Topic | Decision / Notes |
@@ -107,96 +116,87 @@ vs.
 
 ## 2. Pricing — The Framework
 
-### The Structure
+### The Two Products
 
-| Component | What It Is | Range |
-|-----------|-----------|-------|
-| **Setup Fee** | One-time onboarding (strategy, tech stack, infrastructure) | €3,000–€8,000 |
-| **Monthly Retainer** | Ongoing execution, optimization, management | €2,500–€6,000/month |
-| **Performance Bonus** | Optional, after proving results (e.g., per meeting booked) | €150–€400/meeting |
+**Product A — Done For You (DFY)**
+- You build and run everything inside your own Clay account
+- Client pays a seat fee (~€150-200/mo) instead of their own Clay subscription
+- Lower barrier to entry — no $495 Clay bill on top of your retainer
+- When contract ends: CSV export of contacts. Automations and workflow logic stay in your account — client gets no live system
+- Must be disclosed clearly in the contract
 
-Never price hourly. It caps your income and misaligns incentives.
-
-### Pricing Tiers
-
-**Starter (Month 1–3, first clients)**
-- Setup: €3,000
-- Monthly: €2,500
-- Purpose: Get 2-3 case studies, learn the delivery
-
-**Standard (once you have results)**
-- Setup: €5,000–€7,000
-- Monthly: €3,500–€5,000
+**Product B — Build & Transfer (B&T)**
 - 3-month minimum commitment
-
-**Premium (once you have a proven system)**
-- Setup: €8,000–€12,000
-- Monthly: €5,000–€8,000
-- Performance component, KPI-tied
-- 6-month minimum
-
-### Pricing Psychology
-
-- Always present 3 tiers — clients anchor to the middle
-- Quote monthly, not annual (lower psychological barrier, same revenue)
-- Setup fee is not "onboarding cost" — it's "infrastructure investment" (frame it as building an asset)
-- Never discount the monthly, discount the setup fee if needed
-- Minimum 3-month commitment from day 1 — one-month clients don't compound
-
-### Clay Hosting Model — ⚠️ Needs Deeper Thinking Before First Client Proposal
-
-Three options exist for how Clay is set up with clients. Each has a different impact on ownership, pricing, and what happens when the contract ends. No final decision made yet — needs more thought.
-
-**Option A — Client owns Clay from day one**
-- Client subscribes to Clay Growth ($495/mo) directly in their own name
-- You get admin access to build and run inside their account
-- When contract ends: they keep everything — tables, automations, Claygent prompts, all of it
-- Clean ownership, clean exit, strongest value proposition
-- Risk: $495 is a hard sell on top of your retainer. May filter out smaller clients.
-
-**Option B — You host, client pays a seat fee**
-- Client pays you a smaller monthly fee (e.g. €150-200) for access to your Clay
-- You run their tables alongside other clients in your own account
-- Lower barrier to entry, easier to close
-- When contract ends: you can export a CSV of their contacts, but the system, automations, and workflow logic stay in your account — they get nothing functional
-- Risk: breaks the ownership promise. Must be disclosed clearly in the contract.
-
-**Option C — Hybrid (build in your Clay, migrate later)**
-- You run the build phase (month 1-2) inside your own Clay account
-- Once client commits long-term, you rebuild the tables inside their own Clay account
-- Lower barrier to start, full ownership at the end
-- Risk: migration is manual and painful — you rebuild everything from scratch in their account. No native export of workflow logic, only CSV data.
-- Could work as a "trial to full" model: lower commitment to start, upgrade once they see results
+- You build and run the system inside your own Clay during the trial phase
+- After 3 months, client decides to take ownership → you migrate everything into their own Clay account ($495/mo)
+- Migration is included in the retainer — no extra fee
+- When contract ends: their infrastructure stays fully live. Nothing disappears.
+- Strongest value proposition — "you own a running system regardless of what happens with us"
 
 ---
 
-### Tool Stack Pass-Through (Done-For-You)
+### Retainer Pricing
 
-For done-for-you clients, tool costs are **not included in the retainer** — they are billed separately on top as a pass-through. This keeps your retainer clean and ensures you never absorb infrastructure costs.
+| Stage | Monthly Retainer | Notes |
+|-------|-----------------|-------|
+| **First 2-3 clients** | €2,000–€3,000 | Discounted in exchange for video testimonial |
+| **Standard** | €3,000–€4,000 | Once you have 1-2 case studies |
+| **Premium** | €4,000+ | Once system is proven and results are documented |
 
-**How to present it:**
-- Retainer = your time, strategy, and execution
-- Tool stack = client's infrastructure investment, billed at cost
+- **No setup fee** — onboarding, infrastructure setup, and Clay build are included in the retainer
+- **No migration fee** — transfer to client's Clay account is included for B&T clients
+- **No hourly pricing** — ever
+- **Minimum 3-month commitment** from day one
 
-**Typical tool pass-through for a DFY client:**
+---
 
-| Tool | Cost/mo |
-|------|---------|
-| Clay Explorer | $349 |
-| Zapmail (email infrastructure) | ~$97 |
-| Instantly Growth | $47 |
-| LinkedIn Sales Navigator | $99 |
-| OpenAI API | ~$30 |
-| **Total pass-through** | **~$622/mo** |
+### Performance Fallback Model
 
-Present this as a one-line addition in the proposal: *"Tool infrastructure: ~€600/mo, billed at cost, no markup."* Clients respect the transparency and it removes price objections on the retainer itself.
+If a client pushes back on the base retainer, offer a lower base + performance bonus per meeting booked:
+
+- **Meeting booked definition:** A meeting counts when a positive reply from a Swellsystems campaign results in a scheduled call or demo — regardless of who handles the follow-up call
+- **Performance %:** % of client's ACV per meeting booked. Set per client based on their deal size. Industry range: 3-10% of ACV
+- **Follow-up responsibility:** Client handles follow-up calls internally. Agree on SLA upfront — target: contact positive replies within 2 hours
+
+This model protects you if they resist the retainer and lets you earn back on results. Most clients end up in the same range once meetings start flowing.
+
+---
+
+### Testimonial Clause (First Clients)
+
+For any client on the discounted €2-3K rate, include this clause explicitly in the contract:
+
+> *"Client agrees to provide a 2-3 minute video testimonial within 30 days of contract end."*
+
+Do not rely on verbal agreement — people get busy. The clause removes the awkwardness of chasing it later.
+
+---
+
+### Tool Costs
+
+Client subscribes to all tools directly in their own name — tools are never included in the retainer and never billed through Swellsystems. Retainer = your time and execution only.
+
+**Typical client tool stack:**
+
+| Tool | Purpose | Cost/mo |
+|------|---------|---------|
+| Clay Growth | Enrichment, personalization, verification | $495 |
+| Zapmail | Email infrastructure — domains, mailboxes, DNS, warmup | ~$97 |
+| Instantly Growth | Email sending, campaign management | $47 |
+| LinkedIn Sales Navigator | Prospect discovery | $99 |
+| OpenAI API | Clay AI credits | ~$30 |
+| **Total** | | **~$768/mo** |
+
+Present this in proposals as: *"You subscribe to the tools directly at ~€750/mo. My retainer covers everything else."*
+
+---
 
 ### What Clients Are Actually Buying
 
 They're not buying "emails" or "Clay workflows." They're buying:
-1. **Time back** (5-10 hours/week of manual prospecting off their plate)
-2. **Pipeline certainty** (predictable meetings per month)
-3. **Speed to revenue** (the system is live in 4-6 weeks, not 6 months)
+1. **Time back** — manual prospecting off their plate
+2. **Pipeline certainty** — predictable meetings per month
+3. **A system they own** — infrastructure that keeps running whether they stay with you or not
 
 Price against those outcomes, not against your hours.
 
