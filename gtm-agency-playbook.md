@@ -16,9 +16,13 @@ This is everything you need to go from zero to a running agency. No fluff.
 | ✅ | Agency name | Swellsystems |
 | ✅ | Market | German-speaking Switzerland |
 | ✅ | Outreach language | German, Sie-form |
-| ✅ | Phase 1 outreach channel | Email only. LinkedIn outreach deferred to phase 2. |
+| ✅ | Phase 1 outreach channel | Cold email only. LinkedIn outreach deferred to phase 2. |
+| ✅ | Own client acquisition channel | Cold email — same system built for clients, used on own outreach |
 | ✅ | Monthly tool budget (own use) | ~700 CHF/mo ceiling |
-| ⚠️ | Positioning & ICP | Not defined yet. Needed before Zefix workflow and campaign copy can be built. Separate session planned. |
+| ✅ | Positioning strategy | "Earn your niche" — take first 2-3 clients from own cold outreach, identify pattern, lock niche in month 3-4. No invented positioning. |
+| ✅ | Interim ICP (own outreach) | Swiss B2B SaaS or B2B service company, 5-50 employees, founder or small sales team doing sales manually, no structured outbound system |
+| ✅ | Target niches to prioritize | 1. SaaS (clearest pain, best retainer potential) 2. B2B selling to SMBs 3. Agencies (last — budget constraints) |
+| ⚠️ | Final positioning & niche | Deferred to month 3-4 once first clients close and pattern emerges. Zefix workflow and LinkedIn content also blocked until then. |
 
 ### Tool Stack
 | Status | Topic | Decision / Notes |
@@ -72,43 +76,72 @@ This is everything you need to go from zero to a running agency. No fluff.
 
 ## 1. Positioning — The Most Important Decision You'll Make
 
-### The Core Problem
+### Current Status — Earn Your Niche
 
-Most people starting a GTM agency say: *"We do outbound, ABM, content, and RevOps for B2B companies."* That's a description, not a position. You become a commodity before you start.
+Positioning is not defined yet and that is intentional. Picking a niche without data is guessing. The strategy is to let the first clients define the niche.
 
-**The question to answer first:** What is the one thing you are unusually good at, for a specific type of company, that produces a specific result?
+**The approach:**
+1. Run cold email outreach to the interim ICP (below) to land first 2-3 clients
+2. Take whoever converts — don't filter by industry at this stage
+3. Document results: reply rates, meetings booked, what copy worked, what signals triggered responses
+4. After 3 months, look at the pattern — which industry responded best, which client got the most results
+5. Lock positioning around what emerged naturally
 
-### How to Position Yourself
+**Revisit positioning in month 3-4.** Until then, use the interim ICP below.
 
-Pick a niche on **two axes:**
+---
+
+### Interim ICP — Swellsystems Own Outreach
+
+Use this profile to find and target first clients via cold email:
+
+| Criteria | Definition |
+|----------|-----------|
+| **Location** | German-speaking Switzerland |
+| **Company type** | B2B SaaS or B2B service company |
+| **Size** | 5-50 employees |
+| **Sales motion** | Founder or small sales team doing sales manually |
+| **Gap** | No structured outbound system in place |
+
+**Niche priority order** (based on outbound fit):
+1. **SaaS** — clearest pain (pipeline), understands outbound, best retainer potential
+2. **B2B selling to SMBs** — good fit, more education needed
+3. **Agencies** — last choice, budget constraints make €3-4K retainer a harder sell
+
+**Own client acquisition channel:** Cold email — the exact same system being built for clients. Eat your own dog food.
+
+---
+
+### What Good Positioning Looks Like (For When It's Time)
+
+When the niche emerges from data, position on two axes:
 
 | Axis | Examples |
 |------|---------|
-| **Who** | Series A SaaS, B2B fintech, DACH Mittelstand, healthcare software |
-| **What** | Cold outbound systems, LinkedIn pipeline, signal-based outreach, RevOps |
+| **Who** | Swiss B2B SaaS founders, DACH Mittelstand, B2B service companies |
+| **What** | Cold outbound systems, signal-based outreach, full GTM infrastructure |
 
-Good positioning examples:
-- "We build signal-based outbound systems for Series A B2B SaaS with $0 outbound history"
-- "We run LinkedIn-led pipeline generation for German B2B tech companies selling into enterprise"
-- "We set up the full outbound infrastructure (data, tooling, messaging) for SaaS founders transitioning out of founder-led sales"
+Good positioning sounds like:
+- "We build cold outbound systems for Swiss B2B SaaS founders who have never done outbound"
+- "We set up the full outbound infrastructure for DACH B2B companies transitioning out of founder-led sales"
 
 ### The Intent-Acumen Gap
 
-Most companies have intent data (or hiring signals, or enrichment tools), but they lack the **business acumen to interpret what those signals mean for the prospect's P&L**. Your angle could be the same: "We don't just run outreach, we connect signals to business impact."
+The difference that wins clients:
 
-This is the difference between:
-> "I saw you recently hired 3 SDRs" (observation)
+> "I saw you're hiring SDRs" (observation)
 
 vs.
 
-> "You just added 3 SDRs without a sequencing system. At your stage, that's 4,200 wasted rep-hours per quarter on manual prospecting." (acumen)
+> "You just added SDRs without a sequencing system. At your stage, that's thousands of wasted rep-hours per quarter on manual prospecting." (acumen)
 
-**Whoever can do the second version wins the client.**
+Connect signals to business impact — not just what you see, but what it means for their P&L.
 
 ### What to Avoid
 
+- Inventing a niche before you have data to support it
 - Being "full service" from day 1 — you can't execute it and can't sell it
-- Positioning around tools ("We use Clay and Apollo") — tools are commodities
+- Positioning around tools — tools are commodities
 - Positioning around activities ("we send emails") — clients buy outcomes
 - Competing on price
 
