@@ -30,6 +30,7 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
         display: ["var(--font-plus-jakarta)", "system-ui", "sans-serif"],
+        poppins: ["var(--font-poppins)", "system-ui", "sans-serif"],
       },
       animation: {
         "wave-slow": "wave 12s ease-in-out infinite",
@@ -37,6 +38,7 @@ const config: Config = {
         "wave-fast": "wave 6s ease-in-out infinite",
         "float": "float 6s ease-in-out infinite",
         "gradient-shift": "gradientShift 8s ease infinite",
+        "marquee": "marquee 35s linear infinite",
       },
       keyframes: {
         wave: {
@@ -52,6 +54,10 @@ const config: Config = {
         gradientShift: {
           "0%, 100%": { backgroundPosition: "0% 50%" },
           "50%": { backgroundPosition: "100% 50%" },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
         },
       },
     },

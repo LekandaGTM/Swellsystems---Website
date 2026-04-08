@@ -1,7 +1,7 @@
-# Swellsystems.ch – Project Brief for Claude
+# Swellsystems.ch — Project Brief for Claude
 
 ## What is this project?
-Agency website for **Swellsystems** – a B2B automated outbound company run by **Calvin Heim**.
+Agency website for **Swellsystems** — a B2B automated outbound company run by **Calvin Heim**.
 The name is inspired by ocean swells (Calvin surfs). The site is hosted at **swellsystems.ch** on **Vercel**.
 
 ---
@@ -44,17 +44,17 @@ The name is inspired by ocean swells (Calvin surfs). The site is hosted at **swe
 
 ---
 
-## Structure – One-Pager
+## Structure — One-Pager
 The site is a **single-page application**. All sections live in `app/[locale]/page.tsx`.
-Navigation links **scroll** to sections by ID – they do NOT route to separate pages.
+Navigation links **scroll** to sections by ID — they do NOT route to separate pages.
 
 ### Section order (matches nav):
-1. **Hero** – headline, stats, CTAs
-2. **#services** – 6-card grid of service offerings
-3. **#how-it-works** – 4-step alternating timeline
-4. **#case-studies** – 3 result cards with gradients
-5. **#about** – Calvin Heim bio + 3 company values
-6. **#contact** – contact form + calendar booking aside
+1. **Hero** — headline, stats, CTAs
+2. **#services** — 6-card grid of service offerings
+3. **#how-it-works** — 4-step alternating timeline
+4. **#case-studies** — 3 result cards with gradients
+5. **#about** — Calvin Heim bio + 3 company values
+6. **#contact** — contact form + calendar booking aside
 
 ### Nav behavior:
 - Logo → scrolls to top
@@ -73,8 +73,8 @@ swellsystems/
 │   ├── layout.tsx               # Root layout (passthrough)
 │   ├── page.tsx                 # Root redirect (handled by middleware)
 │   └── [locale]/
-│       ├── layout.tsx           # Locale layout – loads fonts, Navbar, Footer, WaveBackground
-│       └── page.tsx             # ★ MAIN FILE – full one-pager with all sections
+│       ├── layout.tsx           # Locale layout — loads fonts, Navbar, Footer, WaveBackground
+│       └── page.tsx             # ★ MAIN FILE — full one-pager with all sections
 ├── components/
 │   ├── Navbar.tsx               # Fixed navbar, scroll-aware, language switcher
 │   ├── Footer.tsx               # Dark footer with wave SVG divider
@@ -88,15 +88,10 @@ swellsystems/
 ├── middleware.ts                # next-intl locale detection + routing
 ├── next.config.mjs              # next-intl plugin configured
 ├── tailwind.config.ts           # Custom colors (ocean.*), fonts, animations
-└── CLAUDE.md                    # this file
+└── CLAUDE.md                    # ← this file
 ```
 
 ---
-
-## Local Project Path
-```
-/Users/calvinheim/swellsystems
-```
 
 ## Running the Project
 ```bash
@@ -104,6 +99,7 @@ cd /Users/calvinheim/swellsystems
 npm run dev       # → http://localhost:3000
 npm run build     # production build check
 ```
+Dev server PID is not persistent — just run `npm run dev` fresh each time.
 
 ---
 
@@ -137,9 +133,9 @@ npm run build     # production build check
 ## What Still Needs Doing ⬜
 - [ ] Add real photo of Calvin Heim to the About section (replace `<Waves />` placeholder)
 - [ ] Connect contact form to real email service (Resend, Formspree, or similar)
-- [ ] Add real Calendly / Cal.com booking link in Contact section
+- [ ] Add real Calendly / Cal.com booking link in Contact section (`href="https://cal.com"`)
 - [ ] Set real email address (`hello@swellsystems.ch`) in Footer/Contact
-- [ ] Add Impressum and Datenschutz pages – legally required in CH/DE
+- [ ] Add Impressum (imprint) and Datenschutz (privacy policy) pages — legally required in CH/DE
 - [ ] Deploy to Vercel and connect `swellsystems.ch` domain
 - [ ] Add real case study details (currently placeholder copy)
 - [ ] SEO: add og:image, sitemap, and robots.txt
@@ -147,10 +143,10 @@ npm run build     # production build check
 
 ---
 
-## Calvin's Preferences
-- One-pager only – no separate sub-pages (except legal pages)
-- No static site – must be dynamic (Next.js, not plain HTML)
+## Calvin's Preferences (noted during build)
+- One-pager only — no separate sub-pages (except legal pages)
+- No static site — must be dynamic (Next.js, not plain HTML)
 - Animated background with scroll reactivity
-- Minimalistic design – surf aesthetic should be subtle, not kitschy
+- Minimalistic design — surf aesthetic should be subtle, not kitschy
 - German as primary language, English auto-fallback
 - Target market: Switzerland first, Germany second
