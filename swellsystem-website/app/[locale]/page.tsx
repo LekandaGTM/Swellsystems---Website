@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { useParams } from "next/navigation";
@@ -21,6 +22,48 @@ import {
 } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 
+type Tool = { name: string; domain?: string; siIcon?: { hex: string; path: string }; color: string };
+
+function ToolLogo({ tool, dark = false }: { tool: Tool; dark?: boolean }) {
+  const bg = dark ? "rgba(255,255,255,0.1)" : "#ffffff";
+  const border = dark ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.08)";
+
+  const wrapper = (children: React.ReactNode) => (
+    <div className="flex flex-col items-center gap-1">
+      <span
+        className="flex items-center justify-center w-9 h-9 rounded-xl shadow-sm"
+        style={{ background: bg, border: `1px solid ${border}` }}
+      >
+        {children}
+      </span>
+      <span className="text-[9px] font-semibold whitespace-nowrap" style={{ color: dark ? "rgba(255,255,255,0.6)" : "#64748b" }}>
+        {tool.name}
+      </span>
+    </div>
+  );
+
+  if (tool.siIcon) {
+    return wrapper(
+      <svg viewBox="0 0 24 24" className="w-5 h-5" style={{ fill: dark ? "#fff" : `#${tool.siIcon.hex}` }}>
+        <path d={tool.siIcon.path} />
+      </svg>
+    );
+  }
+  if (tool.domain) {
+    return wrapper(
+      <img
+        src={`https://www.google.com/s2/favicons?domain=${tool.domain}&sz=64`}
+        alt={tool.name}
+        className="w-5 h-5 object-contain rounded"
+      />
+    );
+  }
+  return wrapper(
+    <span style={{ fontSize: 11, fontWeight: 700, color: dark ? "#fff" : tool.color }}>
+      {tool.name.slice(0, 2).toUpperCase()}
+    </span>
+  );
+}
 
 export default function HomePage() {
   const t = useTranslations();
@@ -89,10 +132,10 @@ export default function HomePage() {
 
           {/* Title */}
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="space-y-2">
-            <h1 className="font-display font-bold text-5xl md:text-7xl lg:text-8xl tracking-tight text-slate-900 leading-[1.05]">
+            <h1 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl tracking-tight text-slate-900 leading-[1.15] whitespace-nowrap">
               {t("home.headline")}
             </h1>
-            <h1 className="font-display font-bold text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[1.05] gradient-text">
+            <h1 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.15] gradient-text pb-1">
               {t("home.headlineAccent")}
             </h1>
           </motion.div>
@@ -150,6 +193,25 @@ export default function HomePage() {
         </svg>
       </div>
 
+      {/* ─── CLIENT LOGOS ─────────────────────────────────────────── */}
+      <section className="bg-slate-50 pb-10 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-8">
+            Unternehmen, mit denen wir gearbeitet haben
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-6">
+            {[1, 2, 3, 4, 5].map((i) => (
+              <div
+                key={i}
+                className="h-12 w-32 rounded-xl bg-white border border-slate-200 flex items-center justify-center shadow-sm"
+              >
+                <span className="text-xs font-medium text-slate-300 tracking-wide">Logo {i}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ─── SERVICES ─────────────────────────────────────────────── */}
       <section id="services" className="bg-slate-50 py-24 px-6 scroll-mt-20">
         <div className="max-w-7xl mx-auto">
@@ -161,9 +223,179 @@ export default function HomePage() {
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">{t("services.subheadline")}</p>
           </AnimatedSection>
 
-          {/* Bento grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+          {/* ── OPTION A — Research as Step 0 ── */}
+          {(() => {
+            type FlowStep = { icon: React.ElementType; label: string; desc: string; bg: string; border: string; iconColor: string; num: string; tools: Tool[] };
+            const stepsA: FlowStep[] = [
+              { icon: Target,       label: "Tiefenrecherche", desc: "Unternehmen, Wettbewerber & ICP", bg: "bg-slate-900",    border: "border-slate-700",   iconColor: "text-white",       num: "00", tools: [] },
+              { icon: Target,       label: "Zielgruppe",      desc: "TAM aufbauen & ICP schärfen",    bg: "bg-orange-50",    border: "border-orange-200",  iconColor: "text-orange-500",  num: "01", tools: [{ name: "Apify", domain: "apify.com", color: "#00B4A2" }, { name: "AI Ark", domain: "theaiark.com", color: "#3B35E8" }] },
+              { icon: Database,     label: "Daten",           desc: "Anreichern & verifizieren",      bg: "bg-violet-50",    border: "border-violet-200",  iconColor: "text-violet-500",  num: "02", tools: [{ name: "Clay", domain: "clay.com", color: "#FF6B2B" }] },
+              { icon: Bot,          label: "KI & Automation", desc: "Personalisierung & Workflows",   bg: "bg-sky-50",       border: "border-sky-200",     iconColor: "text-sky-500",     num: "03", tools: [{ name: "Claude", siIcon: siAnthropic, color: "#D97757" }, { name: "n8n", siIcon: siN8n, color: "#EA4B71" }] },
+              { icon: Mail,         label: "Outbound",        desc: "E-Mail & LinkedIn",              bg: "bg-ocean-50",     border: "border-ocean-200",   iconColor: "text-ocean-500",   num: "04", tools: [{ name: "HeyReach", domain: "heyreach.io", color: "#0EA5E9" }, { name: "Smartlead", domain: "smartlead.ai", color: "#4F46E5" }] },
+              { icon: CalendarDays, label: "Gespräch",        desc: "Qualifizierter Termin gebucht",  bg: "bg-emerald-50",   border: "border-emerald-200", iconColor: "text-emerald-500", num: "05", tools: [] },
+            ];
+            return (
+              <div className="space-y-6">
+                <div className="flex items-center gap-3">
+                  <span className="text-xs font-bold uppercase tracking-widest text-slate-400 bg-slate-100 px-3 py-1.5 rounded-full">Option A — Research als Schritt 0</span>
+                </div>
+                <AnimatedSection>
+                  <div className="relative bg-white border border-slate-200 rounded-3xl p-8 md:p-10 overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-ocean-50/40 to-transparent pointer-events-none" />
+                    <div className="relative">
+                      <div className="flex items-center gap-3 mb-8">
+                        <span className="text-xs font-bold uppercase tracking-widest text-ocean-600">Das System</span>
+                        <div className="h-px flex-1 bg-slate-200" />
+                        <span className="text-xs font-semibold text-emerald-600 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">→ Gebuchte Erstgespräche</span>
+                      </div>
+                      <div className="flex flex-col md:flex-row items-stretch gap-3 md:gap-0">
+                        {stepsA.map(({ icon: Icon, label, desc, bg, border, iconColor, num, tools }, i, arr) => {
+                          const isDark = bg === "bg-slate-900";
+                          return (
+                            <div key={i} className="flex md:flex-1 flex-col md:flex-row items-center">
+                              <div className={`w-full rounded-2xl p-4 border ${bg} ${border} flex flex-col gap-2.5 ${isDark ? "shadow-lg" : ""}`}>
+                                <div className="flex items-center justify-between">
+                                  <div className={`w-8 h-8 rounded-lg ${isDark ? "bg-white/10 border border-white/20" : `${bg} border ${border}`} flex items-center justify-center`}>
+                                    <Icon className={`w-4 h-4 ${iconColor}`} />
+                                  </div>
+                                  <span className={`text-xs font-bold opacity-30 ${isDark ? "text-white" : iconColor}`}>{num}</span>
+                                </div>
+                                <div>
+                                  <div className={`font-bold text-sm leading-tight ${isDark ? "text-white" : "text-slate-900"}`}>{label}</div>
+                                  <div className={`text-xs mt-0.5 ${isDark ? "text-slate-400" : "text-slate-500"}`}>{desc}</div>
+                                </div>
+                                {tools.length > 0 && (
+                                  <div className="flex flex-wrap gap-2 pt-2">
+                                    {tools.map((tool) => (
+                                      <ToolLogo key={tool.name} tool={tool} dark={isDark} />
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
+                              {i < arr.length - 1 && (
+                                <div className="flex items-center justify-center md:px-2 py-1.5 md:py-0 shrink-0">
+                                  <ArrowRight className="w-3.5 h-3.5 text-slate-300 rotate-90 md:rotate-0" />
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+                      <p className="text-xs text-slate-400 mt-5">* Je nach Projekt und Kundenanforderungen setzen wir weitere Tools ein.</p>
+                    </div>
+                  </div>
+                </AnimatedSection>
+              </div>
+            );
+          })()}
 
+          <div className="pt-6 border-t border-dashed border-slate-200" />
+
+          {/* ── OPTION B — Research als Foundation-Bar ── */}
+          {(() => {
+            type FlowStep = { icon: React.ElementType; label: string; desc: string; bg: string; border: string; iconColor: string; num: string; tools: Tool[] };
+            const stepsB: FlowStep[] = [
+              { icon: Target,       label: "Zielgruppe",      desc: "TAM aufbauen & ICP schärfen",    bg: "bg-orange-50",  border: "border-orange-200",  iconColor: "text-orange-500",  num: "01", tools: [{ name: "Apify", domain: "apify.com", color: "#00B4A2" }, { name: "AI Ark", domain: "theaiark.com", color: "#3B35E8" }] },
+              { icon: Database,     label: "Daten",           desc: "Anreichern & verifizieren",      bg: "bg-violet-50",  border: "border-violet-200",  iconColor: "text-violet-500",  num: "02", tools: [{ name: "Clay", domain: "clay.com", color: "#FF6B2B" }] },
+              { icon: Bot,          label: "KI & Automation", desc: "Personalisierung & Workflows",   bg: "bg-sky-50",     border: "border-sky-200",     iconColor: "text-sky-500",     num: "03", tools: [{ name: "Claude", siIcon: siAnthropic, color: "#D97757" }, { name: "n8n", siIcon: siN8n, color: "#EA4B71" }] },
+              { icon: Mail,         label: "Outbound",        desc: "E-Mail & LinkedIn",              bg: "bg-ocean-50",   border: "border-ocean-200",   iconColor: "text-ocean-500",   num: "04", tools: [{ name: "HeyReach", domain: "heyreach.io", color: "#0EA5E9" }, { name: "Smartlead", domain: "smartlead.ai", color: "#4F46E5" }] },
+              { icon: CalendarDays, label: "Gespräch",        desc: "Qualifizierter Termin gebucht",  bg: "bg-emerald-50", border: "border-emerald-200", iconColor: "text-emerald-500", num: "05", tools: [] },
+            ];
+            return (
+              <div className="space-y-6">
+                <div className="flex items-center gap-3">
+                  <span className="text-xs font-bold uppercase tracking-widest text-slate-400 bg-slate-100 px-3 py-1.5 rounded-full">Option B — Research als Fundament</span>
+                </div>
+                <AnimatedSection>
+                  <div className="relative bg-white border border-slate-200 rounded-3xl p-8 md:p-10 overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-ocean-50/40 to-transparent pointer-events-none" />
+                    <div className="relative space-y-6">
+                      {/* Foundation bar */}
+                      <div className="rounded-2xl border border-slate-700 bg-slate-900 px-6 py-4 flex flex-col sm:flex-row sm:items-center gap-3">
+                        <div className="flex items-center gap-3 flex-1">
+                          <div className="w-8 h-8 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center shrink-0">
+                            <Target className="w-4 h-4 text-white" />
+                          </div>
+                          <div>
+                            <div className="font-bold text-sm text-white">Tiefenrecherche</div>
+                            <div className="text-xs text-slate-400">Ihr Unternehmen, Ihre Wettbewerber & ICP — bevor wir einen einzigen Kontakt ansprechen</div>
+                          </div>
+                        </div>
+                        <div className="flex flex-wrap gap-1.5" />
+                      </div>
+
+                      {/* Arrow down */}
+                      <div className="flex justify-center">
+                        <ArrowRight className="w-4 h-4 text-slate-300 rotate-90" />
+                      </div>
+
+                      {/* 5-step flow */}
+                      <div>
+                        <div className="flex items-center gap-3 mb-6">
+                          <span className="text-xs font-bold uppercase tracking-widest text-ocean-600">Das System</span>
+                          <div className="h-px flex-1 bg-slate-200" />
+                          <span className="text-xs font-semibold text-emerald-600 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">→ Gebuchte Erstgespräche</span>
+                        </div>
+                        <div className="flex flex-col md:flex-row items-stretch gap-3 md:gap-0">
+                          {stepsB.map(({ icon: Icon, label, desc, bg, border, iconColor, num, tools }, i, arr) => (
+                            <div key={i} className="flex md:flex-1 flex-col md:flex-row items-center">
+                              <div className={`w-full rounded-2xl p-4 border ${bg} ${border} flex flex-col gap-2.5`}>
+                                <div className="flex items-center justify-between">
+                                  <div className={`w-8 h-8 rounded-lg ${bg} border ${border} flex items-center justify-center`}>
+                                    <Icon className={`w-4 h-4 ${iconColor}`} />
+                                  </div>
+                                  <span className={`text-xs font-bold ${iconColor} opacity-30`}>{num}</span>
+                                </div>
+                                <div>
+                                  <div className="font-bold text-sm text-slate-900 leading-tight">{label}</div>
+                                  <div className="text-xs text-slate-500 mt-0.5">{desc}</div>
+                                </div>
+                                {tools.length > 0 && (
+                                  <div className="flex flex-wrap gap-2 pt-2">
+                                    {tools.map((tool) => (
+                                      <ToolLogo key={tool.name} tool={tool} />
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
+                              {i < arr.length - 1 && (
+                                <div className="flex items-center justify-center md:px-2 py-1.5 md:py-0 shrink-0">
+                                  <ArrowRight className="w-3.5 h-3.5 text-slate-300 rotate-90 md:rotate-0" />
+                                </div>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <p className="text-xs text-slate-400 mt-5">* Je nach Projekt und Kundenanforderungen setzen wir weitere Tools ein.</p>
+                    </div>
+                  </div>
+                </AnimatedSection>
+              </div>
+            );
+          })()}
+
+          {/* 3 outcome cards — shared */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-6">
+            {[
+              { icon: TrendingUp, title: "Mehr Gespräche",  desc: "Kontinuierlich neue Erstgespräche – ohne dass Ihr Team Kaltakquise betreiben muss.", bg: "bg-ocean-50",  iconColor: "text-ocean-500"  },
+              { icon: Zap,        title: "Weniger Aufwand", desc: "KI übernimmt Recherche, Personalisierung und Follow-ups – vollautomatisch.",          bg: "bg-orange-50", iconColor: "text-orange-500" },
+              { icon: Bot,        title: "Skalierbar",      desc: "Das System wächst mit Ihnen. Mehr Kontakte, neue Segmente – gleicher Aufwand.",        bg: "bg-violet-50", iconColor: "text-violet-500" },
+            ].map(({ icon: Icon, title, desc, bg, iconColor }, i) => (
+              <AnimatedSection key={i} delay={i * 0.1}>
+                <div className="bg-white border border-slate-200 rounded-2xl p-7 hover:shadow-lg transition-shadow duration-300 h-full">
+                  <div className={`w-10 h-10 rounded-xl ${bg} flex items-center justify-center mb-4`}>
+                    <Icon className={`w-5 h-5 ${iconColor}`} />
+                  </div>
+                  <h3 className="font-bold text-lg text-slate-900 mb-2">{title}</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">{desc}</p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          {/* ––– old bento kept below for reference — REMOVED ––– */}
+          <div className="hidden">
             {/* Email Outbound — wide card with mock inbox */}
             <AnimatedSection delay={0} className="lg:col-span-2">
               <div className="group relative bg-white border border-slate-200 rounded-3xl p-8 overflow-hidden hover:border-ocean-200 hover:shadow-2xl hover:shadow-ocean-100/30 transition-all duration-500 h-full">
@@ -314,7 +546,7 @@ export default function HomePage() {
               </div>
             </AnimatedSection>
 
-          </div>
+          </div>{/* end hidden old bento */}
         </div>
       </section>
 

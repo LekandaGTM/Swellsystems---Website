@@ -9,9 +9,9 @@
   },
   "home": {
     "badge": "Automatisiertes Outbound für B2B",
-    "headline": "Mehr qualifizierte Leads.",
-    "headlineAccent": "Ohne Aufwand.",
-    "subheadline": "Swellsystems baut automatisierte Outbound-Systeme, die kontinuierlich neue Kunden für Ihr B2B-Unternehmen generieren – messbar, skalierbar und ohne Ihr Team zu belasten.",
+    "headline": "Wir arbeiten mit wenigen.",
+    "headlineAccent": "Dafür richtig.",
+    "subheadline": "Wir arbeiten mit ausgewählten Unternehmen tief – nicht mit vielen oberflächlich. Kein Copy-Paste. Keine Standardlösungen. Nur konkreter, messbarer Outbound, der wirklich zu Ihrem Business passt.",
     "ctaPrimary": "Kostenlos beraten lassen",
     "ctaSecondary": "So funktioniert's",
     "stat1Value": "3x",
@@ -24,8 +24,8 @@
   },
   "services": {
     "badge": "Unsere Leistungen",
-    "headline": "Fünf Bausteine. Ein System.",
-    "subheadline": "Jede Leistung für sich wirkungsvoll – zusammen bauen sie eine Outbound-Maschine, die kontinuierlich qualifizierte Leads liefert.",
+    "headline": "Ein System. Von 0 zu Gesprächen.",
+    "subheadline": "Kein Einzelservice – alle Bausteine greifen ineinander und bauen eine Outbound-Maschine, die kontinuierlich qualifizierte Gespräche bucht.",
     "service1Title": "Email Outbound",
     "service1Desc": "Präzise Cold-Email-Sequenzen, die ankommen und konvertieren. Personalisiert, DSGVO-konform und auf maximale Zustellbarkeit optimiert.",
     "service2Title": "Listen-Aufbau",
