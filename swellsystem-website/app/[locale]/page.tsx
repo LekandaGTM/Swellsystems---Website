@@ -200,14 +200,22 @@ export default function HomePage() {
             Unternehmen, mit denen wir gearbeitet haben
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <div
-                key={i}
-                className="h-12 w-32 rounded-xl bg-white border border-slate-200 flex items-center justify-center shadow-sm"
-              >
-                <span className="text-xs font-medium text-slate-300 tracking-wide">Logo {i}</span>
-              </div>
-            ))}
+            <div className="h-14 px-6 rounded-xl bg-white border border-slate-200 flex items-center justify-center shadow-sm">
+              <img
+                src="/urtec-logo.webp"
+                alt="URtec"
+                className="h-8 w-auto object-contain"
+                style={{ filter: "grayscale(100%) brightness(0.4)" }}
+              />
+            </div>
+            <div className="h-14 px-6 rounded-xl bg-white border border-slate-200 flex items-center justify-center shadow-sm">
+              <img
+                src="/ecomone-logo.png"
+                alt="EcomOne"
+                className="h-8 w-auto object-contain"
+                style={{ filter: "grayscale(100%)" }}
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -223,75 +231,7 @@ export default function HomePage() {
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">{t("services.subheadline")}</p>
           </AnimatedSection>
 
-          {/* ── OPTION A — Research as Step 0 ── */}
-          {(() => {
-            type FlowStep = { icon: React.ElementType; label: string; desc: string; bg: string; border: string; iconColor: string; num: string; tools: Tool[] };
-            const stepsA: FlowStep[] = [
-              { icon: Target,       label: "Tiefenrecherche", desc: "Unternehmen, Wettbewerber & ICP", bg: "bg-slate-900",    border: "border-slate-700",   iconColor: "text-white",       num: "00", tools: [] },
-              { icon: Target,       label: "Zielgruppe",      desc: "TAM aufbauen & ICP schärfen",    bg: "bg-orange-50",    border: "border-orange-200",  iconColor: "text-orange-500",  num: "01", tools: [{ name: "Apify", domain: "apify.com", color: "#00B4A2" }, { name: "AI Ark", domain: "theaiark.com", color: "#3B35E8" }] },
-              { icon: Database,     label: "Daten",           desc: "Anreichern & verifizieren",      bg: "bg-violet-50",    border: "border-violet-200",  iconColor: "text-violet-500",  num: "02", tools: [{ name: "Clay", domain: "clay.com", color: "#FF6B2B" }] },
-              { icon: Bot,          label: "KI & Automation", desc: "Personalisierung & Workflows",   bg: "bg-sky-50",       border: "border-sky-200",     iconColor: "text-sky-500",     num: "03", tools: [{ name: "Claude", siIcon: siAnthropic, color: "#D97757" }, { name: "n8n", siIcon: siN8n, color: "#EA4B71" }] },
-              { icon: Mail,         label: "Outbound",        desc: "E-Mail & LinkedIn",              bg: "bg-ocean-50",     border: "border-ocean-200",   iconColor: "text-ocean-500",   num: "04", tools: [{ name: "HeyReach", domain: "heyreach.io", color: "#0EA5E9" }, { name: "Smartlead", domain: "smartlead.ai", color: "#4F46E5" }] },
-              { icon: CalendarDays, label: "Gespräch",        desc: "Qualifizierter Termin gebucht",  bg: "bg-emerald-50",   border: "border-emerald-200", iconColor: "text-emerald-500", num: "05", tools: [] },
-            ];
-            return (
-              <div className="space-y-6">
-                <div className="flex items-center gap-3">
-                  <span className="text-xs font-bold uppercase tracking-widest text-slate-400 bg-slate-100 px-3 py-1.5 rounded-full">Option A — Research als Schritt 0</span>
-                </div>
-                <AnimatedSection>
-                  <div className="relative bg-white border border-slate-200 rounded-3xl p-8 md:p-10 overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-ocean-50/40 to-transparent pointer-events-none" />
-                    <div className="relative">
-                      <div className="flex items-center gap-3 mb-8">
-                        <span className="text-xs font-bold uppercase tracking-widest text-ocean-600">Das System</span>
-                        <div className="h-px flex-1 bg-slate-200" />
-                        <span className="text-xs font-semibold text-emerald-600 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">→ Gebuchte Erstgespräche</span>
-                      </div>
-                      <div className="flex flex-col md:flex-row items-stretch gap-3 md:gap-0">
-                        {stepsA.map(({ icon: Icon, label, desc, bg, border, iconColor, num, tools }, i, arr) => {
-                          const isDark = bg === "bg-slate-900";
-                          return (
-                            <div key={i} className="flex md:flex-1 flex-col md:flex-row items-center">
-                              <div className={`w-full rounded-2xl p-4 border ${bg} ${border} flex flex-col gap-2.5 ${isDark ? "shadow-lg" : ""}`}>
-                                <div className="flex items-center justify-between">
-                                  <div className={`w-8 h-8 rounded-lg ${isDark ? "bg-white/10 border border-white/20" : `${bg} border ${border}`} flex items-center justify-center`}>
-                                    <Icon className={`w-4 h-4 ${iconColor}`} />
-                                  </div>
-                                  <span className={`text-xs font-bold opacity-30 ${isDark ? "text-white" : iconColor}`}>{num}</span>
-                                </div>
-                                <div>
-                                  <div className={`font-bold text-sm leading-tight ${isDark ? "text-white" : "text-slate-900"}`}>{label}</div>
-                                  <div className={`text-xs mt-0.5 ${isDark ? "text-slate-400" : "text-slate-500"}`}>{desc}</div>
-                                </div>
-                                {tools.length > 0 && (
-                                  <div className="flex flex-wrap gap-2 pt-2">
-                                    {tools.map((tool) => (
-                                      <ToolLogo key={tool.name} tool={tool} dark={isDark} />
-                                    ))}
-                                  </div>
-                                )}
-                              </div>
-                              {i < arr.length - 1 && (
-                                <div className="flex items-center justify-center md:px-2 py-1.5 md:py-0 shrink-0">
-                                  <ArrowRight className="w-3.5 h-3.5 text-slate-300 rotate-90 md:rotate-0" />
-                                </div>
-                              )}
-                            </div>
-                          );
-                        })}
-                      </div>
-                      <p className="text-xs text-slate-400 mt-5">* Je nach Projekt und Kundenanforderungen setzen wir weitere Tools ein.</p>
-                    </div>
-                  </div>
-                </AnimatedSection>
-              </div>
-            );
-          })()}
-
-          <div className="pt-6 border-t border-dashed border-slate-200" />
-
-          {/* ── OPTION B — Research als Foundation-Bar ── */}
+          {/* ── The System — Research als Foundation-Bar ── */}
           {(() => {
             type FlowStep = { icon: React.ElementType; label: string; desc: string; bg: string; border: string; iconColor: string; num: string; tools: Tool[] };
             const stepsB: FlowStep[] = [
@@ -303,9 +243,6 @@ export default function HomePage() {
             ];
             return (
               <div className="space-y-6">
-                <div className="flex items-center gap-3">
-                  <span className="text-xs font-bold uppercase tracking-widest text-slate-400 bg-slate-100 px-3 py-1.5 rounded-full">Option B — Research als Fundament</span>
-                </div>
                 <AnimatedSection>
                   <div className="relative bg-white border border-slate-200 rounded-3xl p-8 md:p-10 overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-ocean-50/40 to-transparent pointer-events-none" />
@@ -557,102 +494,184 @@ export default function HomePage() {
         </svg>
       </div>
 
-      {/* ─── TECH STACK MARQUEE ───────────────────────────────────── */}
-      {(() => {
-        type Tool =
-          | { name: string; color: string; initial: string; icon?: undefined }
-          | { name: string; color: string; icon: { hex: string; path: string }; initial?: undefined };
-
-        const tools: Tool[] = [
-          { name: "Clay",        color: "#FF6B2B", initial: "C" },
-          { name: "Smartlead",   color: "#4F46E5", initial: "S" },
-          { name: "HeyReach",    color: "#0EA5E9", initial: "H" },
-          { name: "Claude Code", color: "#D97757", icon: siAnthropic },
-          { name: "Apify",       color: "#00B4A2", initial: "A" },
-          { name: "n8n",         color: "#EA4B71", icon: siN8n },
-          { name: "HubSpot",     color: "#FF7A59", icon: siHubspot },
-          { name: "Apollo",      color: "#3B4EF0", initial: "A" },
-          { name: "Cognism",     color: "#1B4DFF", initial: "C" },
-          { name: "Hunter.io",   color: "#F2735F", initial: "H" },
-        ];
-
-        return (
-          <div className="bg-white py-12 border-b border-slate-100">
-            <p className="text-center text-xs font-semibold uppercase tracking-widest text-slate-400 mb-8">
-              Unsere Tools
-            </p>
-            <div className="relative overflow-hidden">
-              <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-              <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
-              <div className="flex gap-4 animate-marquee" style={{ width: "max-content" }}>
-                {[...tools, ...tools].map((tool, i) => (
-                  <div
-                    key={i}
-                    className="inline-flex items-center gap-2.5 bg-white border border-slate-200 rounded-full px-5 py-2.5 shrink-0 shadow-sm"
-                  >
-                    {tool.icon ? (
-                      <svg
-                        role="img"
-                        viewBox="0 0 24 24"
-                        className="w-4 h-4 shrink-0"
-                        style={{ fill: `#${tool.icon.hex}` }}
-                      >
-                        <path d={tool.icon.path} />
-                      </svg>
-                    ) : (
-                      <span
-                        className="w-5 h-5 rounded-md flex items-center justify-center shrink-0 text-white text-[10px] font-bold leading-none"
-                        style={{ background: tool.color }}
-                      >
-                        {tool.initial}
-                      </span>
-                    )}
-                    <span className="text-sm font-medium text-slate-700 whitespace-nowrap">
-                      {tool.name}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        );
-      })()}
 
       {/* ─── HOW IT WORKS ─────────────────────────────────────────── */}
       <section id="how-it-works" className="py-24 px-6 scroll-mt-20">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-16">
             <span className="inline-flex items-center gap-2 bg-ocean-50 border border-ocean-200 text-ocean-700 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-6">
               {t("howItWorks.badge")}
             </span>
-            <h2 className="font-display font-bold text-4xl md:text-5xl text-slate-900 mb-4">{t("howItWorks.headline")}</h2>
-            <p className="text-slate-600 text-lg max-w-2xl mx-auto">{t("howItWorks.subheadline")}</p>
+            <h2 className="font-display font-bold text-4xl md:text-5xl text-slate-900 mb-4">Was Sie erwartet</h2>
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto">Von der ersten Unterhaltung bis zu gebuchten Gesprächen — so sieht die Zusammenarbeit aus Ihrer Perspektive aus.</p>
           </AnimatedSection>
 
+          {/* Timeline */}
           <div className="relative">
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-ocean-200 via-ocean-300 to-orange-300 opacity-40 hidden md:block" />
-            <div className="space-y-16">
-              {steps.map(({ key, number, orange }, i) => {
-                const isLeft = i % 2 === 0;
-                return (
-                  <AnimatedSection key={key} delay={i * 0.12} direction={isLeft ? "left" : "right"}>
-                    <div className={`flex flex-col md:flex-row items-start gap-8 md:gap-12 ${!isLeft ? "md:flex-row-reverse" : ""}`}>
-                      <div className="flex-1">
-                        <div className={`bg-white border rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 ${orange ? "border-orange-200" : "border-ocean-100"}`}>
-                          <div className={`font-display font-black text-5xl mb-4 ${orange ? "text-orange-200" : "text-ocean-100"}`}>{number}</div>
-                          <h3 className="font-display font-bold text-2xl text-slate-900 mb-3">{t(`howItWorks.${key}Title` as any)}</h3>
-                          <p className="text-slate-600 leading-relaxed">{t(`howItWorks.${key}Desc` as any)}</p>
+            <div className="relative">
+            {/* Vertical connector line — scoped to steps only */}
+            <div className="absolute left-[28px] md:left-1/2 top-8 bottom-8 w-px bg-gradient-to-b from-ocean-200 via-ocean-300 to-orange-300 hidden sm:block md:-translate-x-px" />
+
+            <div className="space-y-8">
+
+              {/* Step 01 */}
+              <AnimatedSection delay={0} direction="left">
+                <div className="relative flex flex-col md:flex-row items-start gap-6 md:gap-0">
+                  {/* Left content */}
+                  <div className="flex-1 md:pr-12 md:text-right order-2 md:order-1">
+                    <div className="bg-white border border-slate-200 rounded-2xl p-7 hover:shadow-lg hover:border-ocean-200 transition-all duration-300">
+                      <div className="flex items-center gap-3 mb-4 md:flex-row-reverse">
+                        <span className="text-xs font-bold bg-ocean-50 text-ocean-600 border border-ocean-200 px-3 py-1 rounded-full">Woche 0</span>
+                        <span className="text-xs text-slate-400 font-medium">Onboarding</span>
+                      </div>
+                      <h3 className="font-display font-bold text-xl text-slate-900 mb-2">Wir lernen Ihr Business kennen.</h3>
+                      <p className="text-slate-500 text-sm leading-relaxed mb-5">Im Onboarding tauchen wir gemeinsam tief in Ihr Business ein — Ihr ICP, Ihr Wettbewerb, Ihre Zielkunden und Ihre bisherigen Erfahrungen mit Outbound. Das ist die Grundlage für alles, was danach kommt.</p>
+                      <div className="flex flex-wrap gap-2 md:justify-end">
+                        {["ICP-Workshop", "Wettbewerbsanalyse", "Zielgruppendefinition"].map(tag => (
+                          <span key={tag} className="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">{tag}</span>
+                        ))}
+                      </div>
+                      <div className="mt-4 pt-4 border-t border-slate-100 flex items-center gap-2 md:justify-end text-xs text-slate-400">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                        <span><span className="font-semibold text-slate-600">Ihr Aufwand:</span> Onboarding-Prozess gemeinsam durchlaufen</span>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Center dot */}
+                  <div className="hidden md:flex shrink-0 w-7 h-7 rounded-full bg-ocean-500 border-4 border-white shadow-lg items-center justify-center z-10 mt-8 order-2">
+                    <span className="text-white text-[9px] font-black">01</span>
+                  </div>
+                  {/* Right — empty spacer */}
+                  <div className="hidden md:block flex-1 md:pl-12 order-3" />
+                </div>
+              </AnimatedSection>
+
+              {/* Step 02 */}
+              <AnimatedSection delay={0.1} direction="right">
+                <div className="relative flex flex-col md:flex-row items-start gap-6 md:gap-0">
+                  {/* Left — empty spacer */}
+                  <div className="hidden md:block flex-1 md:pr-12 order-1" />
+                  {/* Center dot */}
+                  <div className="hidden md:flex shrink-0 w-7 h-7 rounded-full bg-ocean-500 border-4 border-white shadow-lg items-center justify-center z-10 mt-8 order-2">
+                    <span className="text-white text-[9px] font-black">02</span>
+                  </div>
+                  {/* Right content */}
+                  <div className="flex-1 md:pl-12 order-2 md:order-3">
+                    <div className="bg-white border border-slate-200 rounded-2xl p-7 hover:shadow-lg hover:border-ocean-200 transition-all duration-300">
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="text-xs font-bold bg-ocean-50 text-ocean-600 border border-ocean-200 px-3 py-1 rounded-full">Woche 1–3</span>
+                        <span className="text-xs text-slate-400 font-medium">Aufbau & Live</span>
+                      </div>
+                      <h3 className="font-display font-bold text-xl text-slate-900 mb-2">Wir bauen. Sie warten nicht lange.</h3>
+                      <p className="text-slate-500 text-sm leading-relaxed mb-5">Während Sie Ihr Tagesgeschäft führen, bauen wir Ihre komplette Outbound-Infrastruktur auf — Kontaktlisten, Sequenzen, technisches Setup. In Woche 3 geht das System live. Sie erhalten die fertigen Texte zur einmaligen Freigabe.</p>
+                      <div className="flex flex-wrap gap-2">
+                        {["Verifizierte Kontaktliste", "E-Mail-Sequenzen", "Domain-Warmup", "CRM-Integration"].map(tag => (
+                          <span key={tag} className="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">{tag}</span>
+                        ))}
+                      </div>
+                      <div className="mt-4 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-400">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                        <span><span className="font-semibold text-slate-600">Ihr Aufwand:</span> Texte einmal reviewen (~30 Min.)</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </AnimatedSection>
+
+              {/* Step 03 */}
+              <AnimatedSection delay={0.15} direction="left">
+                <div className="relative flex flex-col md:flex-row items-start gap-6 md:gap-0">
+                  {/* Left content */}
+                  <div className="flex-1 md:pr-12 md:text-right order-2 md:order-1">
+                    <div className="bg-white border border-slate-200 rounded-2xl p-7 hover:shadow-lg hover:border-ocean-200 transition-all duration-300">
+                      <div className="flex items-center gap-3 mb-4 md:flex-row-reverse">
+                        <span className="text-xs font-bold bg-ocean-50 text-ocean-600 border border-ocean-200 px-3 py-1 rounded-full">Ab Woche 3</span>
+                        <span className="text-xs text-slate-400 font-medium">Erste Ergebnisse</span>
+                      </div>
+                      <h3 className="font-display font-bold text-xl text-slate-900 mb-2">Erste Antworten landen in Ihrem Postfach.</h3>
+                      <p className="text-slate-500 text-sm leading-relaxed mb-5">Das System ist live und arbeitet für Sie. Qualifizierte Interessenten antworten direkt in Ihr Postfach — kein Tool-Login, kein Dashboard. Sie erhalten jede Woche einen klaren Report: was läuft, was wir optimieren.</p>
+                      <div className="flex flex-wrap gap-2 md:justify-end">
+                        {["Wöchentlicher Report", "A/B-Testing", "Laufende Optimierung"].map(tag => (
+                          <span key={tag} className="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">{tag}</span>
+                        ))}
+                      </div>
+                      <div className="mt-4 pt-4 border-t border-slate-100 flex items-center gap-2 md:justify-end text-xs text-slate-400">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                        <span><span className="font-semibold text-slate-600">Ihr Aufwand:</span> Interessenten-Replies beantworten</span>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Center dot */}
+                  <div className="hidden md:flex shrink-0 w-7 h-7 rounded-full bg-ocean-500 border-4 border-white shadow-lg items-center justify-center z-10 mt-8 order-2">
+                    <span className="text-white text-[9px] font-black">03</span>
+                  </div>
+                  <div className="hidden md:block flex-1 md:pl-12 order-3" />
+                </div>
+              </AnimatedSection>
+
+              {/* Step 04 */}
+              <AnimatedSection delay={0.2} direction="right">
+                <div className="relative flex flex-col md:flex-row items-start gap-6 md:gap-0">
+                  <div className="hidden md:block flex-1 md:pr-12 order-1" />
+                  {/* Center dot — orange */}
+                  <div className="hidden md:flex shrink-0 w-7 h-7 rounded-full bg-orange-500 border-4 border-white shadow-lg items-center justify-center z-10 mt-8 order-2">
+                    <span className="text-white text-[9px] font-black">04</span>
+                  </div>
+                  {/* Right content — dark */}
+                  <div className="flex-1 md:pl-12 order-2 md:order-3">
+                    <div className="relative bg-slate-900 border border-slate-700 rounded-2xl p-7 overflow-hidden">
+                      <div className="absolute top-0 right-0 w-48 h-48 rounded-full blur-3xl pointer-events-none" style={{ background: "radial-gradient(circle, rgba(249,115,22,0.12) 0%, transparent 70%)" }} />
+                      <div className="relative">
+                        <div className="flex items-center gap-3 mb-4">
+                          <span className="text-xs font-bold bg-orange-500/20 text-orange-300 border border-orange-500/30 px-3 py-1 rounded-full">Ab Monat 2</span>
+                          <span className="text-xs text-slate-500 font-medium">Skalierung</span>
+                        </div>
+                        <h3 className="font-display font-bold text-xl text-white mb-2">Sie führen Gespräche. Wir füllen die Pipeline weiter.</h3>
+                        <p className="text-slate-400 text-sm leading-relaxed mb-5">Während Sie die ersten Deals abschliessen, skalieren wir das System — neue Segmente, LinkedIn parallel zu E-Mail, erweiterte Zielgruppen. Ihr Outbound läuft auf Autopilot, Sie konzentrieren sich auf den Abschluss.</p>
+                        <div className="flex flex-wrap gap-2">
+                          {["LinkedIn-Outbound", "Neue Segmente", "Monatlicher Strategy-Call"].map(tag => (
+                            <span key={tag} className="text-xs bg-white/10 text-slate-300 px-2.5 py-1 rounded-full">{tag}</span>
+                          ))}
+                        </div>
+                        <div className="mt-4 pt-4 border-t border-white/10 flex items-center gap-2 text-xs text-slate-500">
+                          <span className="w-1.5 h-1.5 rounded-full bg-orange-400" />
+                          <span><span className="font-semibold text-slate-300">Ihr Aufwand:</span> Gespräche führen & Deals abschliessen</span>
                         </div>
                       </div>
-                      <div className="hidden md:flex flex-shrink-0 w-6 h-6 mt-10 items-center justify-center">
-                        <div className={`w-4 h-4 rounded-full border-2 shadow-lg ${orange ? "bg-orange-400 border-orange-500" : "bg-ocean-500 border-ocean-600"}`} />
-                      </div>
-                      <div className="hidden md:block flex-1" />
                     </div>
-                  </AnimatedSection>
-                );
-              })}
+                  </div>
+                </div>
+              </AnimatedSection>
+
             </div>
+            </div>
+
+            {/* Weekly call banner */}
+            <AnimatedSection delay={0.25}>
+              <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex items-start gap-4 bg-ocean-50 border border-ocean-200 rounded-2xl px-7 py-5">
+                  <div className="w-9 h-9 rounded-xl bg-ocean-100 border border-ocean-200 flex items-center justify-center shrink-0 mt-0.5">
+                    <CalendarDays className="w-4 h-4 text-ocean-600" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-slate-900 text-sm mb-1">Wöchentlicher Call</p>
+                    <p className="text-slate-500 text-sm leading-relaxed">Jede Woche, 30 Minuten — wir besprechen was läuft, was optimiert wird und was du dir wünschst. So stellt niemand das Gefühl, nicht auf dem Stand zu sein, und wir erzielen gemeinsam die besten Ergebnisse.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4 bg-ocean-50 border border-ocean-200 rounded-2xl px-7 py-5">
+                  <div className="w-9 h-9 rounded-xl bg-ocean-100 border border-ocean-200 flex items-center justify-center shrink-0 mt-0.5">
+                    <svg viewBox="0 0 24 24" className="w-4 h-4 text-ocean-600" fill="currentColor">
+                      <path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zm10.122 2.521a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zm-1.268 0a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zm-2.523 10.122a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zm0-1.268a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-slate-900 text-sm mb-1">Gemeinsamer Slack-Channel</p>
+                    <p className="text-slate-500 text-sm leading-relaxed">Alles Wichtige wird auch schriftlich festgehalten — was gemacht wurde, was als nächstes kommt. Du kannst jederzeit Fragen stellen, ohne auf den nächsten Call warten zu müssen.</p>
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
+
           </div>
         </div>
       </section>
@@ -712,7 +731,7 @@ export default function HomePage() {
 
       {/* ─── ABOUT ────────────────────────────────────────────────── */}
       <section id="about" className="py-24 px-6 scroll-mt-20">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-14">
             <span className="inline-flex items-center gap-2 bg-ocean-50 border border-ocean-200 text-ocean-700 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-6">
               {t("about.badge")}
@@ -723,9 +742,10 @@ export default function HomePage() {
 
           {/* Founder card */}
           <AnimatedSection>
-            <div className="bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-sm mb-10">
-              <div className="grid grid-cols-1 md:grid-cols-5">
-                <div className="md:col-span-2 relative overflow-hidden min-h-[420px] md:min-h-0">
+            <div className="bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-sm mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2">
+                {/* Photo */}
+                <div className="relative overflow-hidden min-h-[500px]">
                   <Image
                     src="/Hero_Bild_bearbeitet.png"
                     alt="Calvin Heim"
@@ -733,38 +753,67 @@ export default function HomePage() {
                     className="object-cover object-[center_15%]"
                     priority
                   />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-ocean-900/80 to-transparent p-6 text-center">
-                    <div className="flex items-center justify-center gap-3">
-                      <div className="text-left">
-                        <h3 className="font-display font-bold text-xl text-white leading-tight">{t("about.founderName")}</h3>
-                        <p className="text-ocean-200 text-sm">{t("about.founderRole")}</p>
+                  {/* Darker gradient overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950 via-slate-900/70 to-transparent p-8">
+                    <div className="flex items-end justify-between gap-4">
+                      <div>
+                        <h3 className="font-display font-bold text-2xl text-white leading-tight mb-1">Calvin Heim</h3>
+                        <p className="text-ocean-300 text-sm">Gründer & GTM Engineer</p>
                       </div>
                       <a
                         href="https://www.linkedin.com/in/calvin-heim/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/20 hover:bg-white/35 transition-colors shrink-0"
+                        className="inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 border border-white/20 text-white text-xs font-semibold px-4 py-2.5 rounded-full transition-all duration-200 shrink-0"
                       >
-                        <Linkedin className="w-4 h-4 text-white" />
+                        <Linkedin className="w-3.5 h-3.5" />
+                        LinkedIn
                       </a>
                     </div>
                   </div>
                 </div>
-                <div className="md:col-span-3 p-10">
-                  <p className="text-slate-600 leading-relaxed text-base">{t("about.founderBio")}</p>
+
+                {/* Bio */}
+                <div className="p-10 md:p-14 flex flex-col justify-center">
+                  <p className="text-slate-500 text-xs font-bold uppercase tracking-widest mb-6">Über mich</p>
+                  <p className="text-slate-600 leading-relaxed mb-5">
+                    Ich habe mit zahlreichen Agenturen zusammengearbeitet. Die Erfahrung war fast immer dieselbe: Man ist eine Nummer. Standardlösungen, wenig echtes Interesse und kaum messbare Ergebnisse.
+                  </p>
+                  <p className="text-slate-600 leading-relaxed mb-5">
+                    Genau das hat mich dazu gebracht, Swellsystems zu gründen. Ich arbeite nicht mit vielen Kunden — ich arbeite mit wenigen, die ich wirklich kenne. Dafür liefere ich konkrete, messbare Resultate und bin bei jedem Schritt persönlich dabei.
+                  </p>
+                  <p className="text-slate-600 leading-relaxed">
+                    Eine meiner grossen Leidenschaften neben der Arbeit ist Surfen. Genau das steckt hinter dem Namen — Swells entstehen nicht zufällig. Sie brauchen die richtigen Bedingungen. Genauso wie guter Outbound.
+                  </p>
                 </div>
               </div>
             </div>
           </AnimatedSection>
 
-          {/* Values */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {values.map(({ key, icon }, i) => (
-              <AnimatedSection key={key} delay={i * 0.1}>
-                <div className="bg-slate-50 border border-slate-100 rounded-2xl p-8 hover:border-ocean-200 hover:shadow-lg hover:shadow-ocean-50 transition-all duration-300 text-center">
-                  <div className="text-4xl mb-4">{icon}</div>
-                  <h3 className="font-display font-bold text-xl text-slate-900 mb-3">{t(`about.${key}Title` as any)}</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">{t(`about.${key}Desc` as any)}</p>
+          {/* 3 personal highlights */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              {
+                icon: "🤝",
+                title: "Echte Partnerschaften",
+                desc: "Wahrer Wachstum multipliziert sich automatisch mit einer guten Zusammenarbeit. Keine 0815-Lösungen, sondern ein System, das auf dein Unternehmen angepasst ist.",
+              },
+              {
+                icon: "📊",
+                title: "Messbare Resultate",
+                desc: "Als zahlengetriebener Mensch entscheide ich nicht aus dem Bauch heraus, sondern basierend auf echten Daten.",
+              },
+              {
+                icon: "🌊",
+                title: "Qualität vor Quantität",
+                desc: "Ich habe den höchsten Anspruch an meine Arbeit — nur so profitieren beide Parteien von einer Zusammenarbeit. Darum Qualität vor Quantität.",
+              },
+            ].map(({ icon, title, desc }, i) => (
+              <AnimatedSection key={title} delay={i * 0.1}>
+                <div className="bg-white border border-slate-100 rounded-2xl p-8 hover:border-ocean-200 hover:shadow-lg hover:shadow-ocean-50 transition-all duration-300 h-full">
+                  <div className="text-3xl mb-4">{icon}</div>
+                  <h3 className="font-display font-bold text-lg text-slate-900 mb-2">{title}</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed">{desc}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -779,95 +828,120 @@ export default function HomePage() {
         </svg>
       </div>
 
-      {/* ─── CONTACT ──────────────────────────────────────────────── */}
-      <section id="contact" className="bg-slate-50 py-24 px-6 scroll-mt-20">
-        <div className="max-w-5xl mx-auto">
-          <AnimatedSection className="text-center mb-14">
-            <span className="inline-flex items-center gap-2 bg-ocean-50 border border-ocean-200 text-ocean-700 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-6">
-              {t("contact.badge")}
-            </span>
-            <h2 className="font-display font-bold text-4xl md:text-5xl text-slate-900 mb-4">{t("contact.headline")}</h2>
-            <p className="text-slate-600 text-lg max-w-2xl mx-auto">{t("contact.subheadline")}</p>
-          </AnimatedSection>
+      {/* ─── FAQ ──────────────────────────────────────────────────── */}
+      {(() => {
+        const faqs = [
+          {
+            q: "Wann brauche ich eine Lösung wie Swellsystems?",
+            a: "Wenn du keinen verlässlichen Weg hast, regelmässig neue Kunden zu gewinnen — oder wenn du einen zusätzlichen Vertriebskanal aufbauen möchtest, ohne dafür ein ganzes Sales-Team einstellen zu müssen. Wir helfen besonders B2B-Unternehmen in der Schweiz und Deutschland dabei, zuverlässig die richtigen Entscheidungsträger anzusprechen und qualifizierte Gespräche zu buchen.",
+          },
+          {
+            q: "Für wen eignet sich die Zusammenarbeit?",
+            a: "Swellsystems ist ideal für B2B-Unternehmen wie Agenturen, IT-Firmen, SaaS-Anbieter, Beratungsunternehmen und Dienstleister, die ihren Vertrieb systematisieren wollen. Wichtig ist, dass ein klares Angebot und eine definierbare Zielgruppe vorhanden sind — dann können wir das System optimal auf euch ausrichten.",
+          },
+          {
+            q: "Was, wenn ich meinen Zielkunden noch nicht kenne?",
+            a: "Kein Problem. Wir arbeiten den Zielkunden gemeinsam mit dir heraus — auf Basis vorhandener Daten aus deinem Unternehmen, die wir gemeinsam aufarbeiten, sowie durch gezieltes Testing. Es kann sein, dass die Anfangsphase dadurch etwas länger dauert, da wir mehr ausprobieren müssen. Aber auch das ist Teil des Prozesses — und am Ende steht ein ICP, der wirklich auf echten Daten basiert.",
+          },
+          {
+            q: "Wie lange dauert es, bis ich erste Ergebnisse sehe?",
+            a: "Erste qualifizierte Antworten zeigen sich typischerweise ab Woche 3 — also bereits während der Aufbauphase. Messbare Pipeline entsteht in der Regel innerhalb der ersten 4–8 Wochen. Der genaue Zeitraum hängt von Angebot, Branche und Zielgruppe ab — das besprechen wir im Onboarding konkret.",
+          },
+          {
+            q: "Wie viel Aufwand habe ich als Kunde?",
+            a: "Wenig. Im Onboarding brauchen wir deine Inputs, damit wir deine Zielgruppe und dein Angebot wirklich verstehen. Danach übernehmen wir das operative Outbound-Management vollständig — von der Recherche über das Messaging bis zur laufenden Optimierung. Du konzentrierst dich auf dein Kerngeschäft und beantwortest eingehende Interessenten-Replies.",
+          },
+          {
+            q: "Ich habe schon vieles ausprobiert. Warum sollte es jetzt funktionieren?",
+            a: "Verständlich, dass du skeptisch bist. Die meisten Outbound-Versuche scheitern an generischen Texten, falschen Zielgruppen oder fehlendem System dahinter. Wir bauen kein Copy-Paste-Setup — sondern ein System, das auf dein Unternehmen und deinen Markt zugeschnitten ist. Und weil wir nur mit wenigen Kunden arbeiten, ist jede Zusammenarbeit für uns persönlich — nicht nur operativ.",
+          },
+          {
+            q: "Was kostet die Zusammenarbeit?",
+            a: "Das hängt vom Umfang und der Intensität des Outbounds ab — wie viele Kanäle, welche Zielgruppen, wie viel wir parallel betreiben. Daher gibt es keinen Einheitspreis. Was wir garantieren: faire Preise, die im Verhältnis zum Ergebnis stehen. Im ersten Gespräch schauen wir gemeinsam, was zu dir passt — und du bekommst ein klares Angebot, ohne versteckte Kosten.",
+          },
+          {
+            q: "Wie läuft die Zusammenarbeit konkret ab?",
+            a: "Nach dem Onboarding bauen wir deine Outbound-Infrastruktur in den ersten 1–3 Wochen auf. Ab Woche 3 läuft das System live. Jede Woche gibt es einen 30-minütigen Call, in dem wir gemeinsam besprechen was läuft, was optimiert wird und was du dir wünschst. Zusätzlich gibt es einen gemeinsamen Slack-Channel, in dem alles Wichtige schriftlich festgehalten wird — was gemacht wurde, was als nächstes kommt und wo du jederzeit Fragen stellen kannst. Du bist immer auf dem aktuellen Stand, ohne E-Mail-Ketten oder Rätselraten.",
+          },
+        ];
 
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
-            {/* Form */}
-            <div className="lg:col-span-3">
-              <AnimatedSection>
-                <div className="bg-white border border-slate-100 rounded-3xl p-8 md:p-10 shadow-sm">
-                  <AnimatePresence mode="wait">
-                    {submitted ? (
-                      <motion.div key="success" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="flex flex-col items-center justify-center py-10 text-center">
-                        <div className="w-16 h-16 rounded-full bg-ocean-50 flex items-center justify-center mb-6">
-                          <CheckCircle2 className="w-8 h-8 text-ocean-600" />
-                        </div>
-                        <h3 className="font-display font-bold text-2xl text-slate-900 mb-2">{t("contact.successTitle")}</h3>
-                        <p className="text-slate-600">{t("contact.successMessage")}</p>
-                      </motion.div>
-                    ) : (
-                      <motion.form key="form" initial={{ opacity: 1 }} exit={{ opacity: 0 }} onSubmit={handleSubmit} className="space-y-5">
-                        <div>
-                          <label className="block text-sm font-medium text-slate-700 mb-1.5">{t("contact.nameLabel")}</label>
-                          <input type="text" required placeholder={t("contact.namePlaceholder")} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-ocean-400 focus:border-transparent text-slate-900 placeholder-slate-400 transition" />
-                        </div>
-                        <div>
-                          <label className="block text-sm font-medium text-slate-700 mb-1.5">{t("contact.emailLabel")}</label>
-                          <input type="email" required placeholder={t("contact.emailPlaceholder")} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-ocean-400 focus:border-transparent text-slate-900 placeholder-slate-400 transition" />
-                        </div>
-                        <div>
-                          <label className="block text-sm font-medium text-slate-700 mb-1.5">{t("contact.companyLabel")}</label>
-                          <input type="text" placeholder={t("contact.companyPlaceholder")} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-ocean-400 focus:border-transparent text-slate-900 placeholder-slate-400 transition" />
-                        </div>
-                        <div>
-                          <label className="block text-sm font-medium text-slate-700 mb-1.5">{t("contact.messageLabel")}</label>
-                          <textarea rows={4} placeholder={t("contact.messagePlaceholder")} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-ocean-400 focus:border-transparent text-slate-900 placeholder-slate-400 transition resize-none" />
-                        </div>
-                        <button type="submit" disabled={loading} className="w-full flex items-center justify-center gap-2 bg-ocean-600 hover:bg-ocean-700 disabled:bg-ocean-400 text-white font-semibold py-4 rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-ocean-200">
-                          {loading ? (
-                            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                          ) : (
-                            <>
-                              {t("contact.submit")}
-                              <Send className="w-4 h-4" />
-                            </>
-                          )}
-                        </button>
-                      </motion.form>
-                    )}
-                  </AnimatePresence>
-                </div>
+        return (
+          <section className="py-24 px-6 bg-slate-950">
+            <div className="max-w-3xl mx-auto">
+              <AnimatedSection className="text-center mb-14">
+                <span className="inline-flex items-center gap-2 bg-white/10 border border-white/15 text-slate-300 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-6">
+                  FAQ
+                </span>
+                <h2 className="font-display font-bold text-4xl md:text-5xl text-white mb-4">Häufige Fragen</h2>
+                <p className="text-slate-400 text-lg">Alles, was du wissen möchtest — bevor du dich meldest.</p>
               </AnimatedSection>
+
+              <div className="divide-y divide-white/10">
+                {faqs.map(({ q, a }, i) => (
+                  <AnimatedSection key={i} delay={i * 0.05}>
+                    <details className="group py-6 cursor-pointer list-none">
+                      <summary className="flex items-start justify-between gap-6 text-white font-semibold text-base leading-snug marker:hidden [&::-webkit-details-marker]:hidden">
+                        <span>{q}</span>
+                        <span className="shrink-0 w-5 h-5 rounded-full border border-white/20 flex items-center justify-center mt-0.5 group-open:bg-ocean-500 group-open:border-ocean-500 transition-all duration-200">
+                          <svg viewBox="0 0 10 10" className="w-2.5 h-2.5 text-white fill-none stroke-current stroke-[1.5] group-open:rotate-45 transition-transform duration-200">
+                            <path d="M5 1v8M1 5h8" strokeLinecap="round" />
+                          </svg>
+                        </span>
+                      </summary>
+                      <p className="mt-4 text-slate-400 text-sm leading-relaxed">{a}</p>
+                    </details>
+                  </AnimatedSection>
+                ))}
+              </div>
             </div>
+          </section>
+        );
+      })()}
 
-            {/* Aside */}
-            <div className="lg:col-span-2 space-y-6">
-              <AnimatedSection delay={0.1} direction="right">
-                <div className="bg-ocean-50 border border-ocean-100 rounded-3xl p-8">
-                  <div className="w-10 h-10 rounded-xl bg-ocean-100 flex items-center justify-center mb-5">
-                    <CalendarDays className="w-5 h-5 text-ocean-600" />
-                  </div>
-                  <h3 className="font-display font-bold text-lg text-slate-900 mb-2">{t("contact.orText")}</h3>
-                  <p className="text-slate-600 text-sm mb-5">Wählen Sie direkt einen Termin in unserem Kalender.</p>
-                  <a href="https://cal.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-ocean-300 hover:bg-ocean-100 text-ocean-700 text-sm font-semibold px-5 py-2.5 rounded-full transition-colors">
+      {/* ─── CONTACT ──────────────────────────────────────────────── */}
+      <section id="contact" className="py-24 px-6 scroll-mt-20">
+        <div className="max-w-3xl mx-auto">
+          <AnimatedSection>
+            <div className="relative bg-slate-900 rounded-3xl overflow-hidden px-10 py-16 text-center">
+              {/* Glow orbs */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-64 rounded-full blur-3xl pointer-events-none" style={{ background: "radial-gradient(circle, rgba(14,165,233,0.15) 0%, transparent 70%)" }} />
+              <div className="absolute bottom-0 right-0 w-64 h-64 rounded-full blur-3xl pointer-events-none" style={{ background: "radial-gradient(circle, rgba(249,115,22,0.1) 0%, transparent 70%)" }} />
+
+              <div className="relative">
+                <span className="inline-flex items-center gap-2 bg-white/10 border border-white/15 text-slate-300 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-8">
+                  Kontakt
+                </span>
+                <h2 className="font-display font-bold text-4xl md:text-5xl text-white mb-5 leading-tight">
+                  Mal schauen, ob's passt.
+                </h2>
+                <p className="text-slate-400 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
+                  Kein Verkaufsgespräch. Wir schauen gemeinsam in 30 Minuten, ob und wie wir dir helfen können — unverbindlich und ohne Risiko.
+                </p>
+
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <a
+                    href="https://cal.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-2.5 bg-ocean-500 hover:bg-ocean-400 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-500/25 hover:-translate-y-0.5"
+                  >
                     <CalendarDays className="w-4 h-4" />
-                    {t("contact.calendarText")}
+                    Kostenloses Gespräch buchen
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </a>
-                </div>
-              </AnimatedSection>
-
-              <AnimatedSection delay={0.2} direction="right">
-                <div className="bg-white border border-slate-100 rounded-3xl p-8">
-                  <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center mb-5">
-                    <Mail className="w-5 h-5 text-slate-600" />
-                  </div>
-                  <h3 className="font-display font-bold text-lg text-slate-900 mb-2">Direkt schreiben</h3>
-                  <a href="mailto:hello@swellsystems.ch" className="text-ocean-600 hover:text-ocean-700 text-sm font-medium transition-colors">
+                  <a
+                    href="mailto:hello@swellsystems.ch"
+                    className="inline-flex items-center gap-2 text-slate-400 hover:text-white text-sm font-medium transition-colors"
+                  >
+                    <Mail className="w-4 h-4" />
                     hello@swellsystems.ch
                   </a>
                 </div>
-              </AnimatedSection>
+
+                <p className="mt-8 text-xs text-slate-600">Keine Verpflichtung. Kein Pitch. Nur ein ehrliches Gespräch.</p>
+              </div>
             </div>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
     </>
