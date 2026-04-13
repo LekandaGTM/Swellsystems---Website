@@ -118,24 +118,27 @@ Dev server PID is not persistent — just run `npm run dev` fresh each time.
 - [x] Fixed navbar with smooth scroll, active section highlight, mobile menu
 - [x] Language auto-detection + manual toggle (DE/EN)
 - [x] Framer Motion scroll-reveal animations on all sections
-- [x] Services grid (6 cards)
+- [x] Services flow diagram (5-step system + 3 outcome cards)
 - [x] How It Works timeline (4 steps, alternating left/right)
 - [x] Case Studies (3 gradient cards with results)
-- [x] About section (Calvin Heim bio + values)
-- [x] Contact form with success state animation
-- [x] Calendar booking aside (placeholder link)
+- [x] About section (Calvin Heim photo + bio + values)
+- [x] FAQ section (8 accordion items, dark background)
+- [x] Contact section with Google Calendar booking link
 - [x] Wave SVG dividers between sections
 - [x] Footer with dark background + wave divider
+- [x] Google Calendar booking link (`calendar.app.google/N7b7tNRhtYcueKWM7`) — all CTAs connected
+- [x] Email set to `calvin@swellsystems.ch` throughout
+- [x] Impressum page (`/impressum`) — LeadLab GmbH, CHE-344.886.977
+- [x] Datenschutz page (`/datenschutz`) — full DSGVO-compliant
+- [x] AGB page (`/agb`) — Swiss law, St. Gallen jurisdiction
+- [x] Footer links fixed (legal pages + scroll-to-section nav)
+- [x] CTA buttons after How It Works and Case Studies sections
+- [x] Slack added to KI & Automation tools
 - [x] Production build verified, zero errors
 
 ---
 
 ## What Still Needs Doing ⬜
-- [ ] Add real photo of Calvin Heim to the About section (replace `<Waves />` placeholder)
-- [ ] Connect contact form to real email service (Resend, Formspree, or similar)
-- [ ] Add real Calendly / Cal.com booking link in Contact section (`href="https://cal.com"`)
-- [ ] Set real email address (`hello@swellsystems.ch`) in Footer/Contact
-- [ ] Add Impressum (imprint) and Datenschutz (privacy policy) pages — legally required in CH/DE
 - [ ] Deploy to Vercel and connect `swellsystems.ch` domain
 - [ ] Add real case study details (currently placeholder copy)
 - [ ] SEO: add og:image, sitemap, and robots.txt
