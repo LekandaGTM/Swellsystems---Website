@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 
@@ -8,6 +10,14 @@ interface FooterProps {
 export default function Footer({ locale }: FooterProps) {
   const t = useTranslations("footer");
   const nt = useTranslations("nav");
+
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  };
 
   return (
     <footer className="relative z-10 bg-slate-950 text-slate-400">
@@ -50,15 +60,21 @@ export default function Footer({ locale }: FooterProps) {
             </p>
             <ul className="space-y-2.5">
               {[
-                { href: `/${locale}/services`, label: nt("services") },
-                { href: `/${locale}/how-it-works`, label: nt("howItWorks") },
-                { href: `/${locale}/case-studies`, label: nt("caseStudies") },
-                { href: `/${locale}/about`, label: nt("about") },
-                { href: `/${locale}/contact`, label: nt("contact") },
+                { id: "services", label: nt("services") },
+                { id: "how-it-works", label: nt("howItWorks") },
+                { id: "case-studies", label: nt("caseStudies") },
+                { id: "about", label: nt("about") },
+                { id: "contact", label: nt("contact") },
               ].map((link) => (
-                <li key={link.href}>
+                <li key={link.id}>
                   <Link
-                    href={link.href}
+                    href={`/${locale}#${link.id}`}
+                    onClick={(e) => {
+                      if (window.location.pathname === `/${locale}` || window.location.pathname === `/${locale}/`) {
+                        e.preventDefault();
+                        scrollTo(link.id);
+                      }
+                    }}
                     className="text-sm hover:text-ocean-400 transition-colors"
                   >
                     {link.label}
@@ -75,13 +91,18 @@ export default function Footer({ locale }: FooterProps) {
             </p>
             <ul className="space-y-2.5">
               <li>
-                <Link href={`/${locale}/imprint`} className="text-sm hover:text-ocean-400 transition-colors">
+                <Link href={`/${locale}/impressum`} className="text-sm hover:text-ocean-400 transition-colors">
                   {t("imprint")}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/privacy`} className="text-sm hover:text-ocean-400 transition-colors">
+                <Link href={`/${locale}/datenschutz`} className="text-sm hover:text-ocean-400 transition-colors">
                   {t("privacy")}
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${locale}/agb`} className="text-sm hover:text-ocean-400 transition-colors">
+                  AGB
                 </Link>
               </li>
             </ul>
@@ -90,9 +111,17 @@ export default function Footer({ locale }: FooterProps) {
 
         <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs">{t("copyright")}</p>
-          <div className="flex items-center gap-2">
-            <div className="w-1.5 h-1.5 rounded-full bg-ocean-400 animate-pulse" />
-            <span className="text-xs text-ocean-400">swellsystems.ch</span>
+          <div className="flex items-center gap-4">
+            <a
+              href="mailto:calvin@swellsystems.ch"
+              className="text-xs text-slate-500 hover:text-ocean-400 transition-colors"
+            >
+              calvin@swellsystems.ch
+            </a>
+            <div className="flex items-center gap-2">
+              <div className="w-1.5 h-1.5 rounded-full bg-ocean-400 animate-pulse" />
+              <span className="text-xs text-ocean-400">swellsystems.ch</span>
+            </div>
           </div>
         </div>
       </div>

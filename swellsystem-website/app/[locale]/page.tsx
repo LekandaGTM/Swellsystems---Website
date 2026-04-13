@@ -4,7 +4,7 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { useParams } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { siHubspot, siN8n, siAnthropic } from "simple-icons";
 import Image from "next/image";
 import {
@@ -29,7 +29,7 @@ function ToolLogo({ tool, dark = false }: { tool: Tool; dark?: boolean }) {
   const border = dark ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.08)";
 
   const wrapper = (children: React.ReactNode) => (
-    <div className="flex flex-col items-center gap-1">
+    <div className="flex flex-col items-center gap-1" suppressHydrationWarning>
       <span
         className="flex items-center justify-center w-9 h-9 rounded-xl shadow-sm"
         style={{ background: bg, border: `1px solid ${border}` }}
@@ -55,6 +55,7 @@ function ToolLogo({ tool, dark = false }: { tool: Tool; dark?: boolean }) {
         src={`https://www.google.com/s2/favicons?domain=${tool.domain}&sz=64`}
         alt={tool.name}
         className="w-5 h-5 object-contain rounded"
+        suppressHydrationWarning
       />
     );
   }
@@ -160,7 +161,7 @@ export default function HomePage() {
           {/* CTAs */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }} className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
-              onClick={() => scrollTo("contact")}
+              onClick={() => window.open("https://calendar.app.google/N7b7tNRhtYcueKWM7", "_blank")}
               className="group flex items-center gap-2 bg-ocean-600 hover:bg-ocean-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-200 hover:-translate-y-1"
             >
               {t("home.ctaPrimary")}
@@ -237,7 +238,7 @@ export default function HomePage() {
             const stepsB: FlowStep[] = [
               { icon: Target,       label: "Zielgruppe",      desc: "TAM aufbauen & ICP schärfen",    bg: "bg-orange-50",  border: "border-orange-200",  iconColor: "text-orange-500",  num: "01", tools: [{ name: "Apify", domain: "apify.com", color: "#00B4A2" }, { name: "AI Ark", domain: "theaiark.com", color: "#3B35E8" }] },
               { icon: Database,     label: "Daten",           desc: "Anreichern & verifizieren",      bg: "bg-violet-50",  border: "border-violet-200",  iconColor: "text-violet-500",  num: "02", tools: [{ name: "Clay", domain: "clay.com", color: "#FF6B2B" }] },
-              { icon: Bot,          label: "KI & Automation", desc: "Personalisierung & Workflows",   bg: "bg-sky-50",     border: "border-sky-200",     iconColor: "text-sky-500",     num: "03", tools: [{ name: "Claude", siIcon: siAnthropic, color: "#D97757" }, { name: "n8n", siIcon: siN8n, color: "#EA4B71" }] },
+              { icon: Bot,          label: "KI & Automation", desc: "Personalisierung & Workflows",   bg: "bg-sky-50",     border: "border-sky-200",     iconColor: "text-sky-500",     num: "03", tools: [{ name: "Claude", siIcon: siAnthropic, color: "#D97757" }, { name: "n8n", siIcon: siN8n, color: "#EA4B71" }, { name: "Slack", domain: "slack.com", color: "#4A154B" }] },
               { icon: Mail,         label: "Outbound",        desc: "E-Mail & LinkedIn",              bg: "bg-ocean-50",   border: "border-ocean-200",   iconColor: "text-ocean-500",   num: "04", tools: [{ name: "HeyReach", domain: "heyreach.io", color: "#0EA5E9" }, { name: "Smartlead", domain: "smartlead.ai", color: "#4F46E5" }] },
               { icon: CalendarDays, label: "Gespräch",        desc: "Qualifizierter Termin gebucht",  bg: "bg-emerald-50", border: "border-emerald-200", iconColor: "text-emerald-500", num: "05", tools: [] },
             ];
@@ -673,6 +674,21 @@ export default function HomePage() {
             </AnimatedSection>
 
           </div>
+
+          {/* CTA after How It Works */}
+          <AnimatedSection delay={0.3} className="mt-14 text-center">
+            <a
+              href="https://calendar.app.google/N7b7tNRhtYcueKWM7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2.5 bg-ocean-600 hover:bg-ocean-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-200 hover:-translate-y-0.5"
+            >
+              <CalendarDays className="w-4 h-4" />
+              Kostenloses Gespräch buchen
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </a>
+          </AnimatedSection>
+
         </div>
       </section>
 
@@ -719,6 +735,22 @@ export default function HomePage() {
               </AnimatedSection>
             ))}
           </div>
+
+          {/* CTA after Case Studies */}
+          <AnimatedSection delay={0.3} className="mt-14 text-center">
+            <p className="text-slate-500 text-sm mb-5">Ihr Ergebnis könnte das nächste sein.</p>
+            <a
+              href="https://calendar.app.google/N7b7tNRhtYcueKWM7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2.5 bg-ocean-600 hover:bg-ocean-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-200 hover:-translate-y-0.5"
+            >
+              <CalendarDays className="w-4 h-4" />
+              Kostenloses Gespräch buchen
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </a>
+          </AnimatedSection>
+
         </div>
       </section>
 
@@ -920,7 +952,7 @@ export default function HomePage() {
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <a
-                    href="https://cal.com"
+                    href="https://calendar.app.google/N7b7tNRhtYcueKWM7"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group inline-flex items-center gap-2.5 bg-ocean-500 hover:bg-ocean-400 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-500/25 hover:-translate-y-0.5"
@@ -930,11 +962,11 @@ export default function HomePage() {
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </a>
                   <a
-                    href="mailto:hello@swellsystems.ch"
+                    href="mailto:calvin@swellsystems.ch"
                     className="inline-flex items-center gap-2 text-slate-400 hover:text-white text-sm font-medium transition-colors"
                   >
                     <Mail className="w-4 h-4" />
-                    hello@swellsystems.ch
+                    calvin@swellsystems.ch
                   </a>
                 </div>
 

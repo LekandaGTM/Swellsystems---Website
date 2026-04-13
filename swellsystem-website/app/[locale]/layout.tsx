@@ -53,7 +53,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={`${inter.variable} ${plusJakarta.variable} ${poppins.variable}`}>
-      <body className="relative overflow-x-hidden">
+      <body className="relative overflow-x-hidden" suppressHydrationWarning>
         <NextIntlClientProvider messages={messages}>
           <WaveBackground />
           <div className="relative z-10">
