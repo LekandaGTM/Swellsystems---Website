@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Globe } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import clsx from "clsx";
 
 interface NavbarProps {
@@ -56,8 +56,6 @@ export default function Navbar({ locale }: NavbarProps) {
     }
   };
 
-  const otherLocale = locale === "de" ? "en" : "de";
-  const otherLocalePath = pathname.replace(`/${locale}`, `/${otherLocale}`);
   const isHomePage = pathname === `/${locale}` || pathname === `/${locale}/`;
 
   const navLinks = [
@@ -127,14 +125,6 @@ export default function Navbar({ locale }: NavbarProps) {
 
         {/* Right side */}
         <div className="hidden lg:flex items-center gap-4">
-          <Link
-            href={otherLocalePath}
-            className="flex items-center gap-1.5 text-xs font-medium text-slate-500 hover:text-ocean-600 transition-colors"
-          >
-            <Globe className="w-3.5 h-3.5" />
-            {otherLocale.toUpperCase()}
-          </Link>
-
           <a
             href="https://calendar.app.google/N7b7tNRhtYcueKWM7"
             target="_blank"
@@ -191,15 +181,7 @@ export default function Navbar({ locale }: NavbarProps) {
                   </Link>
                 )
               ))}
-              <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                <Link
-                  href={otherLocalePath}
-                  onClick={() => setIsOpen(false)}
-                  className="flex items-center gap-1.5 text-sm text-slate-500"
-                >
-                  <Globe className="w-4 h-4" />
-                  {otherLocale.toUpperCase()}
-                </Link>
+              <div className="pt-4 border-t border-slate-100 flex items-center justify-end">
                 <a
                   href="https://calendar.app.google/N7b7tNRhtYcueKWM7"
                   target="_blank"

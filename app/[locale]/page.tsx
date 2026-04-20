@@ -133,10 +133,10 @@ export default function HomePage() {
 
           {/* Title */}
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="space-y-2">
-            <h1 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl tracking-tight text-slate-900 leading-[1.15] whitespace-nowrap">
+            <h1 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-slate-900 leading-[1.15]">
               {t("home.headline")}
             </h1>
-            <h1 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.15] gradient-text pb-1">
+            <h1 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.15] gradient-text pb-1">
               {t("home.headlineAccent")}
             </h1>
           </motion.div>
@@ -714,16 +714,16 @@ export default function HomePage() {
 
           {/* Stats row */}
           <AnimatedSection className="mb-12">
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {[
                 { value: "13", label: "Neue Pipeline-Gespräche in 30 Tagen", sub: "Agentur-Kunde, Schweiz" },
                 { value: "26%", label: "Positive Rate auf Antworten", sub: "Beste Kampagne" },
-                { value: "4", label: "Abgeschlossene Kampagnen", sub: "Vollautomatisiert" },
-              ].map(({ value, label, sub }) => (
-                <div key={label} className="bg-white border border-slate-100 rounded-2xl p-6 text-center flex flex-col justify-between">
-                  <p className="font-display font-bold text-4xl text-ocean-600 mb-2">{value}</p>
-                  <p className="text-slate-700 text-sm font-semibold mb-1">{label}</p>
-                  <p className="text-slate-400 text-xs">{sub}</p>
+                { value: "4", label: "Abgeschlossene Kampagnen", sub: "Vollautomatisiert", fullWidth: true },
+              ].map(({ value, label, sub, fullWidth }) => (
+                <div key={label} className={`bg-white border border-slate-100 rounded-2xl p-4 sm:p-6 text-center flex flex-col justify-between ${fullWidth ? "col-span-2 sm:col-span-1" : ""}`}>
+                  <p className="font-display font-bold text-2xl sm:text-4xl text-ocean-600 mb-1 sm:mb-2">{value}</p>
+                  <p className="text-slate-700 text-xs sm:text-sm font-semibold mb-1">{label}</p>
+                  <p className="text-slate-400 text-[10px] sm:text-xs">{sub}</p>
                 </div>
               ))}
             </div>
