@@ -58,6 +58,7 @@ export default function Navbar({ locale }: NavbarProps) {
 
   const otherLocale = locale === "de" ? "en" : "de";
   const otherLocalePath = pathname.replace(`/${locale}`, `/${otherLocale}`);
+  const isHomePage = pathname === `/${locale}` || pathname === `/${locale}/`;
 
   const navLinks = [
     { id: "services", label: t("services") },
@@ -81,28 +82,46 @@ export default function Navbar({ locale }: NavbarProps) {
     >
       <nav className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16 lg:h-20">
         {/* Logo */}
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex items-center"
-        >
-          <span className="font-poppins font-bold text-xl tracking-tight text-slate-900">
-            Swell<span className="text-ocean-500 font-medium">systems</span>
-          </span>
-        </button>
+        {isHomePage ? (
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="flex items-center"
+          >
+            <span className="font-poppins font-bold text-xl tracking-tight text-slate-900">
+              Swell<span className="text-ocean-500 font-medium">systems</span>
+            </span>
+          </button>
+        ) : (
+          <Link href={`/${locale}`} className="flex items-center">
+            <span className="font-poppins font-bold text-xl tracking-tight text-slate-900">
+              Swell<span className="text-ocean-500 font-medium">systems</span>
+            </span>
+          </Link>
+        )}
 
         {/* Desktop links */}
         <div className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
-            <button
-              key={link.id}
-              onClick={() => scrollTo(link.id)}
-              className={clsx(
-                "text-sm font-medium transition-colors hover:text-ocean-600",
-                activeSection === link.id ? "text-ocean-600" : "text-slate-600"
-              )}
-            >
-              {link.label}
-            </button>
+            isHomePage ? (
+              <button
+                key={link.id}
+                onClick={() => scrollTo(link.id)}
+                className={clsx(
+                  "text-sm font-medium transition-colors hover:text-ocean-600",
+                  activeSection === link.id ? "text-ocean-600" : "text-slate-600"
+                )}
+              >
+                {link.label}
+              </button>
+            ) : (
+              <Link
+                key={link.id}
+                href={`/${locale}#${link.id}`}
+                className="text-sm font-medium text-slate-600 transition-colors hover:text-ocean-600"
+              >
+                {link.label}
+              </Link>
+            )
           ))}
         </div>
 
@@ -116,12 +135,14 @@ export default function Navbar({ locale }: NavbarProps) {
             {otherLocale.toUpperCase()}
           </Link>
 
-          <button
-            onClick={() => scrollTo("contact")}
+          <a
+            href="https://calendar.app.google/N7b7tNRhtYcueKWM7"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-ocean-600 hover:bg-ocean-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-ocean-200 hover:-translate-y-0.5"
           >
             {t("cta")}
-          </button>
+          </a>
         </div>
 
         {/* Mobile hamburger */}
@@ -146,18 +167,29 @@ export default function Navbar({ locale }: NavbarProps) {
           >
             <div className="px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
-                <button
-                  key={link.id}
-                  onClick={() => scrollTo(link.id)}
-                  className={clsx(
-                    "text-base font-medium text-left transition-colors",
-                    activeSection === link.id
-                      ? "text-ocean-600"
-                      : "text-slate-700 hover:text-ocean-600"
-                  )}
-                >
-                  {link.label}
-                </button>
+                isHomePage ? (
+                  <button
+                    key={link.id}
+                    onClick={() => scrollTo(link.id)}
+                    className={clsx(
+                      "text-base font-medium text-left transition-colors",
+                      activeSection === link.id
+                        ? "text-ocean-600"
+                        : "text-slate-700 hover:text-ocean-600"
+                    )}
+                  >
+                    {link.label}
+                  </button>
+                ) : (
+                  <Link
+                    key={link.id}
+                    href={`/${locale}#${link.id}`}
+                    onClick={() => setIsOpen(false)}
+                    className="text-base font-medium text-left text-slate-700 hover:text-ocean-600 transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                )
               ))}
               <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                 <Link
@@ -168,12 +200,15 @@ export default function Navbar({ locale }: NavbarProps) {
                   <Globe className="w-4 h-4" />
                   {otherLocale.toUpperCase()}
                 </Link>
-                <button
-                  onClick={() => scrollTo("contact")}
+                <a
+                  href="https://calendar.app.google/N7b7tNRhtYcueKWM7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
                   className="bg-ocean-600 text-white text-sm font-semibold px-5 py-2.5 rounded-full"
                 >
                   {t("cta")}
-                </button>
+                </a>
               </div>
             </div>
           </motion.div>

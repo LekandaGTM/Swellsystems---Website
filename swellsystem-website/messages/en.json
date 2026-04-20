@@ -3,7 +3,7 @@
     "services": "Services",
     "howItWorks": "How It Works",
     "caseStudies": "Case Studies",
-    "about": "About",
+    "about": "About Me",
     "contact": "Contact",
     "cta": "Book a Call"
   },
@@ -14,12 +14,12 @@
     "subheadline": "We work with a select few clients — deeply, not broadly. No templates. No cookie-cutter sequences. Just precise, measurable outbound built around your business.",
     "ctaPrimary": "Get a free consultation",
     "ctaSecondary": "See how it works",
-    "stat1Value": "3x",
-    "stat1Label": "More qualified leads",
-    "stat2Value": "90%",
-    "stat2Label": "Sales time saved",
-    "stat3Value": "< 4 wks",
-    "stat3Label": "Until first pipeline",
+    "stat1Value": "< 3 wks",
+    "stat1Label": "Until first pipeline",
+    "stat2Value": "100%",
+    "stat2Label": "Fully automated",
+    "stat3Value": "0h",
+    "stat3Label": "Time investment for you",
     "scrollHint": "Discover more"
   },
   "services": {
@@ -75,7 +75,7 @@
     "ctaButton": "Book a Call"
   },
   "about": {
-    "badge": "About",
+    "badge": "About Me",
     "headline": "Behind the wave.",
     "subheadline": "Swellsystems was founded with a clear mission: to help B2B companies in Switzerland and Germany win qualified leads systematically and at scale.",
     "founderName": "Calvin Heim",

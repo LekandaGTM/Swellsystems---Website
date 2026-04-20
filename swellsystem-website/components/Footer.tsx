@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 
 interface FooterProps {
   locale: string;
@@ -10,6 +11,8 @@ interface FooterProps {
 export default function Footer({ locale }: FooterProps) {
   const t = useTranslations("footer");
   const nt = useTranslations("nav");
+  const pathname = usePathname();
+  const isHomePage = pathname === `/${locale}` || pathname === `/${locale}/`;
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -67,18 +70,21 @@ export default function Footer({ locale }: FooterProps) {
                 { id: "contact", label: nt("contact") },
               ].map((link) => (
                 <li key={link.id}>
-                  <Link
-                    href={`/${locale}#${link.id}`}
-                    onClick={(e) => {
-                      if (window.location.pathname === `/${locale}` || window.location.pathname === `/${locale}/`) {
-                        e.preventDefault();
-                        scrollTo(link.id);
-                      }
-                    }}
-                    className="text-sm hover:text-ocean-400 transition-colors"
-                  >
-                    {link.label}
-                  </Link>
+                  {isHomePage ? (
+                    <button
+                      onClick={() => scrollTo(link.id)}
+                      className="text-sm hover:text-ocean-400 transition-colors text-left"
+                    >
+                      {link.label}
+                    </button>
+                  ) : (
+                    <Link
+                      href={`/${locale}#${link.id}`}
+                      className="text-sm hover:text-ocean-400 transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

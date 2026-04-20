@@ -150,7 +150,7 @@ export default function HomePage() {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-ocean-200/40 border border-slate-200/60 bg-slate-900">
               <video
-                src="/videos/vsl.mp4"
+                src="/videos/Swellsystems_GTM.mp4"
                 controls
                 playsInline
                 className="w-full aspect-video object-cover"
@@ -256,7 +256,7 @@ export default function HomePage() {
                           </div>
                           <div>
                             <div className="font-bold text-sm text-white">Tiefenrecherche</div>
-                            <div className="text-xs text-slate-400">Ihr Unternehmen, Ihre Wettbewerber & ICP — bevor wir einen einzigen Kontakt ansprechen</div>
+                            <div className="text-xs text-slate-400">Dein Unternehmen, deine Wettbewerber & ICP — bevor wir einen einzigen Kontakt ansprechen</div>
                           </div>
                         </div>
                         <div className="flex flex-wrap gap-1.5" />
@@ -272,7 +272,7 @@ export default function HomePage() {
                         <div className="flex items-center gap-3 mb-6">
                           <span className="text-xs font-bold uppercase tracking-widest text-ocean-600">Das System</span>
                           <div className="h-px flex-1 bg-slate-200" />
-                          <span className="text-xs font-semibold text-emerald-600 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">→ Gebuchte Erstgespräche</span>
+                          <span className="text-xs font-semibold text-emerald-600 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">Gebuchte Erstgespräche</span>
                         </div>
                         <div className="flex flex-col md:flex-row items-stretch gap-3 md:gap-0">
                           {stepsB.map(({ icon: Icon, label, desc, bg, border, iconColor, num, tools }, i, arr) => (
@@ -316,9 +316,9 @@ export default function HomePage() {
           {/* 3 outcome cards — shared */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-6">
             {[
-              { icon: TrendingUp, title: "Mehr Gespräche",  desc: "Kontinuierlich neue Erstgespräche – ohne dass Ihr Team Kaltakquise betreiben muss.", bg: "bg-ocean-50",  iconColor: "text-ocean-500"  },
-              { icon: Zap,        title: "Weniger Aufwand", desc: "KI übernimmt Recherche, Personalisierung und Follow-ups – vollautomatisch.",          bg: "bg-orange-50", iconColor: "text-orange-500" },
-              { icon: Bot,        title: "Skalierbar",      desc: "Das System wächst mit Ihnen. Mehr Kontakte, neue Segmente – gleicher Aufwand.",        bg: "bg-violet-50", iconColor: "text-violet-500" },
+              { icon: Target,     title: "Max. 4 Kunden gleichzeitig",  desc: "Dein Projekt bekommt volle Aufmerksamkeit — nicht ein Bruchteil davon. Ich arbeite mit wenigen, dafür richtig.", bg: "bg-ocean-50",  iconColor: "text-ocean-500"  },
+              { icon: CheckCircle2, title: "Persönliche Betreuung",      desc: "Kein Account Manager, kein Ticket-System. Du arbeitest direkt mit mir — der Person, die dein System baut und optimiert.", bg: "bg-orange-50", iconColor: "text-orange-500" },
+              { icon: Zap,          title: "Das System gehört dir",     desc: "Nach dem Projekt läuft alles weiter — in deinem Namen, mit deinen Tools. Keine Abhängigkeit von mir.", bg: "bg-violet-50", iconColor: "text-violet-500" },
             ].map(({ icon: Icon, title, desc, bg, iconColor }, i) => (
               <AnimatedSection key={i} delay={i * 0.1}>
                 <div className="bg-white border border-slate-200 rounded-2xl p-7 hover:shadow-lg transition-shadow duration-300 h-full">
@@ -503,8 +503,8 @@ export default function HomePage() {
             <span className="inline-flex items-center gap-2 bg-ocean-50 border border-ocean-200 text-ocean-700 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-6">
               {t("howItWorks.badge")}
             </span>
-            <h2 className="font-display font-bold text-4xl md:text-5xl text-slate-900 mb-4">Was Sie erwartet</h2>
-            <p className="text-slate-600 text-lg max-w-2xl mx-auto">Von der ersten Unterhaltung bis zu gebuchten Gesprächen — so sieht die Zusammenarbeit aus Ihrer Perspektive aus.</p>
+            <h2 className="font-display font-bold text-4xl md:text-5xl text-slate-900 mb-4">Was dich erwartet</h2>
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto">Von der ersten Unterhaltung bis zu gebuchten Gesprächen — so sieht die Zusammenarbeit aus deiner Perspektive aus.</p>
           </AnimatedSection>
 
           {/* Timeline */}
@@ -525,8 +525,8 @@ export default function HomePage() {
                         <span className="text-xs font-bold bg-ocean-50 text-ocean-600 border border-ocean-200 px-3 py-1 rounded-full">Woche 0</span>
                         <span className="text-xs text-slate-400 font-medium">Onboarding</span>
                       </div>
-                      <h3 className="font-display font-bold text-xl text-slate-900 mb-2">Wir lernen Ihr Business kennen.</h3>
-                      <p className="text-slate-500 text-sm leading-relaxed mb-5">Im Onboarding tauchen wir gemeinsam tief in Ihr Business ein — Ihr ICP, Ihr Wettbewerb, Ihre Zielkunden und Ihre bisherigen Erfahrungen mit Outbound. Das ist die Grundlage für alles, was danach kommt.</p>
+                      <h3 className="font-display font-bold text-xl text-slate-900 mb-2">Ich lerne dein Business kennen.</h3>
+                      <p className="text-slate-500 text-sm leading-relaxed mb-5">Im Onboarding tauchen wir gemeinsam tief in dein Business ein — dein ICP, dein Wettbewerb, deine Zielkunden und deine bisherigen Erfahrungen mit Outbound. Das ist die Grundlage für alles, was danach kommt.</p>
                       <div className="flex flex-wrap gap-2 md:justify-end">
                         {["ICP-Workshop", "Wettbewerbsanalyse", "Zielgruppendefinition"].map(tag => (
                           <span key={tag} className="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">{tag}</span>
@@ -534,7 +534,7 @@ export default function HomePage() {
                       </div>
                       <div className="mt-4 pt-4 border-t border-slate-100 flex items-center gap-2 md:justify-end text-xs text-slate-400">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                        <span><span className="font-semibold text-slate-600">Ihr Aufwand:</span> Onboarding-Prozess gemeinsam durchlaufen</span>
+                        <span><span className="font-semibold text-slate-600">Dein Aufwand:</span> Onboarding-Prozess gemeinsam durchlaufen</span>
                       </div>
                     </div>
                   </div>
@@ -563,8 +563,8 @@ export default function HomePage() {
                         <span className="text-xs font-bold bg-ocean-50 text-ocean-600 border border-ocean-200 px-3 py-1 rounded-full">Woche 1–3</span>
                         <span className="text-xs text-slate-400 font-medium">Aufbau & Live</span>
                       </div>
-                      <h3 className="font-display font-bold text-xl text-slate-900 mb-2">Wir bauen. Sie warten nicht lange.</h3>
-                      <p className="text-slate-500 text-sm leading-relaxed mb-5">Während Sie Ihr Tagesgeschäft führen, bauen wir Ihre komplette Outbound-Infrastruktur auf — Kontaktlisten, Sequenzen, technisches Setup. In Woche 3 geht das System live. Sie erhalten die fertigen Texte zur einmaligen Freigabe.</p>
+                      <h3 className="font-display font-bold text-xl text-slate-900 mb-2">Wir bauen. Du wartest nicht lange.</h3>
+                      <p className="text-slate-500 text-sm leading-relaxed mb-5">Während du dein Tagesgeschäft führst, baue ich deine komplette Outbound-Infrastruktur auf — Kontaktlisten, Sequenzen, technisches Setup. In Woche 3 geht das System live. Du erhältst die fertigen Texte zur einmaligen Freigabe.</p>
                       <div className="flex flex-wrap gap-2">
                         {["Verifizierte Kontaktliste", "E-Mail-Sequenzen", "Domain-Warmup", "CRM-Integration"].map(tag => (
                           <span key={tag} className="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">{tag}</span>
@@ -572,7 +572,7 @@ export default function HomePage() {
                       </div>
                       <div className="mt-4 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-400">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                        <span><span className="font-semibold text-slate-600">Ihr Aufwand:</span> Texte einmal reviewen (~30 Min.)</span>
+                        <span><span className="font-semibold text-slate-600">Dein Aufwand:</span> Texte einmal reviewen (~30 Min.)</span>
                       </div>
                     </div>
                   </div>
@@ -589,8 +589,8 @@ export default function HomePage() {
                         <span className="text-xs font-bold bg-ocean-50 text-ocean-600 border border-ocean-200 px-3 py-1 rounded-full">Ab Woche 3</span>
                         <span className="text-xs text-slate-400 font-medium">Erste Ergebnisse</span>
                       </div>
-                      <h3 className="font-display font-bold text-xl text-slate-900 mb-2">Erste Antworten landen in Ihrem Postfach.</h3>
-                      <p className="text-slate-500 text-sm leading-relaxed mb-5">Das System ist live und arbeitet für Sie. Qualifizierte Interessenten antworten direkt in Ihr Postfach — kein Tool-Login, kein Dashboard. Sie erhalten jede Woche einen klaren Report: was läuft, was wir optimieren.</p>
+                      <h3 className="font-display font-bold text-xl text-slate-900 mb-2">Erste Antworten landen in deinem Postfach.</h3>
+                      <p className="text-slate-500 text-sm leading-relaxed mb-5">Das System ist live und arbeitet für dich. Qualifizierte Interessenten antworten direkt in dein Postfach — kein Tool-Login, kein Dashboard. Du erhältst jede Woche einen klaren Report: was läuft, was wir optimieren.</p>
                       <div className="flex flex-wrap gap-2 md:justify-end">
                         {["Wöchentlicher Report", "A/B-Testing", "Laufende Optimierung"].map(tag => (
                           <span key={tag} className="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">{tag}</span>
@@ -598,7 +598,7 @@ export default function HomePage() {
                       </div>
                       <div className="mt-4 pt-4 border-t border-slate-100 flex items-center gap-2 md:justify-end text-xs text-slate-400">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                        <span><span className="font-semibold text-slate-600">Ihr Aufwand:</span> Interessenten-Replies beantworten</span>
+                        <span><span className="font-semibold text-slate-600">Dein Aufwand:</span> Interessenten-Replies beantworten</span>
                       </div>
                     </div>
                   </div>
@@ -627,16 +627,16 @@ export default function HomePage() {
                           <span className="text-xs font-bold bg-orange-500/20 text-orange-300 border border-orange-500/30 px-3 py-1 rounded-full">Ab Monat 2</span>
                           <span className="text-xs text-slate-500 font-medium">Skalierung</span>
                         </div>
-                        <h3 className="font-display font-bold text-xl text-white mb-2">Sie führen Gespräche. Wir füllen die Pipeline weiter.</h3>
-                        <p className="text-slate-400 text-sm leading-relaxed mb-5">Während Sie die ersten Deals abschliessen, skalieren wir das System — neue Segmente, LinkedIn parallel zu E-Mail, erweiterte Zielgruppen. Ihr Outbound läuft auf Autopilot, Sie konzentrieren sich auf den Abschluss.</p>
+                        <h3 className="font-display font-bold text-xl text-white mb-2">Du führst Gespräche. Wir füllen die Pipeline weiter.</h3>
+                        <p className="text-slate-400 text-sm leading-relaxed mb-5">Während du die ersten Deals abschliesst, skalieren wir das System — neue Segmente, LinkedIn parallel zu E-Mail, erweiterte Zielgruppen. Dein Outbound läuft auf Autopilot, du konzentrierst dich auf den Abschluss.</p>
                         <div className="flex flex-wrap gap-2">
-                          {["LinkedIn-Outbound", "Neue Segmente", "Monatlicher Strategy-Call"].map(tag => (
+                          {["LinkedIn-Outbound", "Neue Segmente"].map(tag => (
                             <span key={tag} className="text-xs bg-white/10 text-slate-300 px-2.5 py-1 rounded-full">{tag}</span>
                           ))}
                         </div>
                         <div className="mt-4 pt-4 border-t border-white/10 flex items-center gap-2 text-xs text-slate-500">
                           <span className="w-1.5 h-1.5 rounded-full bg-orange-400" />
-                          <span><span className="font-semibold text-slate-300">Ihr Aufwand:</span> Gespräche führen & Deals abschliessen</span>
+                          <span><span className="font-semibold text-slate-300">Dein Aufwand:</span> Gespräche führen & Deals abschliessen</span>
                         </div>
                       </div>
                     </div>
@@ -684,7 +684,7 @@ export default function HomePage() {
               className="group inline-flex items-center gap-2.5 bg-ocean-600 hover:bg-ocean-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-200 hover:-translate-y-0.5"
             >
               <CalendarDays className="w-4 h-4" />
-              Kostenloses Gespräch buchen
+              System kennenlernen
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
           </AnimatedSection>
@@ -704,41 +704,78 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto">
           <AnimatedSection className="text-center mb-14">
             <span className="inline-flex items-center gap-2 bg-ocean-50 border border-ocean-200 text-ocean-700 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-6">
-              {t("caseStudies.badge")}
+              Resultate
             </span>
-            <h2 className="font-display font-bold text-4xl md:text-5xl text-slate-900 mb-4">{t("caseStudies.headline")}</h2>
-            <p className="text-slate-600 text-lg max-w-2xl mx-auto">{t("caseStudies.subheadline")}</p>
+            <h2 className="font-display font-bold text-4xl md:text-5xl text-slate-900 mb-4">Die Zahlen sprechen für sich.</h2>
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+              Erste Referenzen entstehen gerade. Was ich zeigen kann: die Systeme und Resultate aus laufenden Projekten — anonym, aber real.
+            </p>
           </AnimatedSection>
 
-          <div className="space-y-8">
-            {cases.map(({ key, gradient, tagBg }, i) => (
-              <AnimatedSection key={key} delay={i * 0.1}>
-                <div className="bg-white border border-slate-100 rounded-3xl overflow-hidden hover:shadow-xl hover:shadow-slate-100 transition-shadow duration-300">
-                  <div className={`bg-gradient-to-r ${gradient} p-8 md:p-10`}>
-                    <div className="flex items-center gap-3 mb-4">
-                      <TrendingUp className="w-5 h-5 text-white/80" />
-                      <p className="text-white/80 text-sm font-medium">{t(`caseStudies.${key}Company` as any)}</p>
-                    </div>
-                    <p className="font-display font-bold text-2xl md:text-3xl text-white">{t(`caseStudies.${key}Result` as any)}</p>
-                  </div>
-                  <div className="p-8 md:p-10">
-                    <p className="text-slate-600 text-base leading-relaxed mb-6">{t(`caseStudies.${key}Desc` as any)}</p>
-                    <div className="flex gap-2 flex-wrap">
-                      {["Tag1", "Tag2"].map((tag) => (
-                        <span key={tag} className={`${tagBg} text-slate-700 text-xs font-medium px-3 py-1.5 rounded-full border border-slate-200`}>
-                          {t(`caseStudies.${key}${tag}` as any)}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+          {/* Stats row */}
+          <AnimatedSection className="mb-12">
+            <div className="grid grid-cols-3 gap-4">
+              {[
+                { value: "13", label: "Neue Pipeline-Gespräche in 30 Tagen", sub: "Agentur-Kunde, Schweiz" },
+                { value: "26%", label: "Positive Rate auf Antworten", sub: "Beste Kampagne" },
+                { value: "4", label: "Abgeschlossene Kampagnen", sub: "Vollautomatisiert" },
+              ].map(({ value, label, sub }) => (
+                <div key={label} className="bg-white border border-slate-100 rounded-2xl p-6 text-center flex flex-col justify-between">
+                  <p className="font-display font-bold text-4xl text-ocean-600 mb-2">{value}</p>
+                  <p className="text-slate-700 text-sm font-semibold mb-1">{label}</p>
+                  <p className="text-slate-400 text-xs">{sub}</p>
                 </div>
-              </AnimatedSection>
-            ))}
+              ))}
+            </div>
+          </AnimatedSection>
+
+          {/* Screenshots */}
+          <div className="space-y-6 mb-14">
+            <AnimatedSection delay={0.1}>
+              <div className="bg-white border border-slate-100 rounded-3xl overflow-hidden hover:shadow-xl hover:shadow-slate-100 transition-shadow duration-300">
+                <div className="bg-gradient-to-r from-ocean-500 to-ocean-700 px-6 py-4 flex items-center gap-3">
+                  <Mail className="w-4 h-4 text-white/80" />
+                  <p className="text-white text-sm font-semibold">Kampagnen-Resultate — Smartlead</p>
+                </div>
+                <div className="p-6">
+                  <Image
+                    src="/smartlead-kampagne-resultate-outbound-schweiz.png"
+                    alt="Smartlead Kampagnen Resultate – Reply Rates und positive Antworten aus B2B Outbound Kampagnen"
+                    width={1400}
+                    height={600}
+                    className="rounded-xl w-full h-auto"
+                  />
+                </div>
+                <div className="px-6 pb-6">
+                  <p className="text-slate-500 text-sm">4 abgeschlossene Kampagnen — bis zu 12.6% Reply Rate und 26% positive Rate auf Antworten. Branchendurchschnitt liegt bei 2–3%.</p>
+                </div>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.2}>
+              <div className="bg-white border border-slate-100 rounded-3xl overflow-hidden hover:shadow-xl hover:shadow-slate-100 transition-shadow duration-300">
+                <div className="bg-gradient-to-r from-slate-700 to-slate-900 px-6 py-4 flex items-center gap-3">
+                  <Database className="w-4 h-4 text-white/80" />
+                  <p className="text-white text-sm font-semibold">Enrichment-Workflow — Clay</p>
+                </div>
+                <div className="p-6">
+                  <Image
+                    src="/clay-enrichment-workflow-outbound-dach.png"
+                    alt="Clay Enrichment Workflow für B2B Outbound im DACH-Markt"
+                    width={1400}
+                    height={600}
+                    className="rounded-xl w-full h-auto"
+                  />
+                </div>
+                <div className="px-6 pb-6">
+                  <p className="text-slate-500 text-sm">So sieht das System dahinter aus: automatisiertes Enrichment, DNC-Lookup und CRM-Abgleich — für jeden Lead, bevor er kontaktiert wird.</p>
+                </div>
+              </div>
+            </AnimatedSection>
           </div>
 
           {/* CTA after Case Studies */}
-          <AnimatedSection delay={0.3} className="mt-14 text-center">
-            <p className="text-slate-500 text-sm mb-5">Ihr Ergebnis könnte das nächste sein.</p>
+          <AnimatedSection delay={0.3} className="text-center">
             <a
               href="https://calendar.app.google/N7b7tNRhtYcueKWM7"
               target="_blank"
@@ -746,7 +783,7 @@ export default function HomePage() {
               className="group inline-flex items-center gap-2.5 bg-ocean-600 hover:bg-ocean-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-200 hover:-translate-y-0.5"
             >
               <CalendarDays className="w-4 h-4" />
-              Kostenloses Gespräch buchen
+              System kennenlernen
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
           </AnimatedSection>
@@ -885,7 +922,7 @@ export default function HomePage() {
           },
           {
             q: "Ich habe schon vieles ausprobiert. Warum sollte es jetzt funktionieren?",
-            a: "Verständlich, dass du skeptisch bist. Die meisten Outbound-Versuche scheitern an generischen Texten, falschen Zielgruppen oder fehlendem System dahinter. Wir bauen kein Copy-Paste-Setup — sondern ein System, das auf dein Unternehmen und deinen Markt zugeschnitten ist. Und weil wir nur mit wenigen Kunden arbeiten, ist jede Zusammenarbeit für uns persönlich — nicht nur operativ.",
+            a: "Verständlich, dass du skeptisch bist. Die meisten Outbound-Versuche scheitern an generischen Texten, falschen Zielgruppen oder fehlendem System dahinter. Wir bauen kein Copy-Paste-Setup — sondern ein System, das auf dein Unternehmen und deinen Markt zugeschnitten ist. Und weil ich nur mit wenigen Kunden arbeite, ist jede Zusammenarbeit für mich persönlich — nicht nur operativ.",
           },
           {
             q: "Was kostet die Zusammenarbeit?",
@@ -958,7 +995,7 @@ export default function HomePage() {
                     className="group inline-flex items-center gap-2.5 bg-ocean-500 hover:bg-ocean-400 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-500/25 hover:-translate-y-0.5"
                   >
                     <CalendarDays className="w-4 h-4" />
-                    Kostenloses Gespräch buchen
+                    System kennenlernen
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </a>
                   <a
