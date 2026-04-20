@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/opengraph-image",
+        url: "/swellsystems-outbound-b2b-schweiz.png",
         width: 1200,
         height: 630,
         alt: "Swellsystems – Automatisierter Outbound für B2B",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Swellsystems – Automatisierter Outbound für B2B",
     description: "Mehr qualifizierte Leads. Ohne Aufwand.",
-    images: ["/opengraph-image"],
+    images: ["/swellsystems-outbound-b2b-schweiz.png"],
   },
 };
 
