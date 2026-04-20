@@ -150,7 +150,7 @@ export default function HomePage() {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-ocean-200/40 border border-slate-200/60 bg-slate-900">
               <video
-                src="/videos/Swellsystems_GTM.mp4"
+                src="/videos/Swellsystems_GTM_compressed.mp4"
                 controls
                 playsInline
                 className="w-full aspect-video object-cover"
