@@ -39,6 +39,23 @@
     "service5Desc": "Intelligent agents that independently research, qualify, and personalize. Scalable 1:1 relevance without manual effort.",
     "service5Stat": "faster prospecting"
   },
+  "whyEmail": {
+    "badge": "Why Email Outbound?",
+    "headline": "The most direct path to the decision-maker.",
+    "subheadline": "No algorithm. No ad budget. No platform dependency. Email is the only channel that's direct, scalable, and fully in your control — all at the same time.",
+    "reason1Title": "No algorithm decides",
+    "reason1Desc": "Your message lands directly in the inbox — not in a feed, not in an ad auction. You decide who sees it.",
+    "reason2Title": "B2B decision-makers live in their inbox",
+    "reason2Desc": "Executives spend 3+ hours a day in their inbox. That's exactly where you are — at the right time, with no wasted reach.",
+    "reason3Title": "Fully measurable",
+    "reason3Desc": "Open rate, reply rate, conversion — every number is transparent. You always know exactly what's working and what isn't.",
+    "reason4Title": "Scalable without proportional costs",
+    "reason4Desc": "From 50 to 5,000 prospects without costs scaling the same way. The system runs — whether you're working or not.",
+    "reason5Title": "No ad budget required",
+    "reason5Desc": "Once built, the system runs without ongoing ad spend. You pay once for the system, not per click.",
+    "reason6Title": "Owned channel",
+    "reason6Desc": "LinkedIn can ban your account. Google can kill your ranking. Your email list is yours — forever."
+  },
   "howItWorks": {
     "badge": "The Process",
     "headline": "A full pipeline in four steps",
