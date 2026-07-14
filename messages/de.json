@@ -8,9 +8,9 @@
     "cta": "System kennenlernen"
   },
   "home": {
-    "badge": "Automatisierter Outbound für B2B",
-    "headline": "Wir arbeiten mit wenigen.",
-    "headlineAccent": "Dafür richtig.",
+    "badge": "Dein Outbound läuft. Auch wenn du schläfst.",
+    "headline": "Vollautomatisierte B2B-Neukundenakquise —",
+    "headlineAccent": "ein System, das für dich akquiriert, während du dein Geschäft führst.",
     "subheadline": "Ich arbeite mit ausgewählten Unternehmen tief – nicht mit vielen oberflächlich. Kein Copy-Paste. Keine Standardlösungen. Nur konkreter, messbarer Outbound, der wirklich zu deinem Business passt.",
     "ctaPrimary": "System kennenlernen",
     "ctaSecondary": "So funktioniert's",
@@ -38,6 +38,23 @@
     "service5Title": "KI-Agenten",
     "service5Desc": "Intelligente Agenten recherchieren, qualifizieren und personalisieren eigenständig. Skalierbare 1:1-Relevanz ohne manuellen Aufwand.",
     "service5Stat": "schnelleres Prospecting"
+  },
+  "whyEmail": {
+    "badge": "Warum E-Mail Outbound?",
+    "headline": "Der direkteste Weg zum Entscheider.",
+    "subheadline": "Kein Algorithmus. Kein Ad-Budget. Keine Plattformabhängigkeit. E-Mail ist der einzige Kanal, der gleichzeitig direkt, skalierbar und vollständig in deiner Hand liegt.",
+    "reason1Title": "Kein Algorithmus entscheidet",
+    "reason1Desc": "Deine Nachricht landet direkt im Postfach — nicht im Feed, nicht im Ad-Auktionssystem. Du entscheidest, wer sie sieht.",
+    "reason2Title": "B2B-Entscheider leben im Postfach",
+    "reason2Desc": "Führungskräfte verbringen täglich 3+ Stunden in ihrem Postfach. Genau dort bist du — zur richtigen Zeit, ohne Streuverlust.",
+    "reason3Title": "Vollständig messbar",
+    "reason3Desc": "Öffnungsrate, Antwortrate, Conversion — jede Zahl ist transparent. Du weisst immer genau, was funktioniert und was nicht.",
+    "reason4Title": "Skalierbar ohne Mehrkosten",
+    "reason4Desc": "Von 50 auf 5.000 Prospects ohne proportional steigende Kosten. Das System läuft — unabhängig davon, ob du gerade arbeitest oder nicht.",
+    "reason5Title": "Kein Ad-Budget nötig",
+    "reason5Desc": "Einmal aufgebaut, läuft das System ohne laufende Werbeausgaben. Du zahlst nicht pro Klick, sondern einmalig für das System.",
+    "reason6Title": "Owned Channel",
+    "reason6Desc": "LinkedIn kann dein Konto sperren. Google kann dein Ranking killen. Deine E-Mail-Liste gehört dir — für immer."
   },
   "howItWorks": {
     "badge": "Der Prozess",

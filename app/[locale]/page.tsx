@@ -161,7 +161,7 @@ export default function HomePage() {
           {/* CTAs */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }} className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
-              onClick={() => window.open("https://calendar.app.google/N7b7tNRhtYcueKWM7", "_blank")}
+              onClick={() => window.open("https://cal.com/calvin-heim-swellsystems/30min", "_blank")}
               className="group flex items-center gap-2 bg-ocean-600 hover:bg-ocean-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-200 hover:-translate-y-1"
             >
               {t("home.ctaPrimary")}
@@ -496,6 +496,47 @@ export default function HomePage() {
       </div>
 
 
+      {/* ─── WHY EMAIL OUTBOUND ───────────────────────────────────── */}
+      <section id="why-email" className="py-24 px-6 scroll-mt-20 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <AnimatedSection className="text-center mb-16">
+            <span className="inline-flex items-center gap-2 bg-ocean-50 border border-ocean-200 text-ocean-700 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-6">
+              {t("whyEmail.badge")}
+            </span>
+            <h2 className="font-display font-bold text-4xl md:text-5xl text-slate-900 mb-4">{t("whyEmail.headline")}</h2>
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto">{t("whyEmail.subheadline")}</p>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[
+              { key: "reason1", icon: Send,       color: "bg-ocean-50",   iconColor: "text-ocean-500"   },
+              { key: "reason2", icon: Mail,        color: "bg-orange-50",  iconColor: "text-orange-500"  },
+              { key: "reason3", icon: TrendingUp,  color: "bg-emerald-50", iconColor: "text-emerald-500" },
+              { key: "reason4", icon: Zap,         color: "bg-violet-50",  iconColor: "text-violet-500"  },
+              { key: "reason5", icon: Target,      color: "bg-rose-50",    iconColor: "text-rose-500"    },
+              { key: "reason6", icon: CheckCircle2, color: "bg-slate-100", iconColor: "text-slate-500"   },
+            ].map(({ key, icon: Icon, color, iconColor }, i) => (
+              <AnimatedSection key={key} delay={i * 0.08}>
+                <div className="bg-white border border-slate-200 rounded-2xl p-7 hover:shadow-lg hover:border-ocean-200 transition-all duration-300 h-full">
+                  <div className={`w-10 h-10 rounded-xl ${color} flex items-center justify-center mb-4`}>
+                    <Icon className={`w-5 h-5 ${iconColor}`} />
+                  </div>
+                  <h3 className="font-bold text-lg text-slate-900 mb-2">{t(`whyEmail.${key}Title` as any)}</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">{t(`whyEmail.${key}Desc` as any)}</p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Wave divider */}
+      <div className="overflow-hidden leading-none bg-white">
+        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 30 Q360 60 720 30 Q1080 0 1440 30 L1440 60 L0 60 Z" fill="#f8fafc" />
+        </svg>
+      </div>
+
       {/* ─── HOW IT WORKS ─────────────────────────────────────────── */}
       <section id="how-it-works" className="py-24 px-6 scroll-mt-20">
         <div className="max-w-6xl mx-auto">
@@ -678,7 +719,7 @@ export default function HomePage() {
           {/* CTA after How It Works */}
           <AnimatedSection delay={0.3} className="mt-14 text-center">
             <a
-              href="https://calendar.app.google/N7b7tNRhtYcueKWM7"
+              href="https://cal.com/calvin-heim-swellsystems/30min"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2.5 bg-ocean-600 hover:bg-ocean-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-200 hover:-translate-y-0.5"
@@ -777,7 +818,7 @@ export default function HomePage() {
           {/* CTA after Case Studies */}
           <AnimatedSection delay={0.3} className="text-center">
             <a
-              href="https://calendar.app.google/N7b7tNRhtYcueKWM7"
+              href="https://cal.com/calvin-heim-swellsystems/30min"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2.5 bg-ocean-600 hover:bg-ocean-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-200 hover:-translate-y-0.5"
@@ -989,7 +1030,7 @@ export default function HomePage() {
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <a
-                    href="https://calendar.app.google/N7b7tNRhtYcueKWM7"
+                    href="https://cal.com/calvin-heim-swellsystems/30min"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group inline-flex items-center gap-2.5 bg-ocean-500 hover:bg-ocean-400 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-500/25 hover:-translate-y-0.5"
