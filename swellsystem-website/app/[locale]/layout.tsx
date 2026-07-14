@@ -27,17 +27,31 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Swellsystems – Automatisiertes Outbound für B2B",
+  title: "Swellsystems – Automatisierter Outbound für B2B",
   description:
     "Swellsystems baut automatisierte Outbound-Systeme für B2B-Unternehmen. Mehr qualifizierte Leads, weniger manueller Aufwand.",
-  metadataBase: new URL("https://swellsystems.ch"),
+  metadataBase: new URL("https://www.swellsystems.ch"),
   openGraph: {
-    title: "Swellsystems – Automatisiertes Outbound für B2B",
+    title: "Swellsystems – Automatisierter Outbound für B2B",
     description: "Mehr qualifizierte Leads. Ohne Aufwand.",
-    url: "https://swellsystems.ch",
+    url: "https://www.swellsystems.ch",
     siteName: "Swellsystems",
     locale: "de_CH",
     type: "website",
+    images: [
+      {
+        url: "/swellsystems-outbound-b2b-schweiz.png",
+        width: 1200,
+        height: 630,
+        alt: "Swellsystems – Automatisierter Outbound für B2B",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Swellsystems – Automatisierter Outbound für B2B",
+    description: "Mehr qualifizierte Leads. Ohne Aufwand.",
+    images: ["/swellsystems-outbound-b2b-schweiz.png"],
   },
 };
 
