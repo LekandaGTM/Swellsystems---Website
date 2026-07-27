@@ -410,7 +410,7 @@ export default function HandwerkPage() {
               rel="noopener noreferrer"
               className="group flex items-center gap-2 bg-ocean-600 hover:bg-ocean-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-200 hover:-translate-y-1"
             >
-              Admin-Aufwand analysieren
+              Kostenloses Analysegespräch buchen
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
             <button
@@ -652,7 +652,7 @@ export default function HandwerkPage() {
               className="group inline-flex items-center gap-2.5 bg-ocean-600 hover:bg-ocean-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-200 hover:-translate-y-0.5"
             >
               <CalendarDays className="w-4 h-4" />
-              Admin-Aufwand analysieren
+              Kostenloses Analysegespräch buchen
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
           </AnimatedSection>
@@ -839,7 +839,7 @@ export default function HandwerkPage() {
                     className="group inline-flex items-center gap-2.5 bg-ocean-500 hover:bg-ocean-400 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-500/25 hover:-translate-y-0.5"
                   >
                     <CalendarDays className="w-4 h-4" />
-                    Situation analysieren
+                    Kostenloses Analysegespräch buchen
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </a>
                   <a
