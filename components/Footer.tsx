@@ -63,9 +63,9 @@ export default function Footer({ locale }: FooterProps) {
             </p>
             <ul className="space-y-2.5">
               {[
-                { id: "services", label: nt("services") },
-                { id: "how-it-works", label: nt("howItWorks") },
-                { id: "case-studies", label: nt("caseStudies") },
+                { id: "problem", label: nt("services") },
+                { id: "mechanismus", label: nt("howItWorks") },
+                { id: "beweis", label: nt("caseStudies") },
                 { id: "about", label: nt("about") },
                 { id: "contact", label: nt("contact") },
               ].map((link) => (

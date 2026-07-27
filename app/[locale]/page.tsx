@@ -380,16 +380,16 @@ export default function HandwerkPage() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <span className="inline-flex items-center gap-2 bg-ocean-50 border border-ocean-200 text-ocean-700 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full">
               <span className="w-1.5 h-1.5 rounded-full bg-ocean-500 animate-pulse" />
-              Für Handwerksbetriebe in der Schweiz
+              KI-Automatisierung für Handwerkliche Betriebe
             </span>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="space-y-2">
             <h1 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-slate-900 leading-[1.15]">
-              Automatisierung, die den administrativen Aufwand deines Betriebs
+              Automatisierungen und KI-Agenten, die deine Büroarbeit
             </h1>
             <h1 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.15] gradient-text pb-1">
-              um 10+ Stunden pro Woche senkt.
+              für dich erledigen.
             </h1>
           </motion.div>
 
@@ -399,8 +399,8 @@ export default function HandwerkPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="max-w-2xl mx-auto text-slate-600 text-lg leading-relaxed"
           >
-            Rapporte, Offerten und Rechnungen laufen bei den meisten Betrieben über Zettel und Excel. Ich baue
-            dir ein System, das diesen Papierkram automatisch erledigt.
+            Durch unsere Automatisierungen und KI-Agenten sparen handwerkliche Betriebe im Schnitt 10+ Stunden
+            manueller Büroarbeit pro Woche.
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }} className="flex flex-col sm:flex-row items-center justify-center gap-4">
