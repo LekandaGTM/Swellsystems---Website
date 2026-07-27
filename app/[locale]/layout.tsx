@@ -27,13 +27,13 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Swellsystems – Automatisierter Outbound für B2B",
+  title: "Swellsystems – Automatisierung für Handwerksbetriebe",
   description:
-    "Swellsystems baut automatisierte Outbound-Systeme für B2B-Unternehmen. Mehr qualifizierte Leads, weniger manueller Aufwand.",
+    "Swellsystems automatisiert die Büroarbeit von Handwerksbetrieben. 10+ Stunden weniger Administration pro Woche.",
   metadataBase: new URL("https://www.swellsystems.ch"),
   openGraph: {
-    title: "Swellsystems – Automatisierter Outbound für B2B",
-    description: "Mehr qualifizierte Leads. Ohne Aufwand.",
+    title: "Swellsystems – Automatisierung für Handwerksbetriebe",
+    description: "10+ Stunden weniger Büroarbeit pro Woche. Ohne neue, komplizierte Software.",
     url: "https://www.swellsystems.ch",
     siteName: "Swellsystems",
     locale: "de_CH",
@@ -43,14 +43,14 @@ export const metadata: Metadata = {
         url: "/swellsystems-outbound-b2b-schweiz.png",
         width: 1200,
         height: 630,
-        alt: "Swellsystems – Automatisierter Outbound für B2B",
+        alt: "Swellsystems – Automatisierung für Handwerksbetriebe",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Swellsystems – Automatisierter Outbound für B2B",
-    description: "Mehr qualifizierte Leads. Ohne Aufwand.",
+    title: "Swellsystems – Automatisierung für Handwerksbetriebe",
+    description: "10+ Stunden weniger Büroarbeit pro Woche. Ohne neue, komplizierte Software.",
     images: ["/swellsystems-outbound-b2b-schweiz.png"],
   },
 };

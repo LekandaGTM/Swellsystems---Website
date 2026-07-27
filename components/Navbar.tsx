@@ -27,7 +27,7 @@ export default function Navbar({ locale }: NavbarProps) {
 
   // Track active section via IntersectionObserver
   useEffect(() => {
-    const sectionIds = ["services", "how-it-works", "case-studies", "about", "contact"];
+    const sectionIds = ["problem", "mechanismus", "beweis", "about", "contact"];
     const observers: IntersectionObserver[] = [];
 
     sectionIds.forEach((id) => {
@@ -59,9 +59,9 @@ export default function Navbar({ locale }: NavbarProps) {
   const isHomePage = pathname === `/${locale}` || pathname === `/${locale}/`;
 
   const navLinks = [
-    { id: "services", label: t("services") },
-    { id: "how-it-works", label: t("howItWorks") },
-    { id: "case-studies", label: t("caseStudies") },
+    { id: "problem", label: t("services") },
+    { id: "mechanismus", label: t("howItWorks") },
+    { id: "beweis", label: t("caseStudies") },
     { id: "about", label: t("about") },
     { id: "contact", label: t("contact") },
   ];
