@@ -1,273 +1,344 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import {
   ArrowRight,
   CalendarDays,
   Mail,
   ClipboardList,
-  PenTool,
+  ListChecks,
+  Workflow,
   FlaskConical,
   Rocket,
-  RefreshCw,
-  FileWarning,
+  UserPlus,
   Users,
-  FileStack,
+  Inbox,
+  Boxes,
+  BarChart3,
   Linkedin,
-  MessageSquare,
-  Clock,
-  StickyNote,
-  Table2,
-  Phone,
-  AlertTriangle,
   Calculator,
+  ShieldCheck,
+  AlertTriangle,
+  Search,
 } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 
 const CAL_LINK = "https://cal.com/calvin-heim-swellsystems/30min";
 
-function ChaosGraphic() {
-  const notes: {
-    icon: React.ElementType;
-    title: string;
-    sub: string;
-    style: React.CSSProperties;
-    rotate: string;
-    accent: string;
-    bg: string;
-    border: string;
-    width: string;
-  }[] = [
-    {
-      icon: ClipboardList,
-      title: "Rapport",
-      sub: "Baustelle Meier, Mo 14:00",
-      style: { top: "6%", left: "4%" },
-      rotate: "-rotate-6",
-      accent: "text-ocean-500",
-      bg: "bg-ocean-50",
-      border: "border-ocean-100",
-      width: "w-[58%]",
-    },
-    {
-      icon: Table2,
-      title: "Rechnungen_2026.xlsx",
-      sub: "47 Zeilen, keiner blickt durch",
-      style: { top: "2%", right: "4%" },
-      rotate: "rotate-5",
-      accent: "text-violet-500",
-      bg: "bg-violet-50",
-      border: "border-violet-100",
-      width: "w-[58%]",
-    },
-    {
-      icon: MessageSquare,
-      title: "WhatsApp",
-      sub: "Foto und Standort Baustelle",
-      style: { top: "42%", left: "2%" },
-      rotate: "-rotate-4",
-      accent: "text-emerald-500",
-      bg: "bg-emerald-50",
-      border: "border-emerald-100",
-      width: "w-[56%]",
-    },
-    {
-      icon: StickyNote,
-      title: "Rechnung schreiben!",
-      sub: "Klebt seit Dienstag am Bildschirm",
-      style: { top: "48%", right: "2%" },
-      rotate: "rotate-6",
-      accent: "text-orange-500",
-      bg: "bg-orange-50",
-      border: "border-orange-100",
-      width: "w-[54%]",
-    },
-    {
-      icon: Clock,
-      title: "22:14 Uhr",
-      sub: "Noch im Büro, alle anderen zuhause",
-      style: { bottom: "5%", left: "18%" },
-      rotate: "-rotate-2",
-      accent: "text-slate-600",
-      bg: "bg-slate-100",
-      border: "border-slate-200",
-      width: "w-[54%]",
-    },
-    {
-      icon: Phone,
-      title: "3 verpasste Anrufe",
-      sub: "Herr Müller, Rückruf ausstehend",
-      style: { top: "24%", left: "32%" },
-      rotate: "rotate-3",
-      accent: "text-rose-500",
-      bg: "bg-rose-50",
-      border: "border-rose-100",
-      width: "w-[50%]",
-    },
-    {
-      icon: AlertTriangle,
-      title: "Material bestellen!!",
-      sub: "Dringend, bis Freitag",
-      style: { bottom: "20%", right: "14%" },
-      rotate: "-rotate-9",
-      accent: "text-amber-500",
-      bg: "bg-amber-50",
-      border: "border-amber-100",
-      width: "w-[50%]",
-    },
+// Bewusst ohne Intl.NumberFormat: Node und Browser liefern fuer de-CH
+// unterschiedliche Tausendertrennzeichen, was die Hydration bricht.
+const chf = (n: number) =>
+  Math.round(n)
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, "\u2019");
+
+/* ─── Grafik: die Prozesskette und ihre Bruchstellen ─────────── */
+function ProzessbruchGrafik() {
+  const reduce = useReducedMotion();
+
+  const stufen = [
+    { icon: Inbox, titel: "Anfrage", sub: "Landet in drei verschiedenen Listen" },
+    { icon: UserPlus, titel: "Onboarding", sub: "Jedes Mal ein anderer Ablauf" },
+    { icon: Boxes, titel: "Projektabwicklung", sub: "Aufgaben über vier Tools verteilt" },
+    { icon: BarChart3, titel: "Kennzahlen", sub: "Von Hand zusammengeklickt" },
   ];
 
-  return (
-    <div className="relative rounded-3xl overflow-hidden shadow-xl shadow-slate-200/60 border border-slate-200 aspect-[4/5] bg-gradient-to-br from-slate-100 via-white to-slate-50">
-      <div
-        className="absolute inset-0 opacity-40"
-        style={{
-          backgroundImage: "radial-gradient(rgba(15,23,42,0.08) 1px, transparent 1px)",
-          backgroundSize: "18px 18px",
-        }}
-      />
-      <div className="absolute top-0 left-0 w-56 h-56 rounded-full blur-3xl pointer-events-none" style={{ background: "radial-gradient(circle, rgba(14,165,233,0.14) 0%, transparent 70%)" }} />
-      <div className="absolute bottom-0 right-0 w-56 h-56 rounded-full blur-3xl pointer-events-none" style={{ background: "radial-gradient(circle, rgba(249,115,22,0.14) 0%, transparent 70%)" }} />
+  const brueche = [
+    "Übergabe per Mail. Follow-up geht unter.",
+    "Unterlagen fehlen. Start verzögert sich.",
+    "Status unklar. Es wird doppelt gearbeitet.",
+  ];
 
-      {notes.map(({ icon: Icon, title, sub, style, rotate, accent, bg, border, width }, i) => (
-        <div
-          key={i}
-          className={`absolute ${width} ${rotate} bg-white border ${border} rounded-2xl p-4 shadow-lg shadow-slate-200/50`}
-          style={style}
-        >
-          <div className={`w-8 h-8 rounded-lg ${bg} border ${border} flex items-center justify-center mb-2`}>
-            <Icon className={`w-4 h-4 ${accent}`} />
+  const LINE_X = 40;
+  const GAP = 104;
+
+  return (
+    <div className="relative w-full max-w-[440px] mx-auto">
+      <div className="absolute -inset-6 rounded-[2rem] bg-gradient-radial from-ocean-100/40 via-ocean-50/10 to-transparent blur-2xl pointer-events-none" />
+
+      <div className="relative">
+        {stufen.map(({ icon: Icon, titel, sub }, i) => (
+          <div key={titel}>
+            {/* Stufe */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.45, delay: i * 0.12 }}
+              className="relative bg-white border border-slate-200 rounded-2xl px-5 py-4 flex items-center gap-4 shadow-sm"
+            >
+              <div className="w-10 h-10 rounded-xl bg-ocean-50 border border-ocean-100 flex items-center justify-center shrink-0">
+                <Icon className="w-[18px] h-[18px] text-ocean-500" />
+              </div>
+              <div className="min-w-0">
+                <p className="font-display font-bold text-slate-900 text-[15px] leading-tight">{titel}</p>
+                <p className="text-slate-500 text-xs leading-snug mt-0.5">{sub}</p>
+              </div>
+            </motion.div>
+
+            {/* Bruchstelle */}
+            {i < brueche.length && (
+              <div className="relative" style={{ height: GAP }}>
+                {/* gestrichelte Verbindung */}
+                <div
+                  className="absolute top-0 bottom-0 w-px border-l border-dashed border-slate-300"
+                  style={{ left: LINE_X }}
+                />
+
+                {/* Arbeit, die durchläuft */}
+                <motion.span
+                  className="absolute w-[7px] h-[7px] rounded-full bg-ocean-400"
+                  style={{ left: LINE_X - 3, top: 0 }}
+                  animate={reduce ? { opacity: 0.6 } : { y: [0, GAP], opacity: [0, 1, 1, 0] }}
+                  transition={
+                    reduce
+                      ? {}
+                      : { duration: 2.4, repeat: Infinity, delay: i * 0.8, ease: "linear", times: [0, 0.15, 0.8, 1] }
+                  }
+                />
+
+                {/* Arbeit, die im Bruch verloren geht */}
+                <motion.span
+                  className="absolute w-[7px] h-[7px] rounded-full bg-swell-orange"
+                  style={{ left: LINE_X - 3, top: 0 }}
+                  animate={
+                    reduce
+                      ? { y: GAP / 2, x: 22, opacity: 0.7 }
+                      : { y: [0, GAP / 2, GAP / 2 + 14], x: [0, 0, 26], opacity: [0, 1, 0] }
+                  }
+                  transition={
+                    reduce
+                      ? {}
+                      : { duration: 2.4, repeat: Infinity, delay: i * 0.8 + 1.2, ease: "easeIn" }
+                  }
+                />
+
+                {/* Beschriftung */}
+                <motion.div
+                  initial={{ opacity: 0, x: -8 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.4, delay: i * 0.12 + 0.2 }}
+                  className="absolute top-1/2 -translate-y-1/2 flex items-start gap-2.5"
+                  style={{ left: LINE_X + 26, right: 0 }}
+                >
+                  <span className="w-6 h-6 rounded-lg bg-orange-50 border border-orange-100 flex items-center justify-center shrink-0 mt-px">
+                    <AlertTriangle className="w-3 h-3 text-swell-orange" />
+                  </span>
+                  <span>
+                    <span className="block text-[10px] font-bold uppercase tracking-widest text-swell-orange-dark">
+                      Bruchstelle
+                    </span>
+                    <span className="block text-slate-500 text-xs leading-snug mt-0.5">{brueche[i]}</span>
+                  </span>
+                </motion.div>
+              </div>
+            )}
           </div>
-          <p className="font-bold text-sm text-slate-900 leading-tight">{title}</p>
-          <p className="text-xs text-slate-500 mt-1 leading-snug">{sub}</p>
-        </div>
-      ))}
+        ))}
+      </div>
+
+      {/* Legende */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.6 }}
+        className="mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-slate-500"
+      >
+        <span className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-ocean-400" />
+          Arbeit, die durchläuft
+        </span>
+        <span className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-swell-orange" />
+          Arbeit, die im Bruch liegen bleibt
+        </span>
+      </motion.div>
     </div>
   );
 }
 
-const ARBEITSWOCHEN_PRO_JAHR = 46;
+/* ─── Rechner: Kosten der manuellen Abläufe ──────────────────── */
+function KostenRechner() {
+  const [mitarbeiter, setMitarbeiter] = useState(8);
+  const [stunden, setStunden] = useState(6);
+  const [satz, setSatz] = useState(85);
 
-function fmtChf(n: number) {
-  return n.toLocaleString("de-CH", { maximumFractionDigits: 0 });
-}
+  const ARBEITSWOCHEN = 45;
+  const stundenProJahr = mitarbeiter * stunden * ARBEITSWOCHEN;
+  const kostenProJahr = stundenProJahr * satz;
+  const kostenProMonat = kostenProJahr / 12;
 
-const AUTOMATISIERUNGS_SZENARIEN = [
-  { label: "Konservativ", value: 30 },
-  { label: "Realistisch", value: 50 },
-  { label: "Optimistisch", value: 70 },
-];
-
-function StatusQuoRechner() {
-  const [stundensatz, setStundensatz] = useState(90);
-  const [stundenProWoche, setStundenProWoche] = useState(12);
-  const [szenarioIndex, setSzenarioIndex] = useState(1);
-
-  const automatisierungsgrad = AUTOMATISIERUNGS_SZENARIEN[szenarioIndex].value;
-  const ersparnisStundenProWoche = stundenProWoche * (automatisierungsgrad / 100);
-  const ersparnisChfProWoche = ersparnisStundenProWoche * stundensatz;
-  const ersparnisChfProJahr = ersparnisChfProWoche * ARBEITSWOCHEN_PRO_JAHR;
-  const ersparnisStundenProJahr = ersparnisStundenProWoche * ARBEITSWOCHEN_PRO_JAHR;
-  const ersparnisTageProJahr = ersparnisStundenProJahr / 8;
-
-  const sliders = [
-    {
-      label: "Dein Stundensatz",
-      value: stundensatz,
-      display: `CHF ${stundensatz}.-/Std.`,
-      min: 50,
-      max: 200,
-      step: 5,
-      onChange: setStundensatz,
-    },
-    {
-      label: "Büroarbeit pro Woche",
-      value: stundenProWoche,
-      display: `${stundenProWoche} Std.`,
-      min: 1,
-      max: 40,
-      step: 1,
-      onChange: setStundenProWoche,
-    },
+  const szenarien = [
+    { name: "Konservativ", quote: 0.3, hervorgehoben: false },
+    { name: "Realistisch", quote: 0.4, hervorgehoben: true },
+    { name: "Optimistisch", quote: 0.5, hervorgehoben: false },
   ];
 
+  const slider =
+    "w-full h-1.5 rounded-full appearance-none bg-slate-200 accent-ocean-500 cursor-pointer";
+
   return (
-    <div className="bg-white border border-slate-200 rounded-3xl p-8 md:p-10">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
-        <div className="space-y-8">
-          {sliders.map(({ label, value, display, min, max, step, onChange }) => (
-            <div key={label}>
-              <div className="flex items-center justify-between mb-3">
-                <label className="text-sm font-semibold text-slate-700">{label}</label>
-                <span className="text-sm font-bold text-ocean-600">{display}</span>
+    <>
+      <div className="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm">
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          {/* Eingaben */}
+          <div className="p-8 md:p-10 space-y-8">
+            <div>
+              <div className="flex items-baseline justify-between mb-3">
+                <label className="text-sm font-semibold text-slate-700">
+                  Mitarbeitende im Betrieb
+                </label>
+                <span className="font-display font-bold text-ocean-600">{mitarbeiter}</span>
               </div>
               <input
                 type="range"
-                min={min}
-                max={max}
-                step={step}
-                value={value}
-                onChange={(e) => onChange(Number(e.target.value))}
-                className="w-full accent-ocean-500"
+                min={1}
+                max={50}
+                value={mitarbeiter}
+                onChange={(e) => setMitarbeiter(Number(e.target.value))}
+                className={slider}
               />
             </div>
-          ))}
 
-          <div>
-            <div className="flex items-center justify-between mb-3">
-              <label className="text-sm font-semibold text-slate-700">Automatisierungspotenzial</label>
-              <span className="text-sm font-bold text-ocean-600">{automatisierungsgrad}%</span>
+            <div>
+              <div className="flex items-baseline justify-between mb-3">
+                <label className="text-sm font-semibold text-slate-700 pr-3">
+                  Stunden pro Woche und Person für manuelle Abläufe
+                </label>
+                <span className="font-display font-bold text-ocean-600 shrink-0 whitespace-nowrap">
+                  {stunden} h
+                </span>
+              </div>
+              <input
+                type="range"
+                min={1}
+                max={20}
+                value={stunden}
+                onChange={(e) => setStunden(Number(e.target.value))}
+                className={slider}
+              />
+              <p className="text-xs text-slate-400 mt-2 leading-snug">
+                Gemeint sind Daten übertragen, Infos suchen, nachfragen, doppelt erfassen,
+                Reportings zusammenklicken.
+              </p>
             </div>
-            <div className="grid grid-cols-3 gap-2">
-              {AUTOMATISIERUNGS_SZENARIEN.map(({ label }, i) => (
-                <button
-                  key={label}
-                  type="button"
-                  onClick={() => setSzenarioIndex(i)}
-                  className={`text-xs font-semibold py-2.5 rounded-xl border transition-colors ${
-                    i === szenarioIndex
-                      ? "bg-ocean-600 border-ocean-600 text-white"
-                      : "bg-white border-slate-200 text-slate-600 hover:border-ocean-300"
-                  }`}
-                >
-                  {label}
-                </button>
-              ))}
+
+            <div>
+              <div className="flex items-baseline justify-between mb-3">
+                <label className="text-sm font-semibold text-slate-700">
+                  Interner Stundensatz
+                </label>
+                <span className="font-display font-bold text-ocean-600">CHF {satz}</span>
+              </div>
+              <input
+                type="range"
+                min={40}
+                max={200}
+                step={5}
+                value={satz}
+                onChange={(e) => setSatz(Number(e.target.value))}
+                className={slider}
+              />
             </div>
-            <p className="text-xs text-slate-400 mt-2">
-              Wie viel sich davon wirklich automatisieren lässt, weisst du vorab kaum. Diese Werte basieren auf
-              Erfahrung aus ähnlichen Betrieben, dein genaues Potenzial klären wir in der Analyse.
-            </p>
+          </div>
+
+          {/* Ist-Kosten */}
+          <div className="relative bg-slate-900 p-8 md:p-10 flex flex-col justify-center">
+            <div
+              className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl pointer-events-none"
+              style={{ background: "radial-gradient(circle, rgba(249,115,22,0.12) 0%, transparent 70%)" }}
+            />
+            <div className="relative space-y-6">
+              <p className="text-[11px] font-bold uppercase tracking-widest text-slate-500">
+                Manuelle Abläufe kosten dich heute
+              </p>
+
+              <div>
+                <p className="font-display font-bold text-3xl md:text-4xl text-white">
+                  CHF {chf(kostenProMonat)}
+                </p>
+                <p className="text-slate-500 text-xs mt-1">pro Monat</p>
+              </div>
+
+              <div className="pt-5 border-t border-white/10">
+                <p className="font-display font-bold text-2xl text-slate-300">
+                  CHF {chf(kostenProJahr)}
+                </p>
+                <p className="text-slate-500 text-xs mt-1">
+                  pro Jahr, das sind {chf(stundenProJahr)} Stunden bei {ARBEITSWOCHEN} Arbeitswochen
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="relative bg-slate-900 rounded-3xl p-8 overflow-hidden">
-          <div className="absolute top-0 right-0 w-56 h-56 rounded-full blur-3xl pointer-events-none" style={{ background: "radial-gradient(circle, rgba(14,165,233,0.18) 0%, transparent 70%)" }} />
-          <div className="absolute bottom-0 left-0 w-56 h-56 rounded-full blur-3xl pointer-events-none" style={{ background: "radial-gradient(circle, rgba(249,115,22,0.14) 0%, transparent 70%)" }} />
-          <div className="relative">
-            <p className="text-slate-400 text-xs font-semibold uppercase tracking-widest mb-3">Deine mögliche Ersparnis</p>
-            <p className="font-display font-bold text-4xl md:text-5xl text-white mb-1">CHF {fmtChf(ersparnisChfProJahr)}.-</p>
-            <p className="text-slate-400 text-sm mb-6">pro Jahr</p>
-            <div className="grid grid-cols-2 gap-4 pt-6 border-t border-white/10">
-              <div>
-                <p className="font-display font-bold text-2xl text-white">{ersparnisStundenProWoche.toFixed(1)} Std.</p>
-                <p className="text-xs text-slate-400 mt-1">gesparte Zeit pro Woche</p>
-              </div>
-              <div>
-                <p className="font-display font-bold text-2xl text-white">{ersparnisTageProJahr.toFixed(1)} Tage</p>
-                <p className="text-xs text-slate-400 mt-1">gesparte Arbeitstage pro Jahr</p>
-              </div>
-            </div>
+        {/* Einsparung nach Szenario */}
+        <div className="border-t border-slate-200 bg-slate-50 px-6 py-7 md:px-10 md:py-8">
+          <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-5 text-center md:text-left">
+            Davon automatisierbar
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {szenarien.map(({ name, quote, hervorgehoben }) => {
+              const sparJahr = kostenProJahr * quote;
+              const sparMonat = sparJahr / 12;
+              const tage = Math.round((stundenProJahr * quote) / 8);
+              return (
+                <div
+                  key={name}
+                  className={
+                    hervorgehoben
+                      ? "rounded-2xl border-2 border-ocean-300 bg-white p-5 shadow-sm"
+                      : "rounded-2xl border border-slate-200 bg-white p-5"
+                  }
+                >
+                  <div className="flex items-baseline justify-between mb-4">
+                    <span
+                      className={
+                        hervorgehoben
+                          ? "text-xs font-bold uppercase tracking-widest text-ocean-600"
+                          : "text-xs font-bold uppercase tracking-widest text-slate-400"
+                      }
+                    >
+                      {name}
+                    </span>
+                    <span className="text-xs font-semibold text-slate-400">
+                      {Math.round(quote * 100)}%
+                    </span>
+                  </div>
+
+                  <p className="font-display font-bold text-2xl text-slate-900 leading-tight">
+                    CHF {chf(sparMonat)}
+                  </p>
+                  <p className="text-slate-500 text-xs mt-0.5">gespart pro Monat</p>
+
+                  <div className="mt-4 pt-4 border-t border-slate-100">
+                    <p className="font-display font-bold text-lg text-ocean-600 leading-tight">
+                      CHF {chf(sparJahr)}
+                    </p>
+                    <p className="text-slate-500 text-xs mt-0.5">
+                      pro Jahr, {tage} Arbeitstage frei
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
-    </div>
+
+      <p className="mt-5 text-center text-xs text-slate-500 leading-relaxed max-w-2xl mx-auto">
+        Rechenmodell auf Basis von 30 bis 50 Prozent Automatisierungsgrad. Wie viel bei dir
+        tatsächlich drinliegt, zeigt die Analyse in Schritt 1.
+      </p>
+    </>
   );
 }
 
-export default function HandwerkPage() {
+export default function ProzessPage() {
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
@@ -276,94 +347,131 @@ export default function HandwerkPage() {
     }
   };
 
-  const stats = [
-    { value: "Mehr Zeit", label: "für Aufträge oder Familie" },
-    { value: "Ab Tag 1", label: "erste Resultate" },
-    { value: "Keine", label: "technischen Kenntnisse nötig für Resultate" },
+  const irrtuemer = [
+    {
+      icon: Users,
+      glaube: "Wir brauchen mehr Leute.",
+      realitaet:
+        "Du stellst ein und kannst mehr Kunden annehmen. Gleichzeitig steigen deine Betriebskosten mit. Mehr Umsatz bedeutet so nicht automatisch mehr Gewinn, und die Abläufe dahinter laufen weiterhin von Hand.",
+    },
+    {
+      icon: Boxes,
+      glaube: "Wir brauchen teurere Software.",
+      realitaet:
+        "Auch nach der Einführung werden die meisten Arbeitsschritte weiterhin von Hand ausgeführt. Die Software verwaltet die Arbeit nur an einem neuen Ort. Das entlastet niemanden und verursacht zusätzliche Kosten.",
+    },
+    {
+      icon: Inbox,
+      glaube: "Wir brauchen mehr Leads.",
+      realitaet:
+        "Das stimmt, aber nur mit automatisierten Prozessen. Von Hand betreust du mehr Anfragen nur mit mehr Personal. Mit unseren KI-Agenten und automatisierten Abläufen betreust du mehr Leads ohne zusätzliche Einstellungen.",
+    },
+  ];
+
+  const diagnose = [
+    {
+      icon: Workflow,
+      title: "Abläufe laufen, wie sie einmal definiert wurden",
+      desc: "Der erste Schritt ist deshalb, sie anzuschauen. Was gut funktioniert, wird automatisiert. Was hakt, wird leicht angepasst, damit es automatisiert werden kann. In beiden Fällen fällt danach ein grosser Teil der Handarbeit weg.",
+    },
+    {
+      icon: Search,
+      title: "Wissen steckt in Köpfen",
+      desc: "Geht eine Person, geht ihr Wissen mit. Die neue braucht Monate, bis sie alles versteht, und in der Zwischenzeit bleibt immer wieder etwas liegen. Beim Kunden hinterlässt das einen schlechten Eindruck. Automatisierte Abläufe laufen unabhängig davon, wer gerade da ist, und zeigen sofort, wo etwas hängt.",
+    },
+    {
+      icon: BarChart3,
+      title: "Keine messbaren Workflows",
+      desc: "Ohne durchgängige Prozesse mit klarem Status lässt sich weder sauber planen noch erkennen, wo der grösste Hebel liegt. Entscheidungen fallen aus dem Bauch.",
+    },
   ];
 
   const mechanismSteps = [
     {
       number: "01",
       week: "Schritt 1",
-      phase: "Analyse",
+      phase: "Ist-Aufnahme",
       icon: ClipboardList,
-      title: "Analyse des Admin-Aufwands",
-      desc: "Wir erfassen gemeinsam, wo aktuell Zeit verbrennt (Rapporte, Offerten, Rechnungen, Telefon, Nachfassen) und wie viele Stunden pro Woche dich das kostet.",
-      tags: ["Zeit-Audit", "Ist-Prozess aufnehmen"],
-      effort: "Ein gemeinsames Gespräch über deinen Alltag im Büro",
+      title: "Vollständiges Bild des Ist-Zustands",
+      desc: "Wir erfassen alle relevanten Prozesse, Tools und Schnittstellen und sprechen mit den entscheidenden Leuten aus Vertrieb, Onboarding und Fulfillment. So wird sichtbar, was täglich wirklich passiert, wo Zeit verloren geht und wo Fehler und Doppelarbeit entstehen.",
+      tags: ["Prozess-Mapping", "Tool-Landschaft", "Interviews im Team"],
+      effort: "Ein paar Gespräche mit deinen Schlüsselpersonen",
       dark: false,
     },
     {
       number: "02",
       week: "Schritt 2",
-      phase: "Planung",
-      icon: PenTool,
-      title: "Planung deines Automatisierungs-Systems",
-      desc: "Auf Basis der Analyse planen wir ein System, das sich nahtlos in deine bestehenden Programme und Abläufe einfügt und genau diese Zeitfresser eliminiert.",
-      tags: ["System-Design", "Passt zu deinen bestehenden Tools"],
-      effort: "Kurzes Feedback zum geplanten Ablauf",
+      phase: "Priorisierung",
+      icon: ListChecks,
+      title: "Hebel priorisieren statt alles gleichzeitig",
+      desc: "Wir werten die Aufnahme aus und identifizieren die Prozesse mit dem grössten Effekt: wiederkehrende Aufgaben mit hohem manuellem Aufwand, die sich vergleichsweise leicht automatisieren lassen. Daraus entsteht eine Roadmap mit Quick Wins und strategischen Automatisierungen.",
+      tags: ["Aufwand-Nutzen-Bewertung", "Quick Wins", "Roadmap"],
+      effort: "Roadmap gemeinsam durchgehen und freigeben",
       dark: false,
     },
     {
       number: "03",
       week: "Schritt 3",
-      phase: "Umsetzung & Test",
-      icon: FlaskConical,
-      title: "Umsetzung & Test (offline)",
-      desc: "Wir richten die Automatisierungen und digitalen Agenten ein und testen sie zunächst im Hintergrund, bevor sie in dein Tagesgeschäft gehen. So läuft ab Tag 1 alles zuverlässig.",
-      tags: ["Automatisierungen bauen", "Agenten einrichten", "Test im Hintergrund"],
-      effort: "Keiner: Wir bauen und testen im Hintergrund",
+      phase: "Zielbild",
+      icon: Workflow,
+      title: "Zielprozesse und Wissensbasis",
+      desc: "Wir definieren, wie Vertrieb, Mitarbeiter-Onboarding, Kunden-Onboarding und Projektabwicklung künftig ablaufen, legen Zuständigkeiten und Status fest und bauen eine zentrale Wissensdatenbank mit SOPs, Checklisten und Vorlagen. Parallel entsteht das technische Konzept: welches System welche Aufgabe übernimmt und welcher Trigger welche Aktion auslöst.",
+      tags: ["Zielprozesse", "SOPs und Checklisten", "Technisches Konzept"],
+      effort: "Freigabe der Zielprozesse, kurze Feedbackrunden",
       dark: false,
     },
     {
       number: "04",
       week: "Schritt 4",
-      phase: "Rollout",
-      icon: Rocket,
-      title: "Implementierung ins Daily Business",
-      desc: "Die getesteten Automatisierungen werden in deinen Alltag integriert. Du und dein Team erhaltet einfache, verständliche Anleitungen für die wenigen manuellen Schritte, die noch nötig sind.",
-      tags: ["Rollout", "Team-Anleitung"],
-      effort: "Kurze Einführung fürs Team (~30 Min.)",
+      phase: "Test",
+      icon: FlaskConical,
+      title: "Umsetzung in einer sicheren Testumgebung",
+      desc: "Neuer Lead, neuer Mitarbeiter, neuer Kunde, neuer Auftrag: Wir spielen die typischen Szenarien durch, decken Logikfehler und Sonderfälle auf und bessern nach, bis die Workflows stabil laufen. Dein Tagesgeschäft bleibt währenddessen unberührt.",
+      tags: ["Testumgebung", "Szenarien durchspielen", "Sonderfälle"],
+      effort: "Keiner. Wir bauen und testen im Hintergrund",
       dark: false,
     },
     {
       number: "05",
       week: "Ab jetzt laufend",
-      phase: "Wartung & Optimierung",
-      icon: RefreshCw,
-      title: "Wartung & laufende Optimierung",
-      desc: "Wir überwachen das System, erstellen regelmässige Reports und passen Automatisierungen sowie Agenten bei Bedarf an, damit deine Zeitersparnis stabil bleibt oder weiter steigt, auch wenn dein Betrieb wächst.",
-      tags: ["Monitoring", "Reports", "Laufende Anpassung"],
-      effort: "Reports checken, bei Bedarf Feedback geben",
+      phase: "Rollout und Optimierung",
+      icon: Rocket,
+      title: "Go-live, Schulung und Dashboards",
+      desc: "Die neuen Abläufe gehen in den produktiven Systemen live, das Team wird gezielt geschult und Dashboards machen Zeitersparnis, Durchlaufzeiten, Fehlerraten und Kapazität sichtbar. Auf dieser Basis optimieren wir weiter und nehmen Schritt für Schritt zusätzliche Prozesse dazu.",
+      tags: ["Go-live", "Team-Schulung", "Kennzahlen-Dashboard"],
+      effort: "Schulung mitmachen, Kennzahlen im Blick behalten",
       dark: true,
     },
   ];
 
   const faqs = [
     {
-      q: "Muss ich meine bestehende Software wechseln?",
-      a: "Nein. Das System wird so gebaut, dass es sich in deine bestehenden Programme einfügt, egal ob Excel, Bexio, Abacus oder ein anderes Tool. Wir ersetzen nicht, wir automatisieren das, was heute von Hand passiert.",
+      q: "Woher kommen die 30 bis 50 Prozent?",
+      a: "Aus dem Anteil deiner Arbeitszeit, der heute in wiederkehrende manuelle Abläufe fliesst: Daten von Hand übertragen, Arbeitsschritte weiterreichen, nachfragen, Status suchen, Inhalte fürs Fulfillment jedes Mal neu erstellen. Der Rechner weiter oben zeigt dafür drei Szenarien: konservativ 30 Prozent, realistisch 40 Prozent, optimistisch 50 Prozent. Gemessen wird dieser Anteil in Schritt 1. Bis dahin ist es eine Bandbreite, keine Zusage.",
     },
     {
-      q: "Was, wenn mein Team nicht technikaffin ist?",
-      a: "Das ist der Normalfall, nicht die Ausnahme. Deshalb testen wir alles zuerst offline im Hintergrund, bevor irgendetwas live geht. Du und dein Team erhaltet danach einfache, verständliche Anleitungen für die wenigen Schritte, die noch manuell bleiben.",
+      q: "Müssen wir unsere bestehende Software ersetzen?",
+      a: "In der Regel nicht. Zuerst wird geprüft, was deine bestehenden Systeme leisten und wo sie sauber miteinander verbunden werden können. Neue Software kommt nur dort ins Spiel, wo eine echte Lücke besteht, und wird dann begründet, nicht einfach gesetzt.",
     },
     {
-      q: "Wie schnell sehe ich Resultate?",
-      a: "Das hängt davon ab, wie viel administrativer Aufwand aktuell bei dir anfällt. Nach der Analyse in Schritt 1 weisst du konkret, wie viele Stunden realistisch eingespart werden können und wie lange die Umsetzung dauert, bevor überhaupt etwas gebaut wird.",
+      q: "Wie lange dauert das Ganze?",
+      a: "Nach der Ist-Aufnahme dauert es in der Regel 2 bis 4 Wochen, bis die ersten Workflows in deinem Tagesgeschäft laufen. Ausgeliefert wird pro Prozess statt in einem grossen Wurf, sodass die ersten Quick Wins spürbar sind, bevor die grösseren Automatisierungen stehen.",
+    },
+    {
+      q: "Sind wir mit unserer Grösse überhaupt relevant?",
+      a: "Das Vorgehen passt für Betriebe und Agenturen, bei denen mehrere Personen an denselben Abläufen arbeiten und wiederkehrende Prozesse existieren. Ab ungefähr fünf Mitarbeitenden lohnt sich der Aufwand meist deutlich, weil die Übergaben genau dort teuer werden.",
+    },
+    {
+      q: "Was ist mit Datenschutz und Schweizer Anforderungen?",
+      a: "Datenflüsse werden von Anfang an mitgedacht: welche Daten wo liegen, wer Zugriff hat und welche Systeme ausserhalb der Schweiz oder der EU verarbeiten. Wo es sensibel wird, werden Alternativen aufgezeigt, bevor etwas gebaut wird.",
+    },
+    {
+      q: "Was passiert, wenn das Team nicht mitzieht?",
+      a: "Deshalb beginnt der Prozess mit Gesprächen im Team und nicht am Reissbrett. Die Zielprozesse entstehen entlang der Arbeit, die ohnehin gemacht wird. Dazu kommen Schulung und Anleitungen für die Schritte, die manuell bleiben.",
     },
     {
       q: "Was kostet die Zusammenarbeit?",
-      a: "Das hängt vom Umfang deines administrativen Aufwands und der Grösse deines Betriebs ab, daher gibt es keinen Einheitspreis. Die erste Analyse ist unverbindlich. Erst danach bekommst du ein klares Angebot, ohne versteckte Kosten.",
-    },
-    {
-      q: "Für welche Gewerke eignet sich das?",
-      a: "Grundsätzlich für jeden Handwerksbetrieb mit viel administrativem Aufwand neben der eigentlichen Arbeit, zum Beispiel Elektro, Sanitär, Schreinerei, Maler, Gartenbau oder Bau. Wichtig ist nur, dass es wiederkehrende Abläufe wie Rapporte, Offerten oder Rechnungen gibt, die wir automatisieren können.",
-    },
-    {
-      q: "Ersetzt das meine Bürokraft oder Buchhaltung?",
-      a: "Nein, es entlastet sie. Das System übernimmt die repetitive Fleissarbeit: Übertragen, Sortieren, Nachtragen. So bleibt mehr Zeit für die Aufgaben, die wirklich Aufmerksamkeit brauchen.",
+      a: "Das hängt von der Anzahl Prozesse und der Grösse deines Betriebs ab, daher gibt es keinen Einheitspreis. Das Erstgespräch ist kostenlos und unverbindlich. Ein Angebot kommt erst, wenn der Umfang klar ist.",
     },
   ];
 
@@ -380,16 +488,16 @@ export default function HandwerkPage() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <span className="inline-flex items-center gap-2 bg-ocean-50 border border-ocean-200 text-ocean-700 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full">
               <span className="w-1.5 h-1.5 rounded-full bg-ocean-500 animate-pulse" />
-              KI-Automatisierung für Handwerkliche Betriebe
+              KI-Automatisierung für B2B-KMU und Agenturen
             </span>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="space-y-2">
             <h1 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-slate-900 leading-[1.15]">
-              Automatisierungen und KI-Agenten, die deine Büroarbeit
+              Automatisieren. Optimieren.
             </h1>
             <h1 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.15] gradient-text pb-1">
-              für dich erledigen.
+              Skalieren mit KI.
             </h1>
           </motion.div>
 
@@ -399,8 +507,10 @@ export default function HandwerkPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="max-w-2xl mx-auto text-slate-600 text-lg leading-relaxed"
           >
-            Durch unsere Automatisierungen und KI-Agenten sparen handwerkliche Betriebe im Schnitt 10+ Stunden
-            manueller Büroarbeit pro Woche.
+            Für B2B-KMU und Agenturen in der Schweiz. Ich eliminiere manuelle Arbeitsschritte
+            mit KI-Automatisierungen, senke deine Betriebskosten um
+            30 bis 50% und steigere deine
+            Umsatzrendite. Ohne zusätzliches Personal.
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }} className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -410,25 +520,17 @@ export default function HandwerkPage() {
               rel="noopener noreferrer"
               className="group flex items-center gap-2 bg-ocean-600 hover:bg-ocean-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-200 hover:-translate-y-1"
             >
-              Kostenloses Analysegespräch buchen
+              Kostenloses Erstgespräch buchen
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
             <button
               onClick={() => scrollTo("mechanismus")}
               className="flex items-center gap-2 border border-slate-300 hover:border-ocean-400 text-slate-700 hover:text-ocean-700 font-semibold px-8 py-4 rounded-full transition-all duration-200"
             >
-              So funktioniert's
+              So funktioniert&apos;s
             </button>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.55 }} className="grid grid-cols-3 gap-6 max-w-xl mx-auto pb-4">
-            {stats.map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="font-display font-bold text-2xl md:text-3xl text-ocean-600">{stat.value}</div>
-                <div className="text-xs text-slate-500 mt-1 leading-tight">{stat.label}</div>
-              </div>
-            ))}
-          </motion.div>
         </div>
       </section>
 
@@ -439,7 +541,7 @@ export default function HandwerkPage() {
         </svg>
       </div>
 
-      {/* ─── PROBLEM / ANTI-THESE ────────────────────────────────── */}
+      {/* ─── PROBLEM ──────────────────────────────────────────────── */}
       <section id="problem" className="bg-slate-50 py-24 px-6 scroll-mt-20">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
@@ -448,36 +550,34 @@ export default function HandwerkPage() {
                 Realität
               </span>
               <h2 className="font-display font-bold text-3xl md:text-4xl text-slate-900 mb-6 leading-tight">
-                Warum manuelle
+                Operativ am Limit,
                 <br />
-                Büroarbeit automatisiert
+                obwohl die Nachfrage
                 <br />
-                werden muss.
+                da wäre.
               </h2>
               <div className="space-y-5 text-slate-600 leading-relaxed">
                 <p>
-                  Während du an den Aufträgen deiner Kunden dran bist, passiert in deinem Büro nicht viel. Die
-                  ganze Büroarbeit erledigst du nach der Arbeit, wenn du eigentlich lieber Feierabend machen
-                  würdest, oder deine Bürokraft kommt nicht mehr nach, weil sie alles aus Excel-Listen und
-                  handnotierten Zetteln zusammentragen muss. Ein System, das am Anfang noch funktioniert hat, ist
-                  heute dein grösstes Hindernis.
+                  In den meisten Agenturen und KMU laufen die Prozesse bis heute manuell. Jede
+                  Anfrage, jeder neue Kunde und jeder Auftrag wird von Hand erfasst, weitergegeben
+                  und nachgehalten. Das frisst Woche für Woche enorm viel Zeit, ohne dass dadurch
+                  ein einziger Auftrag besser wird.
                 </p>
                 <p>
-                  Genau dieses System ist dafür verantwortlich, dass du keine neuen Aufträge mehr annehmen kannst
-                  und viel Zeit mit Büroarbeit verschwendest. Einfach, weil keine Struktur oder Automatisierung
-                  vorhanden ist, die das alles für dich erledigt, während du an Projekten arbeitest.
+                  Genau das limitiert dein Wachstum. Ab einem gewissen Punkt kannst du keine neuen
+                  Kunden mehr annehmen, ohne zusätzliches Personal einzustellen. Nicht weil die
+                  Nachfrage fehlt, sondern weil der manuelle Aufwand mitwächst.
                 </p>
                 <p>
-                  Jeder zusätzliche Auftrag bringt mehr Zettel, mehr Excel-Zeilen und mehr Nachfassen, aber nicht
-                  automatisch mehr Gewinn. Du arbeitest mehr, ohne dass am Ende mehr für dich, deine Familie oder
-                  deinen Betrieb übrig bleibt. Und das Paradoxe daran: Je besser dein Betrieb läuft, desto stärker
-                  bremst dich genau dieses System aus.
+                  Genau diese Aufgaben übernehmen unsere KI-Agenten und Automatisierungs-Prozesse.
+                  Sie nehmen deinem Betrieb 30 bis 50% des operativen Zeitaufwands ab. Das senkt
+                  deine Betriebskosten und schlägt sich direkt im Gewinn nieder.
                 </p>
               </div>
             </AnimatedSection>
 
             <AnimatedSection direction="right" delay={0.1}>
-              <ChaosGraphic />
+              <ProzessbruchGrafik />
             </AnimatedSection>
           </div>
         </div>
@@ -490,46 +590,53 @@ export default function HandwerkPage() {
         </svg>
       </div>
 
-      {/* ─── DIAGNOSE ─────────────────────────────────────────────── */}
-      <section id="diagnose" className="py-24 px-6 scroll-mt-20">
-        <div className="max-w-5xl mx-auto">
+      {/* ─── IRRGLAUBE ────────────────────────────────────────────── */}
+      <section id="irrglaube" className="py-24 px-6 scroll-mt-20">
+        <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-14">
             <span className="inline-flex items-center gap-2 bg-ocean-50 border border-ocean-200 text-ocean-700 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-6">
-              Die Diagnose
+              Der Irrglaube
             </span>
             <h2 className="font-display font-bold text-4xl md:text-5xl text-slate-900 mb-4">
-              Das Problem ist nicht dein Fleiss. Es ist dein System.
+              Das Problem ist nicht die Kapazität.
             </h2>
-            <p className="text-slate-600 text-lg max-w-4xl mx-auto">
-              Der gesamte administrative Bereich deines Betriebs ist weder strukturiert noch systematisiert. Alles
-              hängt an Personen, Zetteln und einzelnen Excel-Listen, statt an einem klaren, durchgängigen Prozess.
-              Solange jede Info von Hand übertragen, sortiert und nachgetragen werden muss, wächst dein
-              Büroaufwand 1:1 mit jedem neuen Auftrag, ganz egal, wie fleissig du abends noch „aufräumst".
+            <p className="text-slate-600 text-lg max-w-3xl mx-auto">
+              Die meisten Inhaber lösen ein Kapazitätsproblem über neue Mitarbeitende oder teurere
+              Software. Nur liegt das Problem nicht bei der Kapazität, sondern bei den Prozessen
+              dahinter. Solange alles von Hand läuft, ist Wachstum ohne ein grösseres Team gar nicht
+              möglich.
             </p>
           </AnimatedSection>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {[
-              { icon: Users, title: "Alles hängt an Personen", desc: "Wissen steckt im Kopf einzelner Mitarbeiter. Fällt jemand aus oder wechselt, geht Struktur verloren." },
-              { icon: FileStack, title: "Alles hängt an Zetteln", desc: "Rapporte, Notizen, Lieferscheine: Infos gehen unter, werden doppelt erfasst oder gar nicht." },
-              { icon: FileWarning, title: "Aufwand wächst mit jedem Auftrag", desc: "Mehr Aufträge heissen mehr Handarbeit im Büro, nicht weniger. Das System skaliert nicht mit." },
-            ].map(({ icon: Icon, title, desc }, i) => (
-              <AnimatedSection key={title} delay={i * 0.1}>
-                <div className="bg-white border border-slate-200 rounded-2xl p-7 hover:shadow-lg transition-shadow duration-300 h-full">
-                  <div className="w-10 h-10 rounded-xl bg-ocean-50 flex items-center justify-center mb-4">
-                    <Icon className="w-5 h-5 text-ocean-500" />
+            {irrtuemer.map(({ icon: Icon, glaube, realitaet }, i) => (
+              <AnimatedSection key={glaube} delay={i * 0.1}>
+                <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden h-full flex flex-col hover:shadow-lg transition-shadow duration-300">
+                  <div className="bg-slate-50 border-b border-slate-200 p-6 md:min-h-[132px]">
+                    <Icon className="w-5 h-5 text-slate-400 mb-3" />
+                    <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-2">
+                      Die Annahme
+                    </p>
+                    <p className="font-display font-bold text-lg text-slate-900 leading-snug">
+                      {glaube}
+                    </p>
                   </div>
-                  <h3 className="font-bold text-lg text-slate-900 mb-2">{title}</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">{desc}</p>
+                  <div className="p-6 flex-1">
+                    <p className="text-[11px] font-bold uppercase tracking-widest text-ocean-600 mb-2">
+                      Was tatsächlich passiert
+                    </p>
+                    <p className="text-slate-600 text-sm leading-relaxed">{realitaet}</p>
+                  </div>
                 </div>
               </AnimatedSection>
             ))}
           </div>
 
-          <AnimatedSection delay={0.3} className="mt-6">
-            <p className="text-center text-slate-500 text-sm max-w-xl mx-auto">
-              Die Folge: Du arbeitest viel, aber Gewinn, Zeit für weitere Aufträge und Zeit mit deiner Familie
-              bleiben auf dem Schreibtisch liegen.
+          <AnimatedSection delay={0.3} className="mt-8">
+            <p className="text-center text-slate-500 text-sm max-w-2xl mx-auto leading-relaxed">
+              Der Irrglaube besteht darin, ein Prozessproblem mit mehr Personal und teurerer
+              Software zu lösen. Beides erhöht deine Fixkosten, ohne dass die manuelle Arbeit
+              dahinter verschwindet.
             </p>
           </AnimatedSection>
         </div>
@@ -542,19 +649,67 @@ export default function HandwerkPage() {
         </svg>
       </div>
 
+      {/* ─── DIAGNOSE ─────────────────────────────────────────────── */}
+      <section id="diagnose" className="bg-slate-50 py-24 px-6 scroll-mt-20">
+        <div className="max-w-5xl mx-auto">
+          <AnimatedSection className="text-center mb-14">
+            <span className="inline-flex items-center gap-2 bg-ocean-50 border border-ocean-200 text-ocean-700 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-6">
+              Die Diagnose
+            </span>
+            <h2 className="font-display font-bold text-4xl md:text-5xl text-slate-900 mb-4">
+              Deine Prozesse sind Handarbeit.
+            </h2>
+            <p className="text-slate-600 text-lg max-w-3xl mx-auto">
+              Es gibt keinen Prozess, der einen Arbeitsschritt vom einen System ins nächste
+              weiterreicht. Jede Übergabe passiert von Hand, und auch das, was im Fulfillment
+              entsteht, wird jedes Mal manuell erstellt. Deshalb wächst der Aufwand mit jedem
+              Auftrag mit.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {diagnose.map(({ icon: Icon, title, desc }, i) => (
+              <AnimatedSection key={title} delay={i * 0.1}>
+                <div className="bg-white border border-slate-200 rounded-2xl p-7 hover:shadow-lg transition-shadow duration-300 h-full">
+                  <div className="w-10 h-10 rounded-xl bg-ocean-50 flex items-center justify-center mb-4">
+                    <Icon className="w-5 h-5 text-ocean-500" />
+                  </div>
+                  <h3 className="font-bold text-lg text-slate-900 mb-2 md:min-h-[56px]">{title}</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">{desc}</p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          <AnimatedSection delay={0.3} className="mt-6">
+            <p className="text-center text-slate-500 text-sm max-w-2xl mx-auto">
+              Die Folge: Wachstum wird mit mehr Handarbeit, mehr Abstimmung und steigenden Fixkosten
+              bezahlt, statt mit sauberen, skalierbaren Prozessen.
+            </p>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Wave divider */}
+      <div className="overflow-hidden leading-none bg-slate-50">
+        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 30 Q360 60 720 30 Q1080 0 1440 30 L1440 60 L0 60 Z" fill="white" />
+        </svg>
+      </div>
+
       {/* ─── MECHANISMUS ──────────────────────────────────────────── */}
-      <section id="mechanismus" className="bg-slate-50 py-24 px-6 scroll-mt-20">
+      <section id="mechanismus" className="py-24 px-6 scroll-mt-20">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-16">
             <span className="inline-flex items-center gap-2 bg-ocean-50 border border-ocean-200 text-ocean-700 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-6">
               Der Prozess
             </span>
             <h2 className="font-display font-bold text-4xl md:text-5xl text-slate-900 mb-4">
-              In 5 Schritten zum automatisierten Backoffice
+              In 5 Schritten zum automatisierten Betrieb
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-              Kein fixfertiges Tool von der Stange, sondern ein System, das zu deinem Betrieb passt und sich in
-              deine bestehenden Abläufe einfügt.
+              Kein Tool von der Stange, sondern ein System entlang deiner Abläufe. Erst messen, dann
+              priorisieren, dann bauen.
             </p>
           </AnimatedSection>
 
@@ -652,38 +807,9 @@ export default function HandwerkPage() {
               className="group inline-flex items-center gap-2.5 bg-ocean-600 hover:bg-ocean-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-200 hover:-translate-y-0.5"
             >
               <CalendarDays className="w-4 h-4" />
-              Kostenloses Analysegespräch buchen
+              Kostenloses Erstgespräch buchen
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Wave divider */}
-      <div className="overflow-hidden leading-none bg-slate-50">
-        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 30 Q360 60 720 30 Q1080 0 1440 30 L1440 60 L0 60 Z" fill="white" />
-        </svg>
-      </div>
-
-      {/* ─── STATUS-QUO-RECHNER ──────────────────────────────────── */}
-      <section id="beweis" className="py-24 px-6 scroll-mt-20">
-        <div className="max-w-4xl mx-auto">
-          <AnimatedSection className="text-center mb-10">
-            <span className="inline-flex items-center gap-2 bg-ocean-50 border border-ocean-200 text-ocean-700 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-6">
-              <Calculator className="w-3.5 h-3.5" />
-              Status-quo-Rechner
-            </span>
-            <h2 className="font-display font-bold text-4xl md:text-5xl text-slate-900 mb-4">
-              Was dein aktuelles System dich wirklich kostet.
-            </h2>
-            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-              Trag deine Zahlen ein und sieh in Echtzeit, wie viel Zeit und Geld realistisch drinliegen.
-            </p>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.1}>
-            <StatusQuoRechner />
           </AnimatedSection>
         </div>
       </section>
@@ -695,8 +821,38 @@ export default function HandwerkPage() {
         </svg>
       </div>
 
+      {/* ─── RECHNER ──────────────────────────────────────────────── */}
+      <section id="beweis" className="bg-slate-50 py-24 px-6 scroll-mt-20">
+        <div className="max-w-4xl mx-auto">
+          <AnimatedSection className="text-center mb-10">
+            <span className="inline-flex items-center gap-2 bg-ocean-50 border border-ocean-200 text-ocean-700 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-6">
+              <Calculator className="w-3.5 h-3.5" />
+              Kosten-Rechner
+            </span>
+            <h2 className="font-display font-bold text-4xl md:text-5xl text-slate-900 mb-4">
+              Was deine manuellen Abläufe wirklich kosten.
+            </h2>
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+              Trag deine Zahlen ein und sieh, was pro Monat und pro Jahr in manuellen Abläufen
+              steckt.
+            </p>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.1}>
+            <KostenRechner />
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Wave divider */}
+      <div className="overflow-hidden leading-none bg-slate-50">
+        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 30 Q360 60 720 30 Q1080 0 1440 30 L1440 60 L0 60 Z" fill="white" />
+        </svg>
+      </div>
+
       {/* ─── ABOUT ────────────────────────────────────────────────── */}
-      <section id="about" className="py-24 px-6 scroll-mt-20 bg-slate-50">
+      <section id="about" className="py-24 px-6 scroll-mt-20">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-14">
             <span className="inline-flex items-center gap-2 bg-ocean-50 border border-ocean-200 text-ocean-700 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-6">
@@ -704,7 +860,7 @@ export default function HandwerkPage() {
             </span>
             <h2 className="font-display font-bold text-4xl md:text-5xl text-slate-900 mb-4">Hinter der Welle.</h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-              Swellsystems hilft Unternehmen dabei, Aufwand zu automatisieren, der eigentlich niemand von Hand
+              Swellsystems automatisiert Aufwand, den in einem Betrieb eigentlich niemand von Hand
               erledigen sollte.
             </p>
           </AnimatedSection>
@@ -717,6 +873,7 @@ export default function HandwerkPage() {
                     src="/Hero_Bild_bearbeitet.png"
                     alt="Calvin Heim"
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover object-[center_15%]"
                     priority
                   />
@@ -742,17 +899,19 @@ export default function HandwerkPage() {
                 <div className="p-10 md:p-14 flex flex-col justify-center">
                   <p className="text-slate-500 text-xs font-bold uppercase tracking-widest mb-6">Über mich</p>
                   <p className="text-slate-600 leading-relaxed mb-5">
-                    Ich baue automatisierte Systeme für Unternehmen, ursprünglich für die Kundengewinnung von
-                    B2B-Firmen: Workflows, digitale Agenten und Datenflüsse, die zuverlässig im Hintergrund laufen.
+                    Ich baue automatisierte Systeme für Unternehmen: Workflows, digitale Agenten und
+                    Datenflüsse, die zuverlässig im Hintergrund laufen. Angefangen habe ich damit in
+                    der Kundengewinnung von B2B-Firmen.
                   </p>
                   <p className="text-slate-600 leading-relaxed mb-5">
-                    Bei Gesprächen mit Handwerksbetrieben fiel mir dasselbe Muster auf, das ich auch aus dem
-                    B2B-Vertrieb kenne: enorm viel Fleiss, aber kein System dahinter. Alles läuft über Zettel,
-                    Excel und den Kopf einzelner Mitarbeiter.
+                    In den Gesprächen mit KMU und Agenturen kam immer dasselbe Muster zum Vorschein:
+                    enorm viel Fleiss, aber kein System dahinter. Vertrieb, Onboarding und
+                    Projektabwicklung hängen an Excel-Listen, Chats und dem Wissen einzelner Leute.
                   </p>
                   <p className="text-slate-600 leading-relaxed">
-                    Genau da setze ich an: nicht mit einer neuen, komplizierten Software, sondern mit einem System,
-                    das sich in das einfügt, was du schon hast, und dir jede Woche Stunden zurückgibt.
+                    Genau da setze ich an. Nicht mit noch einer Software, sondern mit klaren
+                    Prozessen, einer gemeinsamen Wissensbasis und Automatisierungen, die sich in das
+                    einfügen, was du bereits nutzt.
                   </p>
                 </div>
               </div>
@@ -761,13 +920,15 @@ export default function HandwerkPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
-              { icon: "🧩", title: "Passt sich an dich an", desc: "Kein 0815-Tool von der Stange. Das System wird um deine bestehenden Abläufe herum gebaut, nicht umgekehrt." },
-              { icon: "🧪", title: "Getestet, bevor es live geht", desc: "Alles läuft zuerst offline im Hintergrund. Erst wenn es zuverlässig funktioniert, geht es in dein Tagesgeschäft." },
-              { icon: "🌊", title: "Läuft weiter, auch wenn du wächst", desc: "Laufende Wartung und Optimierung sorgen dafür, dass deine Zeitersparnis stabil bleibt oder weiter steigt." },
-            ].map(({ icon, title, desc }, i) => (
+              { icon: ShieldCheck, title: "Erst messen, dann bauen", desc: "Jede Automatisierung folgt auf eine Ist-Aufnahme. Gebaut wird dort, wo der Hebel nachweislich am grössten ist." },
+              { icon: FlaskConical, title: "Getestet, bevor es live geht", desc: "Alle Workflows laufen zuerst in einer Testumgebung. Erst wenn sie stabil sind, gehen sie ins Tagesgeschäft." },
+              { icon: BarChart3, title: "Messbar statt Bauchgefühl", desc: "Dashboards zeigen Zeitersparnis, Durchlaufzeiten, Fehlerraten und Kapazität. Du siehst, was das System bringt." },
+            ].map(({ icon: Icon, title, desc }, i) => (
               <AnimatedSection key={title} delay={i * 0.1}>
                 <div className="bg-white border border-slate-100 rounded-2xl p-8 hover:border-ocean-200 hover:shadow-lg hover:shadow-ocean-50 transition-all duration-300 h-full">
-                  <div className="text-3xl mb-4">{icon}</div>
+                  <div className="w-10 h-10 rounded-xl bg-ocean-50 flex items-center justify-center mb-4">
+                    <Icon className="w-5 h-5 text-ocean-500" />
+                  </div>
                   <h3 className="font-display font-bold text-lg text-slate-900 mb-2">{title}</h3>
                   <p className="text-slate-500 text-sm leading-relaxed">{desc}</p>
                 </div>
@@ -821,14 +982,14 @@ export default function HandwerkPage() {
                   Kontakt
                 </span>
                 <h2 className="font-display font-bold text-4xl md:text-5xl text-white mb-5 leading-tight">
-                  Bereit, deinen Admin-Aufwand loszuwerden?
+                  Schau dir deine Abläufe an, bevor du die nächste Person einstellst.
                 </h2>
                 <p className="text-slate-400 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
-                  Wenn du deinen Betrieb endlich vom Büro-Chaos befreien willst, damit du stabil wachsen kannst und
-                  wieder mehr Zeit für Aufträge und deine Familie hast, statt abends Rechnungen zu schreiben und
-                  Excel-Listen zu pflegen, dann melde dich. Wir schauen uns gemeinsam deine aktuelle Situation an
-                  und prüfen, ob und wie wir deinen administrativen Aufwand um mehrere Stunden pro Woche senken
-                  können.
+                  Wenn du ein Schweizer B2B-KMU oder eine Agentur führst und dich hier
+                  wiedererkennst, ständig am Limit, laufend neue Leute, trotzdem bleibt vieles
+                  manuell, dann liegt der nächste Hebel nicht bei mehr Personal, sondern bei deinen
+                  Prozessen. Im Erstgespräch schauen wir gemeinsam an, wo deine Zeit hingeht und ob
+                  sich eine Zusammenarbeit überhaupt lohnt.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -839,7 +1000,7 @@ export default function HandwerkPage() {
                     className="group inline-flex items-center gap-2.5 bg-ocean-500 hover:bg-ocean-400 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-500/25 hover:-translate-y-0.5"
                   >
                     <CalendarDays className="w-4 h-4" />
-                    Kostenloses Analysegespräch buchen
+                    Kostenloses Erstgespräch buchen
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </a>
                   <a

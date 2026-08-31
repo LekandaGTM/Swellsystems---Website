@@ -27,13 +27,13 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Swellsystems – Automatisierung für Handwerksbetriebe",
+  title: "Swellsystems | Prozessautomatisierung für KMU und Agenturen",
   description:
-    "Swellsystems automatisiert die Büroarbeit von Handwerksbetrieben. 10+ Stunden weniger Administration pro Woche.",
+    "Swellsystems systematisiert und automatisiert Vertrieb, Onboarding und Projektabwicklung von Schweizer KMU und Agenturen. Ziel: 30 bis 50 Prozent tiefere Betriebskosten.",
   metadataBase: new URL("https://www.swellsystems.ch"),
   openGraph: {
-    title: "Swellsystems – Automatisierung für Handwerksbetriebe",
-    description: "10+ Stunden weniger Büroarbeit pro Woche. Ohne neue, komplizierte Software.",
+    title: "Swellsystems | Prozessautomatisierung für KMU und Agenturen",
+    description: "Automatisierte Abläufe statt mehr Personal. 30 bis 50 Prozent tiefere Betriebskosten.",
     url: "https://www.swellsystems.ch",
     siteName: "Swellsystems",
     locale: "de_CH",
@@ -43,14 +43,14 @@ export const metadata: Metadata = {
         url: "/swellsystems-outbound-b2b-schweiz.png",
         width: 1200,
         height: 630,
-        alt: "Swellsystems – Automatisierung für Handwerksbetriebe",
+        alt: "Swellsystems | Prozessautomatisierung für KMU und Agenturen",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Swellsystems – Automatisierung für Handwerksbetriebe",
-    description: "10+ Stunden weniger Büroarbeit pro Woche. Ohne neue, komplizierte Software.",
+    title: "Swellsystems | Prozessautomatisierung für KMU und Agenturen",
+    description: "Automatisierte Abläufe statt mehr Personal. 30 bis 50 Prozent tiefere Betriebskosten.",
     images: ["/swellsystems-outbound-b2b-schweiz.png"],
   },
 };
