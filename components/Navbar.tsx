@@ -58,10 +58,20 @@ export default function Navbar({ locale }: NavbarProps) {
 
   const isHomePage = pathname === `/${locale}` || pathname === `/${locale}/`;
 
-  const navLinks = [
+  /**
+   * Zwei Arten von Eintraegen: Abschnitte der Startseite, die gescrollt werden,
+   * und echte Seiten, die verlinkt werden. Vorher konnte die Leiste nur das
+   * Erste, und "Referenzen" ist eine eigene Seite und kein Abschnitt.
+   *
+   * href gewinnt, wenn beides gesetzt waere. Ein Eintrag ohne id nimmt am
+   * Abschnitts-Hervorheben nicht teil, das ist richtig so: eine eigene Seite
+   * wird nicht beim Scrollen aktiv, sondern wenn man auf ihr steht.
+   */
+  const navLinks: { id?: string; href?: string; label: string }[] = [
     { id: "problem", label: t("services") },
     { id: "mechanismus", label: t("howItWorks") },
     { id: "beweis", label: t("caseStudies") },
+    { href: `/${locale}/referenzen`, label: t("references") },
     { id: "about", label: t("about") },
     { id: "contact", label: t("contact") },
   ];
@@ -98,12 +108,23 @@ export default function Navbar({ locale }: NavbarProps) {
         )}
 
         {/* Desktop links */}
-        <div className="hidden lg:flex items-center gap-8">
-          {navLinks.map((link) => (
-            isHomePage ? (
+        <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+          {navLinks.map((link) =>
+            link.href ? (
+              <Link
+                key={link.label}
+                href={link.href}
+                className={clsx(
+                  "text-sm font-medium transition-colors hover:text-ocean-600",
+                  pathname.startsWith(link.href) ? "text-ocean-600" : "text-slate-600"
+                )}
+              >
+                {link.label}
+              </Link>
+            ) : isHomePage ? (
               <button
-                key={link.id}
-                onClick={() => scrollTo(link.id)}
+                key={link.label}
+                onClick={() => scrollTo(link.id!)}
                 className={clsx(
                   "text-sm font-medium transition-colors hover:text-ocean-600",
                   activeSection === link.id ? "text-ocean-600" : "text-slate-600"
@@ -113,14 +134,14 @@ export default function Navbar({ locale }: NavbarProps) {
               </button>
             ) : (
               <Link
-                key={link.id}
+                key={link.label}
                 href={`/${locale}#${link.id}`}
                 className="text-sm font-medium text-slate-600 transition-colors hover:text-ocean-600"
               >
                 {link.label}
               </Link>
             )
-          ))}
+          )}
         </div>
 
         {/* Right side */}
@@ -156,11 +177,25 @@ export default function Navbar({ locale }: NavbarProps) {
             className="lg:hidden bg-white border-t border-slate-100 shadow-lg"
           >
             <div className="px-6 py-6 flex flex-col gap-4">
-              {navLinks.map((link) => (
-                isHomePage ? (
+              {navLinks.map((link) =>
+                link.href ? (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className={clsx(
+                      "text-base font-medium text-left transition-colors",
+                      pathname.startsWith(link.href)
+                        ? "text-ocean-600"
+                        : "text-slate-700 hover:text-ocean-600"
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                ) : isHomePage ? (
                   <button
-                    key={link.id}
-                    onClick={() => scrollTo(link.id)}
+                    key={link.label}
+                    onClick={() => scrollTo(link.id!)}
                     className={clsx(
                       "text-base font-medium text-left transition-colors",
                       activeSection === link.id
@@ -172,7 +207,7 @@ export default function Navbar({ locale }: NavbarProps) {
                   </button>
                 ) : (
                   <Link
-                    key={link.id}
+                    key={link.label}
                     href={`/${locale}#${link.id}`}
                     onClick={() => setIsOpen(false)}
                     className="text-base font-medium text-left text-slate-700 hover:text-ocean-600 transition-colors"
@@ -180,7 +215,7 @@ export default function Navbar({ locale }: NavbarProps) {
                     {link.label}
                   </Link>
                 )
-              ))}
+              )}
               <div className="pt-4 border-t border-slate-100 flex items-center justify-end">
                 <a
                   href="https://cal.com/calvin-heim-swellsystems/30min"
