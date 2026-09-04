@@ -7,7 +7,7 @@ import { NextResponse, type NextRequest } from "next/server";
 //
 // Zum Ausschalten: MAINTENANCE_MODE auf false setzen und neu deployen
 //   (git push vercel deploy-fix:main).
-const MAINTENANCE_MODE = true;
+const MAINTENANCE_MODE = false;
 
 const intlMiddleware = createMiddleware({
   locales: ["de"],
