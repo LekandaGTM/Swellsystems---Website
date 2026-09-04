@@ -22,6 +22,7 @@ import {
   ShieldCheck,
   AlertTriangle,
   Search,
+  Check,
 } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 
@@ -506,8 +507,17 @@ export default function ProzessPage() {
               zwei Toene wie in der Wortmarke. Orange bleibt Akzentfarbe an den
               Stellen, wo es fuer sich steht.
             */}
+            {/*
+              leading und pb sind hier groesser als in der ersten Zeile, und das
+              muss so bleiben: bg-clip-text malt den Verlauf nur innerhalb der
+              Box des Elements. Bei leading-[1.15] ist die Zeilenbox niedriger
+              als die Glyphen, die Unterlaenge des g ragt hinaus, bekommt keinen
+              Verlauf mehr und verschwindet, weil die Schrift selbst transparent
+              ist. "Skalieren mit KI." hatte keine einzige Unterlaenge, deshalb
+              fiel es vorher nicht auf.
+            */}
             <h1
-              className="font-display font-bold text-3xl sm:text-4xl md:text-[2.75rem] lg:text-[3.25rem] tracking-tight leading-[1.15] gradient-text pb-1"
+              className="font-display font-bold text-3xl sm:text-4xl md:text-[2.75rem] lg:text-[3.25rem] tracking-tight leading-[1.3] gradient-text pb-3"
               style={{
                 backgroundImage:
                   "linear-gradient(120deg, #0ea5e9 0%, #0284c7 55%, #075985 100%)",
@@ -546,6 +556,29 @@ export default function ProzessPage() {
               So funktioniert&apos;s
             </button>
           </motion.div>
+
+          {/*
+            Unter den Knoepfen und nicht darueber: der Untertitel ist lang, und
+            auf dem Handy schoebe eine weitere Zeile davor den Knopf unter den
+            Bildschirmrand. Hier steht die Bestaerkung fuer die, die noch zoegern.
+          */}
+          <motion.ul
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.55 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-x-8 gap-y-3 pt-2"
+          >
+            {[
+              "Mehr Gewinnmarge",
+              "30 bis 50 % weniger operative Kosten",
+              "Arbeitet 24/7",
+            ].map((nutzen) => (
+              <li key={nutzen} className="flex items-center gap-2 text-slate-600 text-sm font-medium">
+                <Check className="w-4 h-4 text-ocean-500 shrink-0" strokeWidth={3} />
+                {nutzen}
+              </li>
+            ))}
+          </motion.ul>
 
         </div>
       </section>

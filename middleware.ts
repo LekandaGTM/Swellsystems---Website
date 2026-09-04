@@ -16,7 +16,18 @@ const intlMiddleware = createMiddleware({
 });
 
 export default function middleware(request: NextRequest) {
-  if (MAINTENANCE_MODE) {
+  // Beim Entwickeln gilt der Wartungsmodus nicht. Sonst muesste man den
+  // Schalter zum Arbeiten jedes Mal umlegen und vor dem Deploy daran denken,
+  // ihn wieder umzulegen. Genau das vergisst man einmal, und dann steht die
+  // Seite offen, obwohl sie im Umbau ist.
+  //
+  // Bewusst NODE_ENV und nicht der Hostname: der ist im Dev-Server immer
+  // "localhost", egal welchen Host-Kopf jemand schickt, also lokal gar nicht
+  // pruefbar. NODE_ENV ist in jedem "next build" und damit auf Vercel
+  // "production", hier gibt es nichts zu verwechseln.
+  const entwicklung = process.env.NODE_ENV === "development";
+
+  if (MAINTENANCE_MODE && !entwicklung) {
     // Die Wartungsseite selbst normal ausliefern, alles andere darauf umleiten.
     if (request.nextUrl.pathname === "/maintenance") {
       return NextResponse.next();
