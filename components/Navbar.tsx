@@ -186,10 +186,9 @@ export default function Navbar({ locale }: NavbarProps) {
             className="lg:hidden bg-white border-t border-slate-100 shadow-lg"
           >
             {/*
-              w-full und py-3: die Eintraege sind Zeilen und keine Woerter. Ohne
-              das ist nur der Text selbst antippbar, und ein Tipper zwei
-              Millimeter daneben tut nichts. Auf dem Handy ist das der
-              haeufigere Fall, nicht der seltenere.
+              py-3 an jedem Eintrag: die Zeilen waren 24 Pixel hoch, Apples
+              Richtwert fuer eine Tippflaeche sind 44. Die Breite war schon
+              vorher voll, zu knapp war allein die Hoehe.
             */}
             <div className="px-6 py-4 flex flex-col">
               {navLinks.map((link) => (
