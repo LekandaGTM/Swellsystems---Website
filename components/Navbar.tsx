@@ -46,13 +46,43 @@ export default function Navbar({ locale }: NavbarProps) {
     return () => observers.forEach((obs) => obs.disconnect());
   }, []);
 
+  /**
+   * Zu einem Abschnitt springen.
+   *
+   * Aus dem Burgermenue heraus passierte hier nichts, und zwar zuverlaessig.
+   * Nachgemessen: scrollY blieb nach jedem Tipper auf 0.
+   *
+   * Der Grund liegt in der Reihenfolge. setIsOpen(false) laesst das Menue ueber
+   * 200 ms zusammenklappen, und das Scrollen startete im selben Frame. Der
+   * Browser bricht ein laufendes weiches Scrollen ab, sobald waehrenddessen die
+   * Hoehe eines Elements ueber dem Dokument animiert wird. Am Schreibtisch
+   * faellt es nicht auf, weil die Leiste dort keine Klappe hat.
+   *
+   * Deshalb wird jetzt erst geschlossen und danach gescrollt, nach der
+   * Schliessanimation. Die Verzoegerung sieht niemand, weil das Menue in
+   * dieser Zeit ohnehin zuklappt.
+   *
+   * Wer im Betriebssystem weniger Bewegung eingestellt hat, springt direkt.
+   * Ein weiches Scrollen ueber elftausend Pixel ist genau das, was diese
+   * Einstellung abstellen soll.
+   */
   const scrollTo = (id: string) => {
+    const warOffen = isOpen;
     setIsOpen(false);
-    const el = document.getElementById(id);
-    if (el) {
+
+    const springen = () => {
+      const el = document.getElementById(id);
+      if (!el) return;
       const offset = 80;
       const top = el.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: "smooth" });
+      const sanft = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top, behavior: sanft ? "smooth" : "auto" });
+    };
+
+    if (warOffen) {
+      window.setTimeout(springen, 240);
+    } else {
+      springen();
     }
   };
 
@@ -176,7 +206,12 @@ export default function Navbar({ locale }: NavbarProps) {
             transition={{ duration: 0.2 }}
             className="lg:hidden bg-white border-t border-slate-100 shadow-lg"
           >
-            <div className="px-6 py-6 flex flex-col gap-4">
+            {/*
+              py-3 an jedem Eintrag: die Zeilen waren 24 Pixel hoch, Apples
+              Richtwert fuer eine Tippflaeche sind 44. Die Breite war schon
+              vorher voll, zu knapp war allein die Hoehe.
+            */}
+            <div className="px-6 py-4 flex flex-col">
               {navLinks.map((link) =>
                 link.href ? (
                   <Link
@@ -184,7 +219,7 @@ export default function Navbar({ locale }: NavbarProps) {
                     href={link.href}
                     onClick={() => setIsOpen(false)}
                     className={clsx(
-                      "text-base font-medium text-left transition-colors",
+                      "w-full text-base font-medium text-left py-3 transition-colors",
                       pathname.startsWith(link.href)
                         ? "text-ocean-600"
                         : "text-slate-700 hover:text-ocean-600"
@@ -197,7 +232,7 @@ export default function Navbar({ locale }: NavbarProps) {
                     key={link.label}
                     onClick={() => scrollTo(link.id!)}
                     className={clsx(
-                      "text-base font-medium text-left transition-colors",
+                      "w-full text-base font-medium text-left py-3 transition-colors",
                       activeSection === link.id
                         ? "text-ocean-600"
                         : "text-slate-700 hover:text-ocean-600"
@@ -210,13 +245,13 @@ export default function Navbar({ locale }: NavbarProps) {
                     key={link.label}
                     href={`/${locale}#${link.id}`}
                     onClick={() => setIsOpen(false)}
-                    className="text-base font-medium text-left text-slate-700 hover:text-ocean-600 transition-colors"
+                    className="w-full text-base font-medium text-left py-3 text-slate-700 hover:text-ocean-600 transition-colors"
                   >
                     {link.label}
                   </Link>
                 )
               )}
-              <div className="pt-4 border-t border-slate-100 flex items-center justify-end">
+              <div className="mt-3 pt-4 border-t border-slate-100 flex items-center justify-end">
                 <a
                   href="https://cal.com/calvin-heim-swellsystems/30min"
                   target="_blank"
