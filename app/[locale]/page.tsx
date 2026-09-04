@@ -494,10 +494,26 @@ export default function ProzessPage() {
 
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="space-y-2">
             <h1 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-slate-900 leading-[1.15]">
-              Automatisieren. Optimieren.
+              Mehr Kunden dank
             </h1>
-            <h1 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.15] gradient-text pb-1">
-              Skalieren mit KI.
+            {/*
+              Eigener Verlauf statt der Klasse .gradient-text, die von Blau nach
+              Orange laeuft. Blau und Orange liegen sich auf dem Farbkreis fast
+              gegenueber, jeder Weg dazwischen fuehrt durch ein blasses Graubraun.
+              Bei "Skalieren mit KI." war die Strecke zu kurz, um das zu sehen;
+              bei dieser Zeile sass der Matsch mitten in "Automatisierungen",
+              auch in oklab. Deshalb bleibt die Zeile im Blaubereich, dieselben
+              zwei Toene wie in der Wortmarke. Orange bleibt Akzentfarbe an den
+              Stellen, wo es fuer sich steht.
+            */}
+            <h1
+              className="font-display font-bold text-3xl sm:text-4xl md:text-[2.75rem] lg:text-[3.25rem] tracking-tight leading-[1.15] gradient-text pb-1"
+              style={{
+                backgroundImage:
+                  "linear-gradient(120deg, #0ea5e9 0%, #0284c7 55%, #075985 100%)",
+              }}
+            >
+              KI-Prozessen &amp; Automatisierungen
             </h1>
           </motion.div>
 
@@ -507,10 +523,10 @@ export default function ProzessPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="max-w-2xl mx-auto text-slate-600 text-lg leading-relaxed"
           >
-            Für B2B-KMU und Agenturen in der Schweiz. Ich eliminiere manuelle Arbeitsschritte
-            mit KI-Automatisierungen, senke deine Betriebskosten um
-            30 bis 50% und steigere deine
-            Umsatzrendite. Ohne zusätzliches Personal.
+            Mit intelligenten KI-Prozessen und Automatisierungen helfen wir B2B-KMU und
+            Agenturen, wiederkehrende Prozesse zu automatisieren, sodass du deine
+            operativen Kosten um 30 bis 50 Prozent senken kannst, mehr Gewinn erzielst
+            und dafür keine neuen Mitarbeiter einstellen musst.
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }} className="flex flex-col sm:flex-row items-center justify-center gap-4">
