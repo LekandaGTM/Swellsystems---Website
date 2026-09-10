@@ -4,13 +4,20 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
-import { REFERENZEN, referenzFinden } from "../referenzen-daten";
+import { referenzFinden } from "../referenzen-daten";
+import { inhaltFinden } from "../inhalte";
 
 const CAL_LINK = "https://cal.com/calvin-heim-swellsystems/30min";
 
-export function generateStaticParams() {
-  return REFERENZEN.map((r) => ({ slug: r.slug }));
-}
+/*
+ * Kein generateStaticParams hier.
+ *
+ * Es hat die Route auf statisch umgestellt, waehrend das Layout next-intl im
+ * Server Component nutzt und damit dynamisches Rendern verlangt. Ergebnis war
+ * ein 500 auf der fertig gebauten Seite, im Dev-Modus unsichtbar. Dazu kam,
+ * dass es nur slug zurueckgab und nicht locale, die Route hat aber beide
+ * Segmente. Alle uebrigen Seiten der Site rendern ebenfalls auf Anfrage.
+ */
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const referenz = referenzFinden(params.slug);
@@ -29,6 +36,7 @@ export default function Referenzseite({
 }) {
   const { locale, slug } = params;
   const referenz = referenzFinden(slug);
+  const Inhalt = inhaltFinden(slug);
 
   // Ein unbekannter Slug ist eine 404 und keine leere Seite. Sonst steht bei
   // einem Tippfehler im Link ein Geruest ohne Inhalt, und das sieht aus wie ein
@@ -112,13 +120,8 @@ export default function Referenzseite({
       {/* ─── DIE AUSFÜHRLICHE FASSUNG ─────────────────────────────── */}
       <section className="px-6 pb-24">
         <div className="max-w-3xl mx-auto">
-          {referenz.detailFertig ? (
-            /*
-              Hier kommt die ausgeschriebene Case Study hin: Ausgangslage,
-              Analyse, Lösung, Ergebnis. Der Aufbau steht in
-              case-doggyworld-produktbilder.md im Wurzelverzeichnis.
-            */
-            null
+          {Inhalt ? (
+            <Inhalt />
           ) : (
             <AnimatedSection>
               <div className="border border-dashed border-slate-300 rounded-3xl p-9 md:p-12 text-center">

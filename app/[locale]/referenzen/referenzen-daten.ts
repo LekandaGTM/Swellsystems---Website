@@ -29,9 +29,13 @@ export type Referenz = {
   kennzahlen: Kennzahl[];
   /** Steht auf der Kachel als Schlagworte. */
   leistungen: string[];
-  /** false, solange die ausfuehrliche Fassung noch nicht geschrieben ist. */
-  detailFertig: boolean;
 };
+
+/*
+ * Ob die ausfuehrliche Fassung existiert, steht nicht hier, sondern in
+ * inhalte/index.ts. Ein Flag an dieser Stelle waere eine zweite Wahrheit
+ * daneben und koennte auseinanderlaufen.
+ */
 
 export const REFERENZEN: Referenz[] = [
   {
@@ -54,7 +58,6 @@ export const REFERENZEN: Referenz[] = [
       { wert: "3 Minuten", was: "für fünf fertige Bilder" },
     ],
     leistungen: ["Bildgenerierung", "Eigenes Interface", "Shopify"],
-    detailFertig: false,
   },
 ];
 
