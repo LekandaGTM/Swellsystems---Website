@@ -67,11 +67,11 @@ const ABLAUF = [
 
 const ERGEBNIS = [
   "20 bis 30 Minuten gespart je Bild",
-  "Ein bis zwei Stunden je Produkt",
   "Fünf Bilder in rund drei Minuten",
-  "Rund einen halben Dollar je Produkt",
   "Dateiname und Alt-Text SEO-fertig",
-  "Alle Konten laufen auf den Kunden",
+  "Einheitliche Brand Identity bei jedem Produkt",
+  "Kosteneffiziente Generierung (Pay per use)",
+  "Custom Interface, abgestimmt auf die Wünsche des Kunden",
 ];
 
 const P = "text-slate-600 leading-relaxed";
@@ -157,9 +157,15 @@ const SCHRITTE: { titel: string; inhalt: React.ReactNode }[] = [
     titel: "Ergebnis",
     inhalt: (
       <div className="space-y-5">
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
+        {/*
+          Spalten statt Raster. Im Raster richten sich die Zeilen ueber beide
+          Spalten hinweg auf gleiche Hoehe aus, und sobald ein Punkt umbricht,
+          klafft neben dem kuerzeren Nachbarn eine Luecke. Hier fliesst der
+          Text und die Punkte stehen dicht.
+        */}
+        <ul className="sm:columns-2 sm:gap-x-8 space-y-2.5">
           {ERGEBNIS.map((zeile) => (
-            <li key={zeile} className="flex items-start gap-2.5">
+            <li key={zeile} className="flex items-start gap-2.5 break-inside-avoid">
               <Check className="w-4 h-4 text-ocean-500 shrink-0 mt-1" />
               <span className="text-slate-600 leading-relaxed">{zeile}</span>
             </li>
