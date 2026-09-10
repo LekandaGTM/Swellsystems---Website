@@ -24,6 +24,15 @@ export type Referenz = {
   branche: string;
   ort: string;
   jahr: string;
+  /**
+   * Die Ueberschrift der Detailseite. Nennt das Ergebnis und nicht den
+   * Firmennamen: den traegt daneben das Logo.
+   */
+  titel: string;
+  /** Anzeige ohne Schema, url mit. Getrennt, damit "https://" nicht mitlaeuft. */
+  website: { anzeige: string; url: string };
+  /** Von Start bis Uebergabe. */
+  dauer: string;
   /** Zwei bis drei Saetze fuer die Kachel. Was war, was ist. */
   kurz: string;
   kennzahlen: Kennzahl[];
@@ -44,9 +53,14 @@ export const REFERENZEN: Referenz[] = [
     logo: "/doggyworld-logo.png",
     logoBreite: 1000,
     logoHoehe: 300,
-    branche: "Onlinehandel, Hundezubehör",
+    branche: "E-Commerce",
     ort: "Schweiz",
     jahr: "2026",
+    titel:
+      "Onlineshop verringert die Produktbild-Erstellung dank Custom Interface " +
+      "und KI-Generierung von zwei Stunden auf fünf Minuten pro Produkt.",
+    website: { anzeige: "doggyworld.ch", url: "https://doggyworld.ch" },
+    dauer: "3 Wochen",
     kurz:
       "Die Produktbilder für den Shop entstanden bereits mit KI, aber vollständig von Hand: " +
       "jedes Bild einzeln geschrieben, kein einheitlicher Prompt, jedes Mal ein anderes " +

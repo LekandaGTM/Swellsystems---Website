@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import { referenzFinden } from "../referenzen-daten";
 import { inhaltFinden } from "../inhalte";
@@ -25,7 +25,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
 
   return {
     title: `${referenz.firma} | Referenz | Swellsystems`,
-    description: referenz.kurz.slice(0, 155),
+    description: referenz.titel,
   };
 }
 
@@ -51,7 +51,7 @@ export default function Referenzseite({
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[420px] bg-gradient-radial from-ocean-100/60 via-ocean-50/20 to-transparent rounded-full blur-3xl" />
         </div>
 
-        <div className="relative max-w-3xl mx-auto">
+        <div className="relative max-w-4xl mx-auto">
           <Link
             href={`/${locale}/referenzen`}
             className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-ocean-600 transition-colors"
@@ -61,49 +61,83 @@ export default function Referenzseite({
           </Link>
 
           {/*
-            Auf dem Handy untereinander. Nebeneinander blieben neben dem
-            120-Pixel-Logo keine 200 Pixel fuer den Namen, und laengere
-            Firmennamen liefen in den rechten Rand.
+            Links die Aussage, rechts wer und wie lange. Auf dem Handy
+            untereinander, dort steht der Titel zuerst: die Eckdaten sind
+            Beiwerk und sollen die Aussage nicht nach unten schieben.
           */}
-          <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
-            <div className="flex items-center justify-center bg-slate-50 border border-slate-100 rounded-2xl px-5 py-4 shrink-0 self-start">
-              <Image
-                src={referenz.logo}
-                alt={referenz.firma}
-                width={referenz.logoBreite}
-                height={referenz.logoHoehe}
-                className="w-[120px] h-auto"
-                priority
-              />
-            </div>
+          <div className="mt-8 grid grid-cols-1 lg:grid-cols-[1fr_248px] gap-10 lg:gap-12 items-start">
             <div>
-              <h1 className="font-display font-bold text-3xl md:text-4xl tracking-tight text-slate-900 leading-tight text-balance">
-                {referenz.firma}
+              <h1 className="font-display font-bold text-2xl sm:text-3xl md:text-[2.1rem] tracking-tight text-slate-900 leading-[1.25] text-balance">
+                {referenz.titel}
               </h1>
-              <p className="mt-1 text-sm text-slate-500">
-                {referenz.branche} · {referenz.ort} · {referenz.jahr}
-              </p>
+
+              <p className="mt-6 text-slate-600 leading-relaxed">{referenz.kurz}</p>
+
+              <div className="mt-7 flex flex-wrap gap-2">
+                {referenz.leistungen.map((leistung) => (
+                  <span
+                    key={leistung}
+                    className="text-xs font-medium text-slate-600 bg-slate-100 px-3 py-1.5 rounded-full"
+                  >
+                    {leistung}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
 
-          <p className="mt-8 text-slate-600 text-lg leading-relaxed">{referenz.kurz}</p>
+            {/* ─── ECKDATEN ─────────────────────────────────────── */}
+            <aside className="w-full rounded-3xl border border-slate-200 bg-white p-5">
+              <div className="flex items-center justify-center rounded-2xl bg-slate-50 border border-slate-100 px-5 py-6">
+                <Image
+                  src={referenz.logo}
+                  alt={referenz.firma}
+                  width={referenz.logoBreite}
+                  height={referenz.logoHoehe}
+                  className="w-full max-w-[150px] h-auto"
+                  priority
+                />
+              </div>
 
-          <div className="mt-8 flex flex-wrap gap-2">
-            {referenz.leistungen.map((leistung) => (
-              <span
-                key={leistung}
-                className="text-xs font-medium text-slate-600 bg-slate-100 px-3 py-1.5 rounded-full"
-              >
-                {leistung}
-              </span>
-            ))}
+              <dl className="mt-5 divide-y divide-slate-100">
+                <div className="pb-4">
+                  <dt className="text-[11px] font-semibold uppercase tracking-widest text-slate-400">
+                    Website
+                  </dt>
+                  <dd className="mt-1">
+                    <a
+                      href={referenz.website.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center gap-1 font-medium text-ocean-600 hover:text-ocean-700 transition-colors"
+                    >
+                      {referenz.website.anzeige}
+                      <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </a>
+                  </dd>
+                </div>
+
+                <div className="py-4">
+                  <dt className="text-[11px] font-semibold uppercase tracking-widest text-slate-400">
+                    Dauer
+                  </dt>
+                  <dd className="mt-1 font-medium text-slate-800">{referenz.dauer}</dd>
+                </div>
+
+                <div className="pt-4">
+                  <dt className="text-[11px] font-semibold uppercase tracking-widest text-slate-400">
+                    Branche
+                  </dt>
+                  <dd className="mt-1 font-medium text-slate-800">{referenz.branche}</dd>
+                </div>
+              </dl>
+            </aside>
           </div>
         </div>
       </section>
 
       {/* ─── KENNZAHLEN ───────────────────────────────────────────── */}
       <section className="px-6 pb-16">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <AnimatedSection>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {referenz.kennzahlen.map((k) => (
@@ -124,7 +158,7 @@ export default function Referenzseite({
 
       {/* ─── DIE AUSFÜHRLICHE FASSUNG ─────────────────────────────── */}
       <section className="px-6 pb-24">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           {Inhalt ? (
             <Inhalt />
           ) : (

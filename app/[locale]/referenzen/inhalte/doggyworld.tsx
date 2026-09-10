@@ -7,8 +7,9 @@
  * Wurzelverzeichnis. Zwei Regeln von dort gelten hier besonders:
  *
  * 1. Die Kostenaussage lautet nicht "keine laufenden Kosten". Ein technischer
- *    Restsockel bleibt bestehen (Supabase). Die Formulierung im Kasten unten
- *    stimmt in beiden Faellen und ist trotzdem die starke Aussage.
+ *    Restsockel bleibt bestehen (Supabase). Sie steht jetzt als Listenpunkt
+ *    "Kosteneffiziente Generierung (Pay per use)" im Ergebnis. Diese
+ *    Formulierung stimmt mit und ohne Restsockel.
  * 2. Keine Qualitaetsquote behaupten, solange der Abnahmetest offen ist.
  *
  * Darstellung als Reiter statt als vier Abschnitte untereinander. Untereinander
@@ -20,7 +21,7 @@
  * Swellsystem_Automations.
  */
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -156,7 +157,7 @@ const SCHRITTE: { titel: string; inhalt: React.ReactNode }[] = [
   {
     titel: "Ergebnis",
     inhalt: (
-      <div className="space-y-5">
+      <div>
         {/*
           Spalten statt Raster. Im Raster richten sich die Zeilen ueber beide
           Spalten hinweg auf gleiche Hoehe aus, und sobald ein Punkt umbricht,
@@ -172,23 +173,6 @@ const SCHRITTE: { titel: string; inhalt: React.ReactNode }[] = [
           ))}
         </ul>
 
-        {/*
-          Die Kostenaussage. Wortlaut aus dem Konzept, bewusst nicht "keine
-          laufenden Kosten". Nicht umformulieren, ohne den Restsockel zu pruefen.
-        */}
-        <div className="relative overflow-hidden rounded-2xl bg-slate-900 px-6 py-5">
-          <div
-            className="absolute top-0 right-0 w-56 h-56 rounded-full blur-3xl pointer-events-none"
-            style={{
-              background: "radial-gradient(circle, rgba(14,165,233,0.2) 0%, transparent 70%)",
-            }}
-          />
-          <p className="relative text-slate-300 text-sm leading-relaxed">
-            Vorher zwei Abos für Bildgenerierung, die jeden Monat liefen, ob Bilder
-            gebraucht wurden oder nicht. Heute wird je erzeugtem Bild bezahlt.{" "}
-            <span className="text-white font-semibold">Kein Bild, keine Kosten.</span>
-          </p>
-        </div>
       </div>
     ),
   },
@@ -233,6 +217,28 @@ export default function DoggyworldInhalt() {
   const [aktiv, setAktiv] = useState(0);
   const reiterRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const letzter = SCHRITTE.length - 1;
+
+  /*
+   * Die vier Schritte sind verschieden hoch, auf dem Bildschirm zwischen 124
+   * und 285 Pixeln. Eine feste Mindesthoehe wuerde beim kuerzesten Schritt
+   * ueber 150 Pixel leer stehen lassen, keine Mindesthoehe laesst den Kasten
+   * beim Wechseln springen und den Knopf unter dem Finger wegrutschen.
+   *
+   * Also mitwachsen, animiert. Gemessen wird der innere Kasten, den es immer
+   * gibt. Der Beobachter meldet sich auch beim Drehen des Geraets.
+   */
+  const messRef = useRef<HTMLDivElement>(null);
+  const [hoehe, setHoehe] = useState<number | "auto">("auto");
+
+  useEffect(() => {
+    const el = messRef.current;
+    if (!el || typeof ResizeObserver === "undefined") return;
+    const beobachter = new ResizeObserver(([eintrag]) =>
+      setHoehe(eintrag.target.getBoundingClientRect().height)
+    );
+    beobachter.observe(el);
+    return () => beobachter.disconnect();
+  }, []);
 
   // Pfeiltasten sollen zwischen den Reitern wandern, so wie man es von einer
   // Reiterleiste erwartet. Ohne das ist die Leiste zwar fokussierbar, aber man
@@ -311,26 +317,28 @@ export default function DoggyworldInhalt() {
         </div>
 
         {/* ─── INHALTSFELD ────────────────────────────────────────── */}
-        {/*
-          Die Schritte sind verschieden hoch. Ohne Mindesthoehe springt die
-          Seite beim Wechseln, und der Knopf unten rutscht unter dem Finger weg.
-        */}
-        <div className="relative px-6 py-7 md:px-8 md:py-8 min-h-[320px] sm:min-h-[290px]">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={aktiv}
-              role="tabpanel"
-              id={`feld-${aktiv}`}
-              aria-labelledby={`reiter-${aktiv}`}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
-            >
-              {SCHRITTE[aktiv].inhalt}
-            </motion.div>
-          </AnimatePresence>
-        </div>
+        <motion.div
+          animate={{ height: hoehe }}
+          transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="overflow-hidden"
+        >
+          <div ref={messRef} className="px-6 py-7 md:px-8 md:py-8">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={aktiv}
+                role="tabpanel"
+                id={`feld-${aktiv}`}
+                aria-labelledby={`reiter-${aktiv}`}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
+                {SCHRITTE[aktiv].inhalt}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </motion.div>
 
         {/* ─── WEITERBLAETTERN ────────────────────────────────────── */}
         {/*
