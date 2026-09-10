@@ -60,8 +60,13 @@ export default function Referenzseite({
             Alle Referenzen
           </Link>
 
-          <div className="mt-8 flex items-center gap-6">
-            <div className="flex items-center justify-center bg-slate-50 border border-slate-100 rounded-2xl px-5 py-4 shrink-0">
+          {/*
+            Auf dem Handy untereinander. Nebeneinander blieben neben dem
+            120-Pixel-Logo keine 200 Pixel fuer den Namen, und laengere
+            Firmennamen liefen in den rechten Rand.
+          */}
+          <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+            <div className="flex items-center justify-center bg-slate-50 border border-slate-100 rounded-2xl px-5 py-4 shrink-0 self-start">
               <Image
                 src={referenz.logo}
                 alt={referenz.firma}
@@ -72,7 +77,7 @@ export default function Referenzseite({
               />
             </div>
             <div>
-              <h1 className="font-display font-bold text-3xl md:text-4xl tracking-tight text-slate-900 leading-tight">
+              <h1 className="font-display font-bold text-3xl md:text-4xl tracking-tight text-slate-900 leading-tight text-balance">
                 {referenz.firma}
               </h1>
               <p className="mt-1 text-sm text-slate-500">

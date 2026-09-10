@@ -1,3 +1,5 @@
+"use client";
+
 /**
  * Die ausfuehrliche Fassung der Doggyworld-Case-Study.
  *
@@ -9,22 +11,41 @@
  *    stimmt in beiden Faellen und ist trotzdem die starke Aussage.
  * 2. Keine Qualitaetsquote behaupten, solange der Abnahmetest offen ist.
  *
+ * Darstellung als Reiter statt als vier Abschnitte untereinander. Untereinander
+ * war die Seite ueber 2000 Pixel lang, und die Zahlen oben, also das Staerkste,
+ * waren nach zwei Wischern weg. So bleibt immer nur ein Schritt sichtbar und
+ * der Kopf mit den Kennzahlen fast immer im Bild.
+ *
  * Die Zahlen sind gemessen, nicht geschaetzt. Belege stehen im Repo
  * Swellsystem_Automations.
  */
 
+import { useRef, useState } from "react";
 import Image from "next/image";
-import { Check, Link2, ImageIcon, MessageSquareText } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Check,
+  ImageIcon,
+  Link2,
+  MessageSquareText,
+} from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 
 /**
- * Rohfoto und erzeugtes Bild nebeneinander. Beides muss vorliegen, sonst wird
- * der Abschnitt gar nicht erst gerendert: ein leerer grauer Kasten auf einer
- * Kundenseite ist schlechter als ein fehlender Abschnitt.
+ * Rohfoto und erzeugtes Bild nebeneinander. Beides muss vorliegen, sonst faellt
+ * der Reiter ganz weg: ein leerer grauer Kasten auf einer Kundenseite ist
+ * schlechter als ein fehlender Abschnitt.
  *
  * Zum Aktivieren die beiden Dateien nach public/ legen und hier eintragen.
  */
-const BELEG: { roh: string; erzeugt: string; produkt: string } | null = null;
+type Beleg = { roh: string; erzeugt: string; produkt: string };
+
+// Die Zuweisung per "as" und nicht per Doppelpunkt-Typ: sonst engt TypeScript
+// eine Konstante mit dem Wert null auf genau null ein, und der Zweig unten
+// gilt als unerreichbar, obwohl er sich beim Eintragen der Bilder oeffnet.
+const BELEG = null as Beleg | null;
 
 const ABLAUF = [
   {
@@ -35,7 +56,7 @@ const ABLAUF = [
   {
     icon: ImageIcon,
     titel: "Fünf fertige Bilder raus",
-    text: "Rund drei Minuten später stehen die fünf Bilder bereit, die ein Produkt im Shop braucht. Dateiname und Alt-Text kommen shopfertig mit.",
+    text: "Rund drei Minuten später stehen die fünf Bilder bereit, die ein Produkt im Shop braucht.",
   },
   {
     icon: MessageSquareText,
@@ -46,111 +67,101 @@ const ABLAUF = [
 
 const ERGEBNIS = [
   "20 bis 30 Minuten gespart je Bild",
-  "Bei fünf Bildern je Produkt: ein bis zwei Stunden je Produkt",
+  "Ein bis zwei Stunden je Produkt",
   "Fünf Bilder in rund drei Minuten",
   "Rund einen halben Dollar je Produkt",
-  "Dateiname und Alt-Text kommen SEO-fertig mit",
+  "Dateiname und Alt-Text SEO-fertig",
   "Alle Konten laufen auf den Kunden",
 ];
 
-function Abschnitt({
-  nummer,
-  titel,
-  children,
-}: {
-  nummer: string;
-  titel: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <AnimatedSection className="border-t border-slate-200 pt-10">
-      <div className="flex items-baseline gap-3">
-        <span className="font-display font-bold text-sm text-ocean-500">{nummer}</span>
-        <h2 className="font-display font-bold text-2xl md:text-3xl text-slate-900 tracking-tight">
-          {titel}
-        </h2>
-      </div>
-      <div className="mt-5 space-y-4 text-slate-600 leading-relaxed">{children}</div>
-    </AnimatedSection>
-  );
-}
+const P = "text-slate-600 leading-relaxed";
 
-export default function DoggyworldInhalt() {
-  return (
-    <div className="space-y-14">
-      {/* ─── 1. AUSGANGSLAGE ──────────────────────────────────────── */}
-      <Abschnitt nummer="01" titel="Ausgangslage">
-        <p>
-          Die Produktbilder entstanden bereits mit KI. Nur vollständig von Hand.
+/* ─── DIE VIER SCHRITTE ──────────────────────────────────────────── */
+
+const SCHRITTE: { titel: string; inhalt: React.ReactNode }[] = [
+  {
+    titel: "Ausgangslage",
+    inhalt: (
+      <div className="space-y-4">
+        <p className={P}>
+          Die Produktbilder entstanden bereits mit KI. Nur vollständig von Hand. Jedes Bild
+          wurde einzeln geschrieben, ohne einheitlichen Prompt, also kam jedes Mal ein
+          anderes Ergebnis heraus und es brauchte meist mehrere Versuche.
         </p>
-        <p>
-          Jedes Bild wurde einzeln geschrieben. Es gab keinen einheitlichen Prompt, also
-          kam jedes Mal ein anderes Ergebnis heraus, und meist brauchte es mehrere
-          Versuche, bis eines brauchbar war. Die Zeit ging nicht in die Idee, sondern ins
-          Nachbessern.
+        <p className={P}>
+          Die Zeit ging nicht in die Idee, sondern ins Nachbessern. Ein echtes Fotoshooting
+          wäre um ein Vielfaches teurer gewesen und kam nie in Frage.
         </p>
-        <p>
-          Ein echtes Fotoshooting wäre um ein Vielfaches teurer gewesen und kam nie in
-          Frage.
-        </p>
-        <p>
+        <p className={P}>
           Dazu liefen zwei Abos für Bildgenerierung. Monat für Monat, unabhängig davon, ob
           in dem Monat überhaupt Bilder gebraucht wurden.
         </p>
-      </Abschnitt>
-
-      {/* ─── 2. ANALYSE ───────────────────────────────────────────── */}
-      <Abschnitt nummer="02" titel="Analyse">
-        <p>
+      </div>
+    ),
+  },
+  {
+    titel: "Analyse",
+    inhalt: (
+      <div className="space-y-4">
+        <p className={P}>
           Vor dem Bauen stand die Frage, was bisher in jedem einzelnen Prompt neu erfunden
           wurde. Vier Punkte kamen zusammen: wie die Marke aussieht, welche Farben dazu
           gehören, welche fünf Bilder ein Produkt im Shop braucht, und was das Modell frei
           gestalten darf.
         </p>
-        <p>Daraus wurde eine Faustregel, die seither jedes Bild bestimmt:</p>
-
-        <div className="rounded-2xl bg-slate-50 border border-slate-200 p-6 md:p-7 not-italic">
+        <p className={P}>Daraus wurde eine Faustregel, die seither jedes Bild bestimmt:</p>
+        <div className="rounded-2xl bg-ocean-50/70 border border-ocean-100 px-6 py-5">
           <p className="text-slate-800 leading-relaxed">
             Szene, Licht und Umgebung darf das Modell frei gestalten. Was am Produkt selbst
             zu sehen ist, muss aus dem Rohbild stammen.
           </p>
         </div>
-      </Abschnitt>
-
-      {/* ─── 3. LÖSUNG ────────────────────────────────────────────── */}
-      <Abschnitt nummer="03" titel="Lösung">
-        <p>
-          Eine Automatisierung, die diese Entscheidungen ein für alle Mal festhält, plus
-          ein eigenes Interface, damit Doggyworld sie selbst bedient. Kein Werkzeug von der
+      </div>
+    ),
+  },
+  {
+    titel: "Lösung",
+    inhalt: (
+      <div className="space-y-5">
+        <p className={P}>
+          Eine Automatisierung, die diese Entscheidungen ein für alle Mal festhält, plus ein
+          eigenes Interface, damit Doggyworld sie selbst bedient. Kein Werkzeug von der
           Stange, sondern eine Anwendung, die auf dem eigenen Rechner läuft.
         </p>
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-          {ABLAUF.map((schritt) => {
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          {ABLAUF.map((schritt, i) => {
             const Icon = schritt.icon;
             return (
               <div
                 key={schritt.titel}
-                className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-ocean-200 hover:shadow-lg hover:shadow-ocean-100/40 transition-all duration-200"
+                className="relative bg-white border border-slate-200 rounded-2xl p-5 hover:border-ocean-300 hover:shadow-lg hover:shadow-ocean-100/50 hover:-translate-y-0.5 transition-all duration-200"
               >
-                <Icon className="w-5 h-5 text-ocean-500" />
-                <h3 className="mt-4 font-display font-bold text-base text-slate-900">
+                <div className="flex items-center gap-2.5">
+                  <Icon className="w-4 h-4 text-ocean-500 shrink-0" />
+                  <span className="text-xs font-semibold text-slate-300 tabular-nums">
+                    0{i + 1}
+                  </span>
+                </div>
+                <h3 className="mt-3 font-display font-bold text-sm text-slate-900">
                   {schritt.titel}
                 </h3>
-                <p className="mt-2 text-sm text-slate-500 leading-relaxed">{schritt.text}</p>
+                <p className="mt-1.5 text-sm text-slate-500 leading-relaxed">{schritt.text}</p>
               </div>
             );
           })}
         </div>
-      </Abschnitt>
-
-      {/* ─── 4. ERGEBNIS ──────────────────────────────────────────── */}
-      <Abschnitt nummer="04" titel="Ergebnis">
-        <ul className="space-y-3">
+      </div>
+    ),
+  },
+  {
+    titel: "Ergebnis",
+    inhalt: (
+      <div className="space-y-5">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
           {ERGEBNIS.map((zeile) => (
-            <li key={zeile} className="flex items-start gap-3">
+            <li key={zeile} className="flex items-start gap-2.5">
               <Check className="w-4 h-4 text-ocean-500 shrink-0 mt-1" />
-              <span>{zeile}</span>
+              <span className="text-slate-600 leading-relaxed">{zeile}</span>
             </li>
           ))}
         </ul>
@@ -159,46 +170,198 @@ export default function DoggyworldInhalt() {
           Die Kostenaussage. Wortlaut aus dem Konzept, bewusst nicht "keine
           laufenden Kosten". Nicht umformulieren, ohne den Restsockel zu pruefen.
         */}
-        <div className="rounded-2xl bg-slate-900 p-6 md:p-8 !mt-8 relative overflow-hidden">
+        <div className="relative overflow-hidden rounded-2xl bg-slate-900 px-6 py-5">
           <div
             className="absolute top-0 right-0 w-56 h-56 rounded-full blur-3xl pointer-events-none"
-            style={{ background: "radial-gradient(circle, rgba(14,165,233,0.18) 0%, transparent 70%)" }}
+            style={{
+              background: "radial-gradient(circle, rgba(14,165,233,0.2) 0%, transparent 70%)",
+            }}
           />
-          <p className="relative text-slate-200 leading-relaxed">
+          <p className="relative text-slate-300 text-sm leading-relaxed">
             Vorher zwei Abos für Bildgenerierung, die jeden Monat liefen, ob Bilder
             gebraucht wurden oder nicht. Heute wird je erzeugtem Bild bezahlt.{" "}
             <span className="text-white font-semibold">Kein Bild, keine Kosten.</span>
           </p>
         </div>
-      </Abschnitt>
+      </div>
+    ),
+  },
+];
 
-      {/* ─── 5. BELEG ─────────────────────────────────────────────── */}
-      {BELEG && (
-        <Abschnitt nummer="05" titel="Aus dem Projekt">
-          <p>
-            Links das Rohfoto, rechts eines der fünf Bilder, die daraus entstanden sind.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-            {[
-              { bild: BELEG.roh, label: "Rohfoto" },
-              { bild: BELEG.erzeugt, label: "Erzeugtes Shop-Bild" },
-            ].map((seite) => (
-              <figure key={seite.label} className="m-0">
-                <div className="rounded-2xl overflow-hidden border border-slate-200 bg-slate-50">
-                  <Image
-                    src={seite.bild}
-                    alt={`${seite.label}: ${BELEG.produkt}`}
-                    width={800}
-                    height={800}
-                    className="w-full h-auto"
+// Der Belegteil kommt nur dazu, wenn die Bilder wirklich vorliegen.
+if (BELEG) {
+  SCHRITTE.push({
+    titel: "Aus dem Projekt",
+    inhalt: (
+      <div className="space-y-4">
+        <p className={P}>
+          Links das Rohfoto, rechts eines der fünf Bilder, die daraus entstanden sind.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {[
+            { bild: BELEG.roh, label: "Rohfoto" },
+            { bild: BELEG.erzeugt, label: "Erzeugtes Shop-Bild" },
+          ].map((seite) => (
+            <figure key={seite.label} className="m-0">
+              <div className="rounded-2xl overflow-hidden border border-slate-200 bg-slate-50">
+                <Image
+                  src={seite.bild}
+                  alt={`${seite.label}: ${BELEG.produkt}`}
+                  width={800}
+                  height={800}
+                  className="w-full h-auto"
+                />
+              </div>
+              <figcaption className="mt-2 text-sm text-slate-500">{seite.label}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    ),
+  });
+}
+
+/* ─── DARSTELLUNG ────────────────────────────────────────────────── */
+
+export default function DoggyworldInhalt() {
+  const [aktiv, setAktiv] = useState(0);
+  const reiterRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const letzter = SCHRITTE.length - 1;
+
+  // Pfeiltasten sollen zwischen den Reitern wandern, so wie man es von einer
+  // Reiterleiste erwartet. Ohne das ist die Leiste zwar fokussierbar, aber man
+  // kommt mit der Tastatur nur ueber Tab-Sprünge weiter.
+  function beiTaste(e: React.KeyboardEvent, i: number) {
+    const ziel =
+      e.key === "ArrowRight" ? (i + 1) % SCHRITTE.length
+      : e.key === "ArrowLeft" ? (i - 1 + SCHRITTE.length) % SCHRITTE.length
+      : e.key === "Home" ? 0
+      : e.key === "End" ? letzter
+      : null;
+
+    if (ziel === null) return;
+    e.preventDefault();
+    setAktiv(ziel);
+    reiterRefs.current[ziel]?.focus();
+  }
+
+  return (
+    <AnimatedSection>
+      <div className="rounded-3xl border border-slate-200 bg-white overflow-hidden">
+        {/* ─── REITERLEISTE ───────────────────────────────────────── */}
+        <div
+          role="tablist"
+          aria-label="Ablauf des Projekts"
+          /*
+            Auf dem Handy zwei mal zwei statt einer Zeile. Vier Reiter
+            nebeneinander waeren dort entweder abgeschnitten oder haetten eine
+            Scrollleiste unter sich, und beides sieht nach Panne aus.
+          */
+          className="grid grid-cols-2 sm:flex gap-1 border-b border-slate-200 bg-slate-50/80 p-1.5"
+        >
+          {SCHRITTE.map((schritt, i) => {
+            const istAktiv = i === aktiv;
+            return (
+              <button
+                key={schritt.titel}
+                ref={(el) => {
+                  reiterRefs.current[i] = el;
+                }}
+                role="tab"
+                id={`reiter-${i}`}
+                aria-selected={istAktiv}
+                aria-controls={`feld-${i}`}
+                tabIndex={istAktiv ? 0 : -1}
+                onClick={() => setAktiv(i)}
+                onKeyDown={(e) => beiTaste(e, i)}
+                className={`relative sm:flex-1 whitespace-nowrap rounded-2xl px-3 sm:px-4 py-3 text-sm font-medium transition-colors duration-200 ${
+                  istAktiv ? "text-ocean-700" : "text-slate-500 hover:text-slate-800"
+                }`}
+              >
+                {/*
+                  Der weisse Kasten wandert zwischen den Reitern, statt je Reiter
+                  ein- und auszublenden. layoutId erledigt das.
+                */}
+                {istAktiv && (
+                  <motion.span
+                    layoutId="reiter-marker"
+                    className="absolute inset-0 rounded-2xl bg-white shadow-sm ring-1 ring-slate-200"
+                    transition={{ type: "spring", stiffness: 400, damping: 34 }}
                   />
-                </div>
-                <figcaption className="mt-3 text-sm text-slate-500">{seite.label}</figcaption>
-              </figure>
+                )}
+                <span className="relative flex items-center justify-center gap-2">
+                  <span
+                    className={`text-xs font-bold tabular-nums ${
+                      istAktiv ? "text-ocean-500" : "text-slate-300"
+                    }`}
+                  >
+                    0{i + 1}
+                  </span>
+                  {schritt.titel}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* ─── INHALTSFELD ────────────────────────────────────────── */}
+        {/*
+          Die Schritte sind verschieden hoch. Ohne Mindesthoehe springt die
+          Seite beim Wechseln, und der Knopf unten rutscht unter dem Finger weg.
+        */}
+        <div className="relative px-6 py-7 md:px-8 md:py-8 min-h-[320px] sm:min-h-[290px]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={aktiv}
+              role="tabpanel"
+              id={`feld-${aktiv}`}
+              aria-labelledby={`reiter-${aktiv}`}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              {SCHRITTE[aktiv].inhalt}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* ─── WEITERBLAETTERN ────────────────────────────────────── */}
+        {/*
+          Die Reiterleiste allein laedt nicht zum Weiterlesen ein. Wer der
+          Erzaehlung folgen will, klickt hier und bleibt in der Reihenfolge.
+        */}
+        <div className="flex items-center justify-between border-t border-slate-100 bg-slate-50/60 px-4 py-3">
+          <button
+            onClick={() => setAktiv((i) => Math.max(0, i - 1))}
+            disabled={aktiv === 0}
+            className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-medium text-slate-500 transition-colors hover:text-ocean-600 disabled:pointer-events-none disabled:opacity-0"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Zurück
+          </button>
+
+          <div className="flex gap-1.5" aria-hidden="true">
+            {SCHRITTE.map((schritt, i) => (
+              <span
+                key={schritt.titel}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  i === aktiv ? "w-5 bg-ocean-500" : "w-1.5 bg-slate-300"
+                }`}
+              />
             ))}
           </div>
-        </Abschnitt>
-      )}
-    </div>
+
+          <button
+            onClick={() => setAktiv((i) => Math.min(letzter, i + 1))}
+            disabled={aktiv === letzter}
+            className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-semibold text-ocean-600 transition-colors hover:text-ocean-700 disabled:pointer-events-none disabled:opacity-0"
+          >
+            {SCHRITTE[Math.min(letzter, aktiv + 1)].titel}
+            <ArrowRight className="h-4 w-4" />
+          </button>
+        </div>
+      </div>
+    </AnimatedSection>
   );
 }
