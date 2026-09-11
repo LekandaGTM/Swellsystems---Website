@@ -2,7 +2,7 @@ export default function DatenschutzPage() {
   return (
     <div className="min-h-screen pt-32 pb-24 px-6">
       <div className="max-w-2xl mx-auto">
-        <h1 className="font-display font-bold text-4xl text-slate-900 mb-2">Datenschutzerklärung</h1>
+        <h1 className="font-display font-bold text-3xl sm:text-4xl text-slate-900 mb-2 hyphens-auto break-words">Datenschutzerklärung</h1>
         <p className="text-slate-400 text-sm mb-12">Stand: April 2025</p>
 
         <section className="mb-10">
