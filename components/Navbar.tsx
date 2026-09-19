@@ -103,6 +103,7 @@ export default function Navbar({ locale }: NavbarProps) {
     { id: "beweis", label: t("caseStudies") },
     { href: `/${locale}/referenzen`, label: t("references") },
     { id: "about", label: t("about") },
+    { href: `/${locale}/blog`, label: t("blog") },
     { id: "contact", label: t("contact") },
   ];
 

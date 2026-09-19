@@ -87,6 +87,14 @@ export default function Footer({ locale }: FooterProps) {
                   )}
                 </li>
               ))}
+              <li>
+                <Link
+                  href={`/${locale}/blog`}
+                  className="text-sm hover:text-ocean-400 transition-colors"
+                >
+                  {nt("blog")}
+                </Link>
+              </li>
             </ul>
           </div>
 

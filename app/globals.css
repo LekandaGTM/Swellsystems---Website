@@ -55,3 +55,88 @@
   pointer-events: none;
   z-index: 0;
 }
+
+/* ── Blog ─────────────────────────────────────────────────────────────
+   Typografie fuer den aus Markdown gerenderten Artikelkoerper. Bewusst
+   hier und nicht als Tailwind-Typography-Plugin: eine Abhaengigkeit
+   weniger, und die Werte passen zum Rest der Seite. */
+.blog-body {
+  color: #334155;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+.blog-body > * + * {
+  margin-top: 1.25rem;
+}
+.blog-body h2 {
+  font-family: var(--font-plus-jakarta), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.75rem;
+  line-height: 1.25;
+  color: #0f172a;
+  margin-top: 3rem;
+  scroll-margin-top: 6rem;
+}
+.blog-body h3 {
+  font-family: var(--font-plus-jakarta), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #0f172a;
+  margin-top: 2rem;
+  scroll-margin-top: 6rem;
+}
+.blog-body strong {
+  color: #0f172a;
+  font-weight: 600;
+}
+.blog-body a {
+  color: #0284c7;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
+}
+.blog-body a:hover {
+  color: #f97316;
+}
+.blog-body ul,
+.blog-body ol {
+  padding-left: 1.5rem;
+}
+.blog-body ul {
+  list-style: disc;
+}
+.blog-body ol {
+  list-style: decimal;
+}
+.blog-body li + li {
+  margin-top: 0.5rem;
+}
+.blog-body li::marker {
+  color: #0ea5e9;
+}
+.blog-body em {
+  color: #64748b;
+}
+.blog-table {
+  overflow-x: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+}
+.blog-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+.blog-table th {
+  background: #f8fafc;
+  text-align: left;
+  font-weight: 600;
+  color: #0f172a;
+  padding: 0.75rem 1rem;
+  white-space: nowrap;
+}
+.blog-table td {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid #e2e8f0;
+  vertical-align: top;
+}

@@ -25,6 +25,7 @@ import {
   Check,
 } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
+import BlogTeaser from "@/components/BlogTeaser";
 
 const CAL_LINK = "https://cal.com/calvin-heim-swellsystems/30min";
 
@@ -1017,6 +1018,9 @@ export default function ProzessPage() {
           </div>
         </div>
       </section>
+
+      {/* ─── BLOG ─────────────────────────────────────────────────── */}
+      <BlogTeaser locale="de" />
 
       {/* ─── CONTACT ──────────────────────────────────────────────── */}
       <section id="contact" className="py-24 px-6 scroll-mt-20">
