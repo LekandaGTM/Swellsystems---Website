@@ -2,50 +2,84 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, CalendarDays, Clock, Linkedin, CalendarCheck } from "lucide-react";
+import { setRequestLocale } from "next-intl/server";
 import { getAllPosts, getPost, formatDate } from "@/lib/blog";
+import { CALVIN_ID, ORG_ID, SITE_URL, brotkrumenSchema, jsonLd, seitenMetadaten } from "@/lib/seo";
 
 const CAL_LINK = "https://cal.com/calvin-heim-swellsystems/30min";
 
-// Bewusst ohne generateStaticParams: das Layout nutzt next-intl im Server
-// Component, und das erzwingt dynamisches Rendering. Die Seite wird also pro
-// Aufruf auf dem Server gerendert. Fuer Suchmaschinen und KI-Crawler ist das
-// gleichwertig, der fertige Text steht im ausgelieferten HTML.
+// Statisch beim Build gerendert. Frueher ging das nicht, weil next-intl im
+// Layout Request-Header las; seit setRequestLocale() im Layout schon.
+export function generateStaticParams() {
+  return getAllPosts().map((p) => ({ locale: "de", slug: p.slug }));
+}
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const post = getPost(params.slug);
   if (!post) return {};
-  const url = `https://www.swellsystems.ch/de/blog/${post.slug}`;
+  return seitenMetadaten({
+    pfad: `/de/blog/${post.slug}`,
+    titel: post.metaTitle ?? post.title,
+    beschreibung: post.description,
+    // Das Bild kommt aus opengraph-image.tsx neben dieser Datei.
+    bild: null,
+    typ: "article",
+    artikel: { veroeffentlicht: post.datePublished, geaendert: post.dateModified },
+  });
+}
+
+/*
+ * Das BlogPosting-Schema schreibt der Blog-Agent als json-Block ans Ende der
+ * Markdown-Datei. Was fuer alle Beitraege gleich ist, ergaenzt diese Seite:
+ * Bild, Verlag mit Logo und die Verknuepfung zur Organisation. Sonst muesste
+ * jeder neue Beitrag daran denken, und genau das vergisst man.
+ */
+function artikelSchema(jsonRoh: string | undefined, slug: string) {
+  const url = `${SITE_URL}/de/blog/${slug}`;
+  let artikel: Record<string, unknown> = {};
+  try {
+    artikel = jsonRoh ? JSON.parse(jsonRoh) : {};
+  } catch {
+    artikel = {};
+  }
+  if (artikel["@type"] !== "BlogPosting") return null;
+
   return {
-    title: post.metaTitle ?? post.title,
-    description: post.description,
-    alternates: { canonical: url },
-    openGraph: {
-      title: post.metaTitle ?? post.title,
-      description: post.description,
-      url,
-      type: "article",
-      publishedTime: post.datePublished,
-      modifiedTime: post.dateModified ?? post.datePublished,
-      authors: ["Calvin Heim"],
+    ...artikel,
+    image: `${url}/opengraph-image`,
+    author: { ...(artikel.author as object), "@id": CALVIN_ID },
+    publisher: {
+      "@type": "Organization",
+      "@id": ORG_ID,
+      name: "Swellsystems",
+      url: `${SITE_URL}/de`,
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/swellsystems-logo.png` },
     },
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
   };
 }
 
 export default function BlogPost({ params }: { params: { locale: string; slug: string } }) {
   const { locale, slug } = params;
+  setRequestLocale(locale);
   const post = getPost(slug);
   if (!post) notFound();
+
+  const schema = artikelSchema(post.jsonLd, post.slug);
+  const brotkrumen = brotkrumenSchema([
+    { name: "Startseite", pfad: "/de" },
+    { name: "Blog", pfad: "/de/blog" },
+    { name: post.title, pfad: `/de/blog/${post.slug}` },
+  ]);
 
   const weitere = getAllPosts().filter((p) => p.slug !== slug).slice(0, 2);
 
   return (
     <>
-      {post.jsonLd && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: post.jsonLd }}
-        />
+      {schema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(schema) }} />
       )}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(brotkrumen) }} />
 
       <article className="px-6 pt-28 pb-20">
         <div className="max-w-3xl mx-auto">
@@ -111,7 +145,7 @@ export default function BlogPost({ params }: { params: { locale: string; slug: s
               href={CAL_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2.5 bg-ocean-500 hover:bg-ocean-400 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-500/25 hover:-translate-y-0.5"
+              className="group inline-flex items-center gap-2.5 bg-ocean-700 hover:bg-ocean-600 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-500/25 hover:-translate-y-0.5"
             >
               <CalendarCheck className="w-4 h-4" />
               Kostenloses Erstgespräch

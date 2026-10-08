@@ -29,6 +29,11 @@ export type Referenz = {
    * Firmennamen: den traegt daneben das Logo.
    */
   titel: string;
+  /**
+   * Titel fuer Google und den Browser-Tab, hoechstens rund 60 Zeichen. Der
+   * lange titel oben ist dafuer zu lang und wuerde abgeschnitten.
+   */
+  seoTitel: string;
   /** Anzeige ohne Schema, url mit. Getrennt, damit "https://" nicht mitlaeuft. */
   website: { anzeige: string; url: string };
   /** Von Start bis Uebergabe. */
@@ -59,6 +64,7 @@ export const REFERENZEN: Referenz[] = [
     titel:
       "Onlineshop verringert die Produktbild-Erstellung dank Custom Interface " +
       "und KI-Generierung von zwei Stunden auf fünf Minuten pro Produkt.",
+    seoTitel: "Doggyworld: KI-Produktbilder automatisiert | Swellsystems",
     website: { anzeige: "doggyworld.ch", url: "https://doggyworld.ch" },
     dauer: "3 Wochen",
     kurz:

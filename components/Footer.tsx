@@ -58,10 +58,10 @@ export default function Footer({ locale }: FooterProps) {
 
           {/* Navigation */}
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4">
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
               {t("links")}
             </p>
-            <ul className="space-y-2.5">
+            <ul className="space-y-0.5">
               {[
                 { id: "problem", label: nt("services") },
                 { id: "mechanismus", label: nt("howItWorks") },
@@ -73,14 +73,14 @@ export default function Footer({ locale }: FooterProps) {
                   {isHomePage ? (
                     <button
                       onClick={() => scrollTo(link.id)}
-                      className="text-sm hover:text-ocean-400 transition-colors text-left"
+                      className="inline-block py-1.5 text-sm hover:text-ocean-400 transition-colors text-left"
                     >
                       {link.label}
                     </button>
                   ) : (
                     <Link
                       href={`/${locale}#${link.id}`}
-                      className="text-sm hover:text-ocean-400 transition-colors"
+                      className="inline-block py-1.5 text-sm hover:text-ocean-400 transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -90,9 +90,29 @@ export default function Footer({ locale }: FooterProps) {
               <li>
                 <Link
                   href={`/${locale}/blog`}
-                  className="text-sm hover:text-ocean-400 transition-colors"
+                  className="inline-block py-1.5 text-sm hover:text-ocean-400 transition-colors"
                 >
                   {nt("blog")}
+                </Link>
+              </li>
+              {/*
+                Referenzen und Handwerk als echte Seiten. Die Handwerk-Seite war
+                vorher von nirgends verlinkt und nur ueber die Sitemap zu finden.
+              */}
+              <li>
+                <Link
+                  href={`/${locale}/referenzen`}
+                  className="inline-block py-1.5 text-sm hover:text-ocean-400 transition-colors"
+                >
+                  Referenzen
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${locale}/handwerk`}
+                  className="inline-block py-1.5 text-sm hover:text-ocean-400 transition-colors"
+                >
+                  Für Handwerksbetriebe
                 </Link>
               </li>
             </ul>
@@ -100,22 +120,22 @@ export default function Footer({ locale }: FooterProps) {
 
           {/* Legal */}
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4">
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
               {t("legal")}
             </p>
-            <ul className="space-y-2.5">
+            <ul className="space-y-0.5">
               <li>
-                <Link href={`/${locale}/impressum`} className="text-sm hover:text-ocean-400 transition-colors">
+                <Link href={`/${locale}/impressum`} className="inline-block py-1.5 text-sm hover:text-ocean-400 transition-colors">
                   {t("imprint")}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/datenschutz`} className="text-sm hover:text-ocean-400 transition-colors">
+                <Link href={`/${locale}/datenschutz`} className="inline-block py-1.5 text-sm hover:text-ocean-400 transition-colors">
                   {t("privacy")}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/agb`} className="text-sm hover:text-ocean-400 transition-colors">
+                <Link href={`/${locale}/agb`} className="inline-block py-1.5 text-sm hover:text-ocean-400 transition-colors">
                   AGB
                 </Link>
               </li>
@@ -128,7 +148,7 @@ export default function Footer({ locale }: FooterProps) {
           <div className="flex items-center gap-4">
             <a
               href="mailto:calvin@swellsystems.ch"
-              className="text-xs text-slate-500 hover:text-ocean-400 transition-colors"
+              className="inline-block py-2 text-xs text-slate-400 hover:text-ocean-400 transition-colors"
             >
               calvin@swellsystems.ch
             </a>

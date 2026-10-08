@@ -1,4 +1,5 @@
 import { getAllPosts } from "@/lib/blog";
+import { REFERENZEN } from "../[locale]/referenzen/referenzen-daten";
 
 /**
  * /llms.txt: strukturierter Wegweiser fuer KI-Crawler (ChatGPT, Perplexity,
@@ -14,8 +15,8 @@ export function GET() {
 > Prozessautomatisierung für Schweizer KMU und Agenturen. Wir bauen Automatisierungen für Belegverarbeitung, Offert- und Auftragsprozesse, Reporting und Akquise, meist mit n8n, auf Wunsch selbst gehostet in der Schweiz.
 
 ## Über
-- Firma: Swellsystems GmbH, Schweiz
-- Gründer: Calvin Heim (https://www.linkedin.com/in/calvin-heim/)
+- Firma: Swellsystems ist eine Marke der LeadLab GmbH, Espenmoostrasse 6, 9008 St. Gallen, Schweiz (UID CHE-344.886.977)
+- Gründer und Geschäftsführer: Calvin Heim (https://www.linkedin.com/in/calvin-heim/)
 - Zielgruppe: B2B-KMU ab 5 Mitarbeitenden, Agenturen und Coaches, Markt Schweiz
 - Kontakt: calvin@swellsystems.ch
 
@@ -24,6 +25,11 @@ export function GET() {
 - [Referenzen](https://www.swellsystems.ch/de/referenzen): Projekte mit Zahlen
 - [Handwerk](https://www.swellsystems.ch/de/handwerk): Automatisierung für Handwerksbetriebe
 - [Blog](https://www.swellsystems.ch/de/blog): wöchentliche Beiträge zu KI- und Prozessautomatisierung
+
+## Referenzen
+${REFERENZEN.map(
+  (r) => `- [${r.firma}](https://www.swellsystems.ch/de/referenzen/${r.slug}): ${r.titel}`
+).join("\n")}
 
 ## Beiträge
 ${posts

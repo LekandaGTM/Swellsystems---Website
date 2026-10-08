@@ -1,4 +1,15 @@
-export default function AGBPage() {
+import { setRequestLocale } from "next-intl/server";
+import { seitenMetadaten } from "@/lib/seo";
+
+export const metadata = seitenMetadaten({
+  pfad: "/de/agb",
+  titel: "AGB | Swellsystems",
+  beschreibung:
+    "Allgemeine Geschäftsbedingungen von Swellsystems (LeadLab GmbH) für Automatisierungs- und Beratungsprojekte.",
+});
+
+export default function AGBPage({ params }: { params: { locale: string } }) {
+  setRequestLocale(params.locale);
   return (
     <div className="min-h-screen pt-32 pb-24 px-6">
       <div className="max-w-2xl mx-auto">

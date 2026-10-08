@@ -90,7 +90,8 @@
   font-weight: 600;
 }
 .blog-body a {
-  color: #0284c7;
+  /* ocean-700: ocean-600 lag auf Weiss bei 4.09:1, unter der WCAG-Grenze 4.5 */
+  color: #0369a1;
   text-decoration: underline;
   text-underline-offset: 3px;
   transition: color 0.15s ease;

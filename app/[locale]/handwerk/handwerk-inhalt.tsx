@@ -197,13 +197,14 @@ function StatusQuoRechner() {
     <div className="bg-white border border-slate-200 rounded-3xl p-8 md:p-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
         <div className="space-y-8">
-          {sliders.map(({ label, value, display, min, max, step, onChange }) => (
+          {sliders.map(({ label, value, display, min, max, step, onChange }, i) => (
             <div key={label}>
               <div className="flex items-center justify-between mb-3">
-                <label className="text-sm font-semibold text-slate-700">{label}</label>
+                <label htmlFor={`rechner-handwerk-${i}`} className="text-sm font-semibold text-slate-700">{label}</label>
                 <span className="text-sm font-bold text-ocean-600">{display}</span>
               </div>
               <input
+                id={`rechner-handwerk-${i}`}
                 type="range"
                 min={min}
                 max={max}
@@ -228,7 +229,7 @@ function StatusQuoRechner() {
                   onClick={() => setSzenarioIndex(i)}
                   className={`text-xs font-semibold py-2.5 rounded-xl border transition-colors ${
                     i === szenarioIndex
-                      ? "bg-ocean-600 border-ocean-600 text-white"
+                      ? "bg-ocean-700 border-ocean-700 text-white"
                       : "bg-white border-slate-200 text-slate-600 hover:border-ocean-300"
                   }`}
                 >
@@ -377,38 +378,34 @@ export default function HandwerkLandingPage() {
         </div>
 
         <div className="relative max-w-5xl mx-auto text-center w-full space-y-8">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+          {/* Hero ohne Einblenden, aus demselben Grund wie auf der Startseite (LCP). */}
+          <div>
             <span className="inline-flex items-center gap-2 bg-ocean-50 border border-ocean-200 text-ocean-700 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full">
               <span className="w-1.5 h-1.5 rounded-full bg-ocean-500 animate-pulse" />
-              KI-Automatisierung für Handwerkliche Betriebe
+              KI-Automatisierung für Handwerksbetriebe
             </span>
-          </motion.div>
+          </div>
 
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="space-y-2">
-            <h1 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-slate-900 leading-[1.15]">
+          <h1 className="space-y-2">
+            <span className="block font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-slate-900 leading-[1.15]">
               Automatisierungen und KI-Agenten, die deine Büroarbeit
-            </h1>
-            <h1 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.15] gradient-text pb-1">
-              für dich erledigen.
-            </h1>
-          </motion.div>
+            </span>
+            <span className="block font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.15] gradient-text pb-1">
+              im Handwerk für dich erledigen.
+            </span>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="max-w-2xl mx-auto text-slate-600 text-lg leading-relaxed"
-          >
+          <p className="max-w-2xl mx-auto text-slate-600 text-lg leading-relaxed">
             Durch unsere Automatisierungen und KI-Agenten sparen handwerkliche Betriebe im Schnitt 10+ Stunden
             manueller Büroarbeit pro Woche.
-          </motion.p>
+          </p>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }} className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href={CAL_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-2 bg-ocean-600 hover:bg-ocean-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-200 hover:-translate-y-1"
+              className="group flex items-center gap-2 bg-ocean-700 hover:bg-ocean-800 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-200 hover:-translate-y-1"
             >
               Kostenloses Analysegespräch buchen
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -419,16 +416,16 @@ export default function HandwerkLandingPage() {
             >
               So funktioniert's
             </button>
-          </motion.div>
+          </div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.55 }} className="grid grid-cols-3 gap-6 max-w-xl mx-auto pb-4">
+          <div className="grid grid-cols-3 gap-6 max-w-xl mx-auto pb-4">
             {stats.map((stat, i) => (
               <div key={i} className="text-center">
                 <div className="font-display font-bold text-2xl md:text-3xl text-ocean-600">{stat.value}</div>
                 <div className="text-xs text-slate-500 mt-1 leading-tight">{stat.label}</div>
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -649,7 +646,7 @@ export default function HandwerkLandingPage() {
               href={CAL_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2.5 bg-ocean-600 hover:bg-ocean-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-200 hover:-translate-y-0.5"
+              className="group inline-flex items-center gap-2.5 bg-ocean-700 hover:bg-ocean-800 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-200 hover:-translate-y-0.5"
             >
               <CalendarDays className="w-4 h-4" />
               Kostenloses Analysegespräch buchen
@@ -717,8 +714,8 @@ export default function HandwerkLandingPage() {
                     src="/Hero_Bild_bearbeitet.png"
                     alt="Calvin Heim"
                     fill
+                    sizes="(max-width: 768px) 100vw, 560px"
                     className="object-cover object-[center_15%]"
-                    priority
                   />
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950 via-slate-900/70 to-transparent p-8">
                     <div className="flex items-end justify-between gap-4">
@@ -836,7 +833,7 @@ export default function HandwerkLandingPage() {
                     href={CAL_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-2.5 bg-ocean-500 hover:bg-ocean-400 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-500/25 hover:-translate-y-0.5"
+                    className="group inline-flex items-center gap-2.5 bg-ocean-700 hover:bg-ocean-600 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-500/25 hover:-translate-y-0.5"
                   >
                     <CalendarDays className="w-4 h-4" />
                     Kostenloses Analysegespräch buchen

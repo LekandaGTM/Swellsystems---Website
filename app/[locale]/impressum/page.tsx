@@ -1,9 +1,20 @@
-export default function ImpressumPage() {
+import { setRequestLocale } from "next-intl/server";
+import { seitenMetadaten } from "@/lib/seo";
+
+export const metadata = seitenMetadaten({
+  pfad: "/de/impressum",
+  titel: "Impressum | Swellsystems",
+  beschreibung:
+    "Impressum von Swellsystems, einer Marke der LeadLab GmbH in St. Gallen. Kontakt, UID und verantwortliche Person.",
+});
+
+export default function ImpressumPage({ params }: { params: { locale: string } }) {
+  setRequestLocale(params.locale);
   return (
     <div className="min-h-screen pt-32 pb-24 px-6">
       <div className="max-w-2xl mx-auto">
         <h1 className="font-display font-bold text-3xl sm:text-4xl text-slate-900 mb-2 hyphens-auto break-words">Impressum</h1>
-        <p className="text-slate-400 text-sm mb-12">Stand: April 2025</p>
+        <p className="text-slate-400 text-sm mb-12">Stand: Oktober 2026</p>
 
         <section className="mb-10">
           <h2 className="font-display font-semibold text-lg text-slate-900 mb-4 pb-2 border-b border-slate-100">
@@ -49,25 +60,6 @@ export default function ImpressumPage() {
             <p>Telefon: <a href="tel:+41796495298" className="text-ocean-600 hover:underline">079 649 52 98</a></p>
             <p>E-Mail: <a href="mailto:calvin@swellsystems.ch" className="text-ocean-600 hover:underline">calvin@swellsystems.ch</a></p>
           </div>
-        </section>
-
-        <section className="mb-10">
-          <h2 className="font-display font-semibold text-lg text-slate-900 mb-4 pb-2 border-b border-slate-100">
-            Europäische Streitbeilegungs-Plattform
-          </h2>
-          <p className="text-slate-600 leading-relaxed text-sm">
-            Seit dem 15. Februar 2016 stellt die EU-Kommission eine Plattform für aussergerichtliche Streitschlichtung bereit.
-            Verbrauchern gibt dies die Möglichkeit, Streitigkeiten im Zusammenhang mit Online-Bestellungen zunächst ohne die
-            Einschaltung eines Gerichts zu klären. Die Streitbeilegungs-Plattform ist erreichbar unter:{" "}
-            <a
-              href="https://ec.europa.eu/consumers/odr"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-ocean-600 hover:underline break-all"
-            >
-              https://ec.europa.eu/consumers/odr
-            </a>
-          </p>
         </section>
 
         <section>

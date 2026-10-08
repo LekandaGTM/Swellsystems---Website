@@ -181,7 +181,7 @@ export default function Navbar({ locale }: NavbarProps) {
             href="https://cal.com/calvin-heim-swellsystems/30min"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-ocean-600 hover:bg-ocean-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-ocean-200 hover:-translate-y-0.5"
+            className="bg-ocean-700 hover:bg-ocean-800 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-ocean-200 hover:-translate-y-0.5"
           >
             {t("cta")}
           </a>
@@ -258,7 +258,7 @@ export default function Navbar({ locale }: NavbarProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}
-                  className="bg-ocean-600 text-white text-sm font-semibold px-5 py-2.5 rounded-full"
+                  className="bg-ocean-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full"
                 >
                   {t("cta")}
                 </a>

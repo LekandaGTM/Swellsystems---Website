@@ -43,7 +43,7 @@ export default function MaintenancePage() {
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
               href="mailto:calvin@swellsystems.ch"
-              className="inline-flex items-center justify-center rounded-full bg-ocean-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-ocean-200/60 transition hover:-translate-y-0.5 hover:bg-ocean-700"
+              className="inline-flex items-center justify-center rounded-full bg-ocean-700 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-ocean-200/60 transition hover:-translate-y-0.5 hover:bg-ocean-800"
             >
               Schreiben Sie uns
             </a>

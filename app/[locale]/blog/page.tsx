@@ -1,18 +1,20 @@
-import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
+import { seitenMetadaten } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowRight, CalendarDays, Clock } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import { getAllPosts, formatDate } from "@/lib/blog";
 
-export const metadata: Metadata = {
-  title: "Blog | Automatisierung für Schweizer KMU | Swellsystems",
-  description:
+export const metadata = seitenMetadaten({
+  pfad: "/de/blog",
+  titel: "Blog | Automatisierung für Schweizer KMU | Swellsystems",
+  beschreibung:
     "Jede Woche ein Beitrag zu KI- und Prozessautomatisierung in Schweizer KMU und Agenturen. Konkret, mit Zahlen, ohne Buzzwords.",
-  alternates: { canonical: "https://www.swellsystems.ch/de/blog" },
-};
+});
 
 export default function BlogIndex({ params }: { params: { locale: string } }) {
   const { locale } = params;
+  setRequestLocale(locale);
   const posts = getAllPosts();
 
   return (

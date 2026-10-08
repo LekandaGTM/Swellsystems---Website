@@ -191,12 +191,13 @@ function KostenRechner() {
           <div className="p-8 md:p-10 space-y-8">
             <div>
               <div className="flex items-baseline justify-between mb-3">
-                <label className="text-sm font-semibold text-slate-700">
+                <label htmlFor="rechner-mitarbeitende" className="text-sm font-semibold text-slate-700">
                   Mitarbeitende im Betrieb
                 </label>
                 <span className="font-display font-bold text-ocean-600">{mitarbeiter}</span>
               </div>
               <input
+                id="rechner-mitarbeitende"
                 type="range"
                 min={1}
                 max={50}
@@ -208,7 +209,7 @@ function KostenRechner() {
 
             <div>
               <div className="flex items-baseline justify-between mb-3">
-                <label className="text-sm font-semibold text-slate-700 pr-3">
+                <label htmlFor="rechner-stunden" className="text-sm font-semibold text-slate-700 pr-3">
                   Stunden pro Woche und Person für manuelle Abläufe
                 </label>
                 <span className="font-display font-bold text-ocean-600 shrink-0 whitespace-nowrap">
@@ -216,6 +217,7 @@ function KostenRechner() {
                 </span>
               </div>
               <input
+                id="rechner-stunden"
                 type="range"
                 min={1}
                 max={20}
@@ -231,12 +233,13 @@ function KostenRechner() {
 
             <div>
               <div className="flex items-baseline justify-between mb-3">
-                <label className="text-sm font-semibold text-slate-700">
+                <label htmlFor="rechner-satz" className="text-sm font-semibold text-slate-700">
                   Interner Stundensatz
                 </label>
                 <span className="font-display font-bold text-ocean-600">CHF {satz}</span>
               </div>
               <input
+                id="rechner-satz"
                 type="range"
                 min={40}
                 max={200}
@@ -487,17 +490,24 @@ export default function ProzessPage() {
         </div>
 
         <div className="relative max-w-5xl mx-auto text-center w-full space-y-8">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+          {/*
+            Der Hero erscheint ohne Einblenden. Mit opacity 0 als Startwert galt
+            der Text fuer den Browser bis nach dem JavaScript als unsichtbar, und
+            der LCP auf dem Handy lag bei ueber drei Sekunden. Animationen gibt es
+            erst ab dem naechsten Abschnitt.
+          */}
+          <div>
             <span className="inline-flex items-center gap-2 bg-ocean-50 border border-ocean-200 text-ocean-700 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full">
               <span className="w-1.5 h-1.5 rounded-full bg-ocean-500 animate-pulse" />
               KI-Automatisierung für B2B-KMU und Agenturen
             </span>
-          </motion.div>
+          </div>
 
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="space-y-2">
-            <h1 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-slate-900 leading-[1.15]">
-              Mehr Kunden dank
-            </h1>
+          {/* Eine einzige h1 mit zwei Zeilen. Vorher waren es zwei h1-Elemente. */}
+          <h1 className="space-y-2">
+            <span className="block font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-slate-900 leading-[1.15]">
+              Mehr Marge dank
+            </span>
             {/*
               Eigener Verlauf statt der Klasse .gradient-text, die von Blau nach
               Orange laeuft. Blau und Orange liegen sich auf dem Farbkreis fast
@@ -517,35 +527,30 @@ export default function ProzessPage() {
               ist. "Skalieren mit KI." hatte keine einzige Unterlaenge, deshalb
               fiel es vorher nicht auf.
             */}
-            <h1
-              className="font-display font-bold text-3xl sm:text-4xl md:text-[2.75rem] lg:text-[3.25rem] tracking-tight leading-[1.3] gradient-text pb-3"
+            <span
+              className="block font-display font-bold text-3xl sm:text-4xl md:text-[2.75rem] lg:text-[3.25rem] tracking-tight leading-[1.3] gradient-text pb-3"
               style={{
                 backgroundImage:
                   "linear-gradient(120deg, #0ea5e9 0%, #0284c7 55%, #075985 100%)",
               }}
             >
               KI-Prozessen &amp; Automatisierungen
-            </h1>
-          </motion.div>
+            </span>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="max-w-2xl mx-auto text-slate-600 text-lg leading-relaxed"
-          >
+          <p className="max-w-2xl mx-auto text-slate-600 text-lg leading-relaxed">
             Mit intelligenten KI-Prozessen und Automatisierungen helfen wir B2B-KMU und
             Agenturen, wiederkehrende Prozesse zu automatisieren, sodass du deine
             operativen Kosten um 30 bis 50 Prozent senken kannst, mehr Gewinn erzielst
             und dafür keine neuen Mitarbeiter einstellen musst.
-          </motion.p>
+          </p>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }} className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href={CAL_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-2 bg-ocean-600 hover:bg-ocean-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-200 hover:-translate-y-1"
+              className="group flex items-center gap-2 bg-ocean-700 hover:bg-ocean-800 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-200 hover:-translate-y-1"
             >
               Kostenloses Erstgespräch buchen
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -556,19 +561,14 @@ export default function ProzessPage() {
             >
               So funktioniert&apos;s
             </button>
-          </motion.div>
+          </div>
 
           {/*
             Unter den Knoepfen und nicht darueber: der Untertitel ist lang, und
             auf dem Handy schoebe eine weitere Zeile davor den Knopf unter den
             Bildschirmrand. Hier steht die Bestaerkung fuer die, die noch zoegern.
           */}
-          <motion.ul
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.55 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-x-8 gap-y-3 pt-2"
-          >
+          <ul className="flex flex-col sm:flex-row items-center justify-center gap-x-8 gap-y-3 pt-2">
             {[
               "Mehr Gewinnmarge",
               "30 bis 50 % weniger operative Kosten",
@@ -579,7 +579,7 @@ export default function ProzessPage() {
                 {nutzen}
               </li>
             ))}
-          </motion.ul>
+          </ul>
 
         </div>
       </section>
@@ -854,7 +854,7 @@ export default function ProzessPage() {
               href={CAL_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2.5 bg-ocean-600 hover:bg-ocean-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-200 hover:-translate-y-0.5"
+              className="group inline-flex items-center gap-2.5 bg-ocean-700 hover:bg-ocean-800 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-200 hover:-translate-y-0.5"
             >
               <CalendarDays className="w-4 h-4" />
               Kostenloses Erstgespräch buchen
@@ -923,9 +923,8 @@ export default function ProzessPage() {
                     src="/Hero_Bild_bearbeitet.png"
                     alt="Calvin Heim"
                     fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    sizes="(max-width: 768px) 100vw, 560px"
                     className="object-cover object-[center_15%]"
-                    priority
                   />
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950 via-slate-900/70 to-transparent p-8">
                     <div className="flex items-end justify-between gap-4">
@@ -1050,7 +1049,7 @@ export default function ProzessPage() {
                     href={CAL_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-2.5 bg-ocean-500 hover:bg-ocean-400 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-500/25 hover:-translate-y-0.5"
+                    className="group inline-flex items-center gap-2.5 bg-ocean-700 hover:bg-ocean-600 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl hover:shadow-ocean-500/25 hover:-translate-y-0.5"
                   >
                     <CalendarDays className="w-4 h-4" />
                     Kostenloses Erstgespräch buchen

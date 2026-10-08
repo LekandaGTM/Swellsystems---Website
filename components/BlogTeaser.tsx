@@ -14,6 +14,7 @@ interface BlogTeaserProps {
 
 export default function BlogTeaser({ locale = "de" }: BlogTeaserProps) {
   const neueste = posts.slice(0, 3);
+  const weitere = posts.slice(3, 8);
   if (neueste.length === 0) return null;
 
   const datum = (iso: string) => {
@@ -68,6 +69,29 @@ export default function BlogTeaser({ locale = "de" }: BlogTeaserProps) {
             </AnimatedSection>
           ))}
         </div>
+
+        {/*
+          Die aelteren Beitraege als schlichte Liste. Ohne sie verlinkte die
+          Startseite nur die drei neuesten, und jeder weitere Beitrag rutschte
+          eine Ebene tiefer, sobald ein neuer erschien.
+        */}
+        {weitere.length > 0 && (
+          <AnimatedSection className="mt-10 max-w-3xl mx-auto">
+            <ul className="divide-y divide-slate-200 border-y border-slate-200">
+              {weitere.map((post) => (
+                <li key={post.slug}>
+                  <Link
+                    href={`/${locale}/blog/${post.slug}`}
+                    className="group flex items-center justify-between gap-4 py-3 text-slate-700 hover:text-ocean-700 transition-colors"
+                  >
+                    <span className="font-medium leading-snug">{post.title}</span>
+                    <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </AnimatedSection>
+        )}
 
         <AnimatedSection className="text-center mt-10">
           <Link

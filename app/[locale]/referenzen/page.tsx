@@ -1,20 +1,23 @@
-import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
+import { seitenMetadaten } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import { REFERENZEN } from "./referenzen-daten";
 
-export const metadata: Metadata = {
-  title: "Referenzen | Swellsystems",
-  description:
-    "Echte Projekte aus der Automatisierung von B2B-KMU und Agenturen, mit den Zahlen dazu.",
-};
+export const metadata = seitenMetadaten({
+  pfad: "/de/referenzen",
+  titel: "Referenzen: Automatisierungsprojekte | Swellsystems",
+  beschreibung:
+    "Echte Automatisierungsprojekte von Schweizer KMU und Onlineshops: Ausgangslage, Lösung und gemessene Ergebnisse.",
+});
 
 const CAL_LINK = "https://cal.com/calvin-heim-swellsystems/30min";
 
 export default function Referenzen({ params }: { params: { locale: string } }) {
   const { locale } = params;
+  setRequestLocale(locale);
 
   return (
     <>

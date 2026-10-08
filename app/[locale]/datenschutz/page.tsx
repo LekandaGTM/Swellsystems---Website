@@ -1,4 +1,15 @@
-export default function DatenschutzPage() {
+import { setRequestLocale } from "next-intl/server";
+import { seitenMetadaten } from "@/lib/seo";
+
+export const metadata = seitenMetadaten({
+  pfad: "/de/datenschutz",
+  titel: "Datenschutzerklärung | Swellsystems",
+  beschreibung:
+    "Wie Swellsystems (LeadLab GmbH) Personendaten nach dem Schweizer Datenschutzgesetz (nDSG) bearbeitet und welche Rechte du hast.",
+});
+
+export default function DatenschutzPage({ params }: { params: { locale: string } }) {
+  setRequestLocale(params.locale);
   return (
     <div className="min-h-screen pt-32 pb-24 px-6">
       <div className="max-w-2xl mx-auto">
@@ -16,7 +27,7 @@ export default function DatenschutzPage() {
             <p>9008 St. Gallen</p>
             <p>Telefon: <a href="tel:+41796495298" className="text-ocean-600 hover:underline">079 649 52 98</a></p>
             <p>E-Mail: <a href="mailto:calvin@swellsystems.ch" className="text-ocean-600 hover:underline">calvin@swellsystems.ch</a></p>
-            <p>Website: <a href="https://swellsystems.ch" className="text-ocean-600 hover:underline">swellsystems.ch</a></p>
+            <p>Website: <a href="https://www.swellsystems.ch/de" className="text-ocean-600 hover:underline">swellsystems.ch</a></p>
           </div>
         </section>
 

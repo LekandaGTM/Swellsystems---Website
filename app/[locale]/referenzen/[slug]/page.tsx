@@ -2,31 +2,34 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { setRequestLocale } from "next-intl/server";
+import { brotkrumenSchema, jsonLd, seitenMetadaten } from "@/lib/seo";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
-import { referenzFinden } from "../referenzen-daten";
+import { REFERENZEN, referenzFinden } from "../referenzen-daten";
 import { inhaltFinden } from "../inhalte";
 
 const CAL_LINK = "https://cal.com/calvin-heim-swellsystems/30min";
 
 /*
- * Kein generateStaticParams hier.
- *
- * Es hat die Route auf statisch umgestellt, waehrend das Layout next-intl im
- * Server Component nutzt und damit dynamisches Rendern verlangt. Ergebnis war
- * ein 500 auf der fertig gebauten Seite, im Dev-Modus unsichtbar. Dazu kam,
- * dass es nur slug zurueckgab und nicht locale, die Route hat aber beide
- * Segmente. Alle uebrigen Seiten der Site rendern ebenfalls auf Anfrage.
+ * Frueher ohne generateStaticParams: das statische Rendern endete in einem 500,
+ * weil next-intl im Layout Request-Header las. Seit setRequestLocale() im
+ * Layout und hier braucht es die nicht mehr. Wichtig bleibt, beide Segmente
+ * zurueckzugeben, locale und slug.
  */
+export function generateStaticParams() {
+  return REFERENZEN.map((r) => ({ locale: "de", slug: r.slug }));
+}
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const referenz = referenzFinden(params.slug);
   if (!referenz) return { title: "Referenz | Swellsystems" };
 
-  return {
-    title: `${referenz.firma} | Referenz | Swellsystems`,
-    description: referenz.titel,
-  };
+  return seitenMetadaten({
+    pfad: `/de/referenzen/${referenz.slug}`,
+    titel: referenz.seoTitel,
+    beschreibung: referenz.titel,
+  });
 }
 
 export default function Referenzseite({
@@ -35,6 +38,7 @@ export default function Referenzseite({
   params: { locale: string; slug: string };
 }) {
   const { locale, slug } = params;
+  setRequestLocale(locale);
   const referenz = referenzFinden(slug);
   const Inhalt = inhaltFinden(slug);
 
@@ -43,8 +47,15 @@ export default function Referenzseite({
   // kaputtes Deployment.
   if (!referenz) notFound();
 
+  const brotkrumen = brotkrumenSchema([
+    { name: "Startseite", pfad: "/de" },
+    { name: "Referenzen", pfad: "/de/referenzen" },
+    { name: referenz.firma, pfad: `/de/referenzen/${referenz.slug}` },
+  ]);
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(brotkrumen) }} />
       {/* ─── KOPF ─────────────────────────────────────────────────── */}
       <section className="relative px-6 pt-32 pb-14">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -176,7 +187,7 @@ export default function Referenzseite({
                   href={CAL_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-7 inline-flex items-center gap-2 bg-ocean-600 hover:bg-ocean-700 text-white font-semibold px-6 py-3 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-ocean-200 hover:-translate-y-0.5"
+                  className="mt-7 inline-flex items-center gap-2 bg-ocean-700 hover:bg-ocean-800 text-white font-semibold px-6 py-3 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-ocean-200 hover:-translate-y-0.5"
                 >
                   Über ein ähnliches Projekt sprechen
                   <ArrowRight className="w-4 h-4" />

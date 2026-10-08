@@ -334,11 +334,34 @@ export default function DoggyworldInhalt() {
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
+                <h2 className="sr-only">{SCHRITTE[aktiv].titel}</h2>
                 {SCHRITTE[aktiv].inhalt}
               </motion.div>
             </AnimatePresence>
           </div>
         </motion.div>
+
+        {/*
+          Die uebrigen Schritte stehen ebenfalls im HTML, nur ausgeblendet.
+          Vorher lieferte der Server nur den ersten Reiter aus: Google und
+          KI-Suchen sahen von der Case Study rund 190 Woerter und keine einzige
+          Zwischenueberschrift. Jeder Schritt traegt eine h2, unsichtbar, weil
+          der Reiter dieselbe Rolle schon sichtbar uebernimmt.
+        */}
+        {SCHRITTE.map((schritt, i) =>
+          i === aktiv ? null : (
+            <div
+              key={schritt.titel}
+              role="tabpanel"
+              id={`feld-${i}`}
+              aria-labelledby={`reiter-${i}`}
+              hidden
+            >
+              <h2>{schritt.titel}</h2>
+              {schritt.inhalt}
+            </div>
+          )
+        )}
 
         {/* ─── WEITERBLAETTERN ────────────────────────────────────── */}
         {/*
