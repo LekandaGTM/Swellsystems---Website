@@ -2,7 +2,7 @@
 title: "Zeiterfassung im KMU: Warum sie mehr kann als nur das Gesetz erfüllen"
 slug: "zeiterfassung-kmu-schweiz"
 meta_title: "Zeiterfassung KMU Schweiz: Mehr als nur Pflicht"
-meta_description: "Zeiterfassung im KMU gilt als lästige Pflicht. Dabei zeigt sie, wo Ihre Stunden wirklich hingehen. Was Schweizer Betriebe aus den Daten lesen können."
+meta_description: "Zeiterfassung im KMU gilt als lästige Pflicht. Dabei zeigt sie, wo deine Stunden wirklich hingehen. Was Schweizer Betriebe aus den Daten lesen können."
 primary_keyword: "Zeiterfassung KMU Schweiz"
 secondary_keywords:
   - "Zeiterfassung Pflicht Schweiz KMU"
@@ -37,7 +37,7 @@ status: "published"
 
 Zeiterfassung im KMU ist die Pflicht, Arbeitszeiten der Mitarbeitenden nach Schweizer Arbeitsgesetz (ArG, Art. 46) zu dokumentieren. Die meisten Betriebe erfüllen sie widerwillig. Excel-Tabellen, handgeschriebene Zettel, bestenfalls eine App, die niemand gern öffnet. Der Irrglaube dahinter: Zeiterfassung ist eine gesetzliche Pflicht, die nichts bringt ausser Compliance.
 
-Das stimmt nicht. Zeiterfassung zeigt Ihnen, wo Ihre Stunden hingehen. Und das ist für einen Betrieb mit 10 oder 20 Leuten wertvoller als jede Kontrolle durch das Arbeitsinspektorat.
+Das stimmt nicht. Zeiterfassung zeigt dir, wo deine Stunden hingehen. Und das ist für einen Betrieb mit 10 oder 20 Leuten wertvoller als jede Kontrolle durch das Arbeitsinspektorat.
 
 ## Warum fühlt sich Zeiterfassung im KMU wie eine reine Pflicht an?
 
@@ -47,7 +47,7 @@ Also erfüllen die meisten Betriebe die Pflicht. Sie wählen ein Werkzeug, drüc
 
 Dazu kommt: Die meisten Zeiterfassungssysteme sind für grosse Firmen gebaut. Sie haben Funktionen, die ein 12-Personen-Betrieb nie braucht. Die Einführung kostet Zeit. Die Pflege kostet Nerven. Und was am Ende herauskommt, schaut sich selten jemand an.
 
-In einem Schweizer KMU mit 10 Mitarbeitenden fühlt sich Zeiterfassung deshalb an wie die Steuererklärung. Sie machen es, weil Sie müssen. Nicht weil es etwas bringt.
+In einem Schweizer KMU mit 10 Mitarbeitenden fühlt sich Zeiterfassung deshalb an wie die Steuererklärung. Du machst es, weil du musst. Nicht weil es etwas bringt.
 
 ## Was steckt in den erfassten Stunden tatsächlich?
 
@@ -67,11 +67,11 @@ Erfasst ein Betrieb seine Stunden nicht nur nach Kommen und Gehen, sondern grob 
 | Rapporte dauern 15 Minuten | Rapporte dauern 45 Minuten, weil die Daten fehlen |
 | Die Geschäftsführerin liefert 70 % der Zeit | Sie liefert 40 %, den Rest organisiert sie |
 
-### Drei Fragen, die Ihre Zeitdaten beantworten
+### Drei Fragen, die deine Zeitdaten beantworten
 
-Nutzen Sie Ihre Zeiterfassung als Werkzeug statt als Pflichtübung. Dann beantwortet sie drei Fragen, die für einen Kleinbetrieb entscheidend sind:
+Nutze deine Zeiterfassung als Werkzeug statt als Pflichtübung. Dann beantwortet sie drei Fragen, die für einen Kleinbetrieb entscheidend sind:
 
-**1. Wer ist überlastet, bevor es knallt?** Eine Person hat regelmässig 50 Stunden auf dem Rapport, eine andere 38. Sie sehen das Problem, bevor es zum [Personalausfall](https://www.swellsystems.ch/de/blog/personalausfall-kmu-schweiz-prozesse) wird.
+**1. Wer ist überlastet, bevor es knallt?** Eine Person hat regelmässig 50 Stunden auf dem Rapport, eine andere 38. Du siehst das Problem, bevor es zum [Personalausfall](https://www.swellsystems.ch/de/blog/personalausfall-kmu-schweiz-prozesse) wird.
 
 **2. Welche Kunden fressen Zeit, ohne dass es sich rechnet?** Ein Kunde, der 30 Prozent der Stunden bindet, aber 12 Prozent des Umsatzes bringt, taucht in keiner Buchhaltung auf. In der Zeiterfassung schon.
 
@@ -85,7 +85,7 @@ Zeiterfassung in der Agentur ist kein Kontrollinstrument für die Mitarbeitenden
 
 ## Arbeitszeiterfassung im Kleinbetrieb: Diagnose statt Pflichtübung
 
-Der Unterschied zwischen Pflichtübung und Nutzen liegt nicht im Werkzeug. Er liegt in der Frage, die Sie an die Daten stellen.
+Der Unterschied zwischen Pflichtübung und Nutzen liegt nicht im Werkzeug. Er liegt in der Frage, die du an die Daten stellst.
 
 Pflichtübung fragt: Haben alle ihre Stunden eingetragen? Diagnose fragt: Was sagen die Stunden über unseren Betrieb? Die erste Frage produziert einen Haken. Die zweite produziert eine Entscheidung.
 
@@ -99,27 +99,27 @@ Ein Betrieb mit 10 Mitarbeitenden in der Schweiz braucht dafür kein teures Syst
 
 Die Arbeitszeiterfassung im Kleinbetrieb wird so vom Papiertiger zum Steuerungsinstrument. Ohne zusätzlichen Aufwand, weil die Pflicht die Daten ohnehin erzeugt.
 
-## Was können Sie diese Woche tun?
+## Was kannst du diese Woche tun?
 
-Nehmen Sie die Zeiterfassung der letzten vier Wochen. Sortieren Sie die Stunden Ihres Teams in drei Spalten:
+Nimm die Zeiterfassung der letzten vier Wochen. Sortiere die Stunden deines Teams in drei Spalten:
 
 - **Lieferung:** Stunden, die direkt beim Kunden ankommen.
 - **Verwaltung:** Stunden für Rapporte, Rechnungen, E-Mails, Ablagen, Abstimmungen.
 - **Wartezeit:** Stunden, in denen jemand auf Informationen, Freigaben oder Zulieferungen gewartet hat.
 
-Rechnen Sie die Anteile aus. Wenn Verwaltung und Wartezeit zusammen mehr als 35 Prozent ausmachen, lohnt sich ein genauerer Blick. Welche Aufgaben in der Verwaltungsspalte tauchen jede Woche auf? Dort liegt ein Prozess, den Sie vereinfachen oder automatisieren können. Wie sich ein [erster Überblick über automatisierbare Prozesse](https://www.swellsystems.ch/de/blog/prozessautomatisierung-schweizer-kmu) ergibt, beschreibt der Einstiegsartikel.
+Rechne die Anteile aus. Wenn Verwaltung und Wartezeit zusammen mehr als 35 Prozent ausmachen, lohnt sich ein genauerer Blick. Welche Aufgaben in der Verwaltungsspalte tauchen jede Woche auf? Dort liegt ein Prozess, den du vereinfachen oder automatisieren kannst. Wie sich ein [erster Überblick über automatisierbare Prozesse](https://www.swellsystems.ch/de/blog/prozessautomatisierung-schweizer-kmu) ergibt, beschreibt der Einstiegsartikel.
 
-Diesen Test können Sie in einer Stunde machen. Er kostet nichts und zeigt Ihnen, ob Ihre Zeiterfassung nur eine Pflicht erfüllt oder ob sie Ihnen etwas sagt.
+Diesen Test kannst du in einer Stunde machen. Er kostet nichts und zeigt dir, ob deine Zeiterfassung nur eine Pflicht erfüllt oder ob sie dir etwas sagt.
 
-## Wenn Sie es nicht selbst bauen wollen
+## Wenn du es nicht selbst bauen willst
 
 Swellsystems richtet Abläufe ein, die wiederkehrende Verwaltungsarbeit reduzieren. Dazu gehören auch Prozesse rund um die Zeiterfassung. Automatische Stundenrapporte, Übertragung in die Buchhaltung, Auswertungen, die jeden Monat fertig auf dem Tisch liegen.
 
 Das passt für Schweizer Betriebe ab 5 Mitarbeitenden, die wissen, dass ihre Administration zu viel Zeit frisst, aber nicht wissen, wo genau. Es passt nicht für Betriebe, die noch keine Zeiterfassung haben. Dort beginnt die Arbeit einen Schritt früher.
 
-Der Einstieg ist ein Prozessgespräch. Kein Verkaufstermin. Wir schauen gemeinsam auf Ihre Zahlen und Sie entscheiden, ob ein nächster Schritt Sinn ergibt.
+Der Einstieg ist ein Prozessgespräch. Kein Verkaufstermin. Wir schauen gemeinsam auf deine Zahlen und du entscheidest, ob ein nächster Schritt Sinn ergibt.
 
-[Swellsystems kontaktieren](https://www.swellsystems.ch) | [Calvin Heim auf LinkedIn](https://www.linkedin.com/in/calvin-heim/)
+[Swellsystems kontaktieren](https://www.swellsystems.ch/de) | [Calvin Heim auf LinkedIn](https://www.linkedin.com/in/calvin-heim/)
 
 ## Häufige Fragen
 
@@ -133,7 +133,7 @@ Das kantonale Arbeitsinspektorat kann unangemeldet kontrollieren. Wer keine oder
 
 ### Wie automatisiere ich Stundenrapporte im Handwerk oder in der Agentur?
 
-Ein digitales Zeiterfassungssystem, das mit Ihrer Buchhaltungssoftware verbunden ist, überträgt die Stunden automatisch. Bei Bexio, Abacus oder Klara lässt sich das über Werkzeuge wie n8n oder Make einrichten. Der Aufwand für den Aufbau liegt je nach Komplexität bei wenigen Tagen. Das manuelle Abtippen entfällt danach komplett.
+Ein digitales Zeiterfassungssystem, das mit deiner Buchhaltungssoftware verbunden ist, überträgt die Stunden automatisch. Bei Bexio, Abacus oder Klara lässt sich das über Werkzeuge wie n8n oder Make einrichten. Der Aufwand für den Aufbau liegt je nach Komplexität bei wenigen Tagen. Das manuelle Abtippen entfällt danach komplett.
 
 ### Was bringt Zeiterfassung einem KMU ausser Compliance?
 
@@ -148,7 +148,7 @@ Drei Dinge: Sichtbarkeit, wo die Stunden tatsächlich hingehen. Frühwarnung, we
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "Zeiterfassung im KMU: Warum sie mehr kann als nur das Gesetz erfüllen",
-  "description": "Zeiterfassung im KMU gilt als lästige Pflicht. Dabei zeigt sie, wo Ihre Stunden wirklich hingehen. Was Schweizer Betriebe aus den Daten lesen können.",
+  "description": "Zeiterfassung im KMU gilt als lästige Pflicht. Dabei zeigt sie, wo deine Stunden wirklich hingehen. Was Schweizer Betriebe aus den Daten lesen können.",
   "datePublished": "2026-10-07",
   "dateModified": "2026-10-07",
   "author": {

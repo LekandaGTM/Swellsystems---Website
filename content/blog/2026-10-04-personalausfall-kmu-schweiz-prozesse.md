@@ -87,7 +87,7 @@ Ein Beispiel: In einer 12-Personen-Agentur erstellt eine Person die Monatsreport
 
 Prävention durchbricht diesen Kreis nicht. Sie lindert die Symptome. Was den Kreis durchbricht, ist eine andere Verteilung der Arbeit. Und diese Verteilung beginnt damit, dass Abläufe überhaupt erst fassbar werden. Wie das bei einem konkreten Prozess aussieht, zeigt das Beispiel im [Artikel zum Offertenprozess](https://www.swellsystems.ch/de/blog/offertenprozess-automatisieren-kmu).
 
-## Wie machen Sie Prozesse personenunabhängig im KMU?
+## Wie machst du Prozesse personenunabhängig im KMU?
 
 Der Unterschied zwischen einem Betrieb, der einen Personalausfall auffängt, und einem, der ins Stocken gerät, ist selten die Teamgrösse. Es ist die Frage, ob die Arbeit an Personen oder an Abläufen hängt.
 
@@ -101,27 +101,27 @@ Das bedeutet nicht, dass jeder Handgriff in ein System gehört. Aber die fünf b
 
 Nicht als Ersatz für die Person, sondern als Absicherung für den Tag, an dem sie fehlt. Eine Stellvertretung ohne IT-Abteilung braucht dafür kein grosses Projekt. Sie braucht klare Abläufe und, wo möglich, ein Werkzeug, das den einfachen Teil übernimmt.
 
-## Was Sie diese Woche tun können
+## Was du diese Woche tun kannst
 
-Nehmen Sie sich eine Stunde und gehen Sie diese drei Fragen durch:
+Nimm dir eine Stunde und geh diese drei Fragen durch:
 
-**1. Welche fünf Abläufe halten Ihren Betrieb am Laufen?** Schreiben Sie sie auf. Nicht die wichtigsten Projekte, sondern die wiederkehrenden Dinge, die jede Woche passieren müssen.
+**1. Welche fünf Abläufe halten deinen Betrieb am Laufen?** Schreib sie auf. Nicht die wichtigsten Projekte, sondern die wiederkehrenden Dinge, die jede Woche passieren müssen.
 
-**2. Wer kann jeden dieser Abläufe ausser der Hauptperson?** Schreiben Sie den Namen daneben. Wo kein zweiter Name steht, haben Sie ein Kopfmonopol.
+**2. Wer kann jeden dieser Abläufe ausser der Hauptperson?** Schreib den Namen daneben. Wo kein zweiter Name steht, hast du ein Kopfmonopol.
 
 **3. Gibt es eine schriftliche Anleitung?** Keine perfekte Dokumentation. Drei bis fünf Sätze, die jemand anderem reichen, um den Ablauf fortzuführen.
 
-Dieser Test dauert eine Stunde und kostet nichts. Aber er zeigt Ihnen, wo Ihr Betrieb verwundbar ist, bevor der nächste Ausfall es zeigt.
+Dieser Test dauert eine Stunde und kostet nichts. Aber er zeigt dir, wo dein Betrieb verwundbar ist, bevor der nächste Ausfall es zeigt.
 
-## Wenn Sie es nicht selbst bauen wollen
+## Wenn du es nicht selbst bauen willst
 
-Swellsystems baut Abläufe, die ohne einzelne Personen funktionieren. Wir schauen uns an, welche Prozesse bei Ihnen an einem Kopf hängen, wo sich Schritte automatisieren lassen und wo eine einfache Dokumentation reicht.
+Swellsystems baut Abläufe, die ohne einzelne Personen funktionieren. Wir schauen uns an, welche Prozesse bei dir an einem Kopf hängen, wo sich Schritte automatisieren lassen und wo eine einfache Dokumentation reicht.
 
 Das passt für Betriebe ab 5 Mitarbeitenden, die merken, dass ein Ausfall mehr als einen Tag Rückstand verursacht. Es passt nicht für Betriebe, die noch keinen wiederkehrenden Ablauf haben, den sie beschreiben könnten.
 
-Der Einstieg ist ein Prozessgespräch. Keine Verkaufspräsentation, kein Zeitdruck. Wir reden darüber, wo die Arbeit hängt, und Sie entscheiden, ob sich ein nächster Schritt lohnt.
+Der Einstieg ist ein Prozessgespräch. Keine Verkaufspräsentation, kein Zeitdruck. Wir reden darüber, wo die Arbeit hängt, und du entscheidest, ob sich ein nächster Schritt lohnt.
 
-[Swellsystems kontaktieren](https://www.swellsystems.ch) | [Calvin Heim auf LinkedIn](https://www.linkedin.com/in/calvin-heim/)
+[Swellsystems kontaktieren](https://www.swellsystems.ch/de) | [Calvin Heim auf LinkedIn](https://www.linkedin.com/in/calvin-heim/)
 
 ## Häufige Fragen
 
@@ -135,7 +135,7 @@ Die direkten Kosten liegen bei CHF 600 bis 1'000 pro Tag. Die indirekten Kosten,
 
 ### Wie mache ich Prozesse unabhängig von einzelnen Personen?
 
-Beginnen Sie mit den fünf wiederkehrenden Abläufen, die Ihren Betrieb am Laufen halten. Dokumentieren Sie jeden in drei bis fünf Sätzen. Bestimmen Sie eine zweite Person, die ihn kennt. Und prüfen Sie, welche Schritte ein Werkzeug übernehmen kann, damit der Ablauf auch ohne Einarbeitung weiterläuft.
+Beginne mit den fünf wiederkehrenden Abläufen, die deinen Betrieb am Laufen halten. Dokumentiere jeden in drei bis fünf Sätzen. Bestimme eine zweite Person, die ihn kennt. Und prüfe, welche Schritte ein Werkzeug übernehmen kann, damit der Ablauf auch ohne Einarbeitung weiterläuft.
 
 ### Braucht ein KMU mit 10 Mitarbeitenden ein Stellvertretungskonzept?
 

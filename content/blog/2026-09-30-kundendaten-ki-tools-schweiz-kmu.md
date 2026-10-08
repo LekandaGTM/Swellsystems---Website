@@ -2,7 +2,7 @@
 title: "Kundendaten und KI: Was Schweizer KMU täglich riskieren"
 slug: "kundendaten-ki-tools-schweiz-kmu"
 meta_title: "Kundendaten in KI-Tools: Was Schweizer KMU wissen müssen"
-meta_description: "Wer KI-Tools für Texte nutzt, verarbeitet oft Kundendaten, ohne es zu wissen. Was das nDSG bedeutet und was Sie diese Woche klären können."
+meta_description: "Wer KI-Tools für Texte nutzt, verarbeitet oft Kundendaten, ohne es zu wissen. Was das nDSG bedeutet und was du diese Woche klären kannst."
 primary_keyword: "Kundendaten KI-Tools Schweiz"
 secondary_keywords:
   - "nDSG KI Einsatz Kleinbetrieb"
@@ -59,7 +59,7 @@ Was am Irrglaube stimmt: Es gibt echte KI-Nutzung ohne Personendaten. Wer intern
 
 ### Wann werden Texte zu Kundendaten?
 
-Beim KI-Datenschutz ist ein Treuhandbüro in der Schweiz nicht anders gestellt als ein Handwerksbetrieb oder eine Agentur. Stellen Sie sich einen Dienstagmorgen vor. Eine Sachbearbeiterin öffnet ChatGPT und tippt: "Bitte schreib mir eine freundliche Zahlungserinnerung. Empfänger: Müller GmbH, Luzern. Rechnungsnummer 2026-047. Offener Betrag CHF 350. Zahlungsziel war der 15. September."
+Beim KI-Datenschutz ist ein Treuhandbüro in der Schweiz nicht anders gestellt als ein Handwerksbetrieb oder eine Agentur. Stell dir einen Dienstagmorgen vor. Eine Sachbearbeiterin öffnet ChatGPT und tippt: "Bitte schreib mir eine freundliche Zahlungserinnerung. Empfänger: Müller GmbH, Luzern. Rechnungsnummer 2026-047. Offener Betrag CHF 350. Zahlungsziel war der 15. September."
 
 Drei Sekunden später hat sie einen guten Text.
 
@@ -69,7 +69,7 @@ Dasselbe gilt für eine Kunden-E-Mail mit Namen und Projektbeschreibung, für ei
 
 ### Was sagt das nDSG zur KI-Nutzung?
 
-Das nDSG unterscheidet nicht zwischen Formular und KI-Prompt. Was zählt: Werden Personendaten an Dritte weitergegeben? OpenAI ist Dritter. Also brauchen Sie einen AVV.
+Das nDSG unterscheidet nicht zwischen Formular und KI-Prompt. Was zählt: Werden Personendaten an Dritte weitergegeben? OpenAI ist Dritter. Also brauchst du einen AVV.
 
 Das Problem ist nicht KI als solche. Es ist die Version.
 
@@ -84,7 +84,7 @@ Das Problem ist nicht KI als solche. Es ist die Version.
 
 In Free und Plus gibt es keinen AVV. Wer ChatGPT ohne AVV für Kundendaten nutzt, verletzt in der Schweiz das nDSG. Die mögliche Busse bei vorsätzlicher Verletzung beträgt bis zu CHF 250'000, persönlich für die verantwortliche Person im Betrieb, nicht als Firma.
 
-Viele Artikel raten sofort zur Enterprise-Version. Das ist für die meisten Schweizer KMU übertrieben. Der Team-Plan reicht für normale Personendaten, wenn Sie wissen, was Sie damit tun dürfen.
+Viele Artikel raten sofort zur Enterprise-Version. Das ist für die meisten Schweizer KMU übertrieben. Der Team-Plan reicht für normale Personendaten, wenn du weisst, was du damit tun darfst.
 
 ### Was ist Schatten-KI, und warum ist sie das eigentliche Risiko?
 
@@ -102,9 +102,9 @@ Datenschutzkonforme KI-Nutzung ist möglich. Sie braucht drei Dinge.
 
 **Erstens: die richtige Version.** ChatGPT Team oder Enterprise enthält einen AVV. OpenAI verpflichtet sich darin, Eingaben nicht für das Training zu verwenden. Das ist der Mindeststandard für Personendaten normaler Schutzstufe.
 
-**Zweitens: den richtigen Vertrag.** Ein AVV regelt, was der KI-Anbieter mit Ihren Daten darf und was nicht. Ohne ihn haben Sie keine vertragliche Absicherung. Einen Team-Plan kaufen und davon ausgehen, dass alles in Ordnung ist, reicht nicht.
+**Zweitens: den richtigen Vertrag.** Ein AVV regelt, was der KI-Anbieter mit deinen Daten darf und was nicht. Ohne ihn hast du keine vertragliche Absicherung. Einen Team-Plan kaufen und davon ausgehen, dass alles in Ordnung ist, reicht nicht.
 
-**Drittens: eine interne Regel.** Eine Seite für Ihr Team: Welche KI-Tools sind genehmigt? Was darf in den Prompt, was nicht? Nicht ein juristisches Dokument. Eines, das verstanden wird.
+**Drittens: eine interne Regel.** Eine Seite für dein Team: Welche KI-Tools sind genehmigt? Was darf in den Prompt, was nicht? Nicht ein juristisches Dokument. Eines, das verstanden wird.
 
 Wo besonders schutzbedürftige Daten anfallen, z.B. Gesundheitsangaben oder Bankdaten, reicht auch der Team-Plan nicht. Dort sind Schweizer oder EU-gehostete Lösungen nötig. Die meisten KMU-Alltagsprozesse fallen nicht darunter.
 
@@ -118,35 +118,35 @@ Eine orientierende Übersicht:
 | Textkorrektur ohne Kundenbezug | Nein | Free oder Plus reicht |
 | Angebot mit Firmenname und Leistungen | Ja | Team oder Enterprise |
 
-Welche Prozesse in Ihrem Betrieb überhaupt für die KI-Unterstützung in Frage kommen, beschreibt der Artikel [Prozessautomatisierung im Schweizer KMU](https://www.swellsystems.ch/de/blog/prozessautomatisierung-schweizer-kmu).
+Welche Prozesse in deinem Betrieb überhaupt für die KI-Unterstützung in Frage kommen, beschreibt der Artikel [Prozessautomatisierung im Schweizer KMU](https://www.swellsystems.ch/de/blog/prozessautomatisierung-schweizer-kmu).
 
-## Was können Sie diese Woche tun?
+## Was kannst du diese Woche tun?
 
-Nehmen Sie sich zwanzig Minuten. Notieren Sie drei Situationen aus dem letzten Monat, in denen Sie oder Ihr Team ein KI-Tool verwendet haben.
+Nimm dir zwanzig Minuten. Notiere drei Situationen aus dem letzten Monat, in denen du oder dein Team ein KI-Tool verwendet habt.
 
-Schreiben Sie auf, was im Prompt stand. So genau, wie Sie sich erinnern.
+Schreib auf, was im Prompt stand. So genau, wie du dich erinnerst.
 
-Prüfen Sie dann drei Fragen:
+Prüf dann drei Fragen:
 
 - War dort ein Kundenname oder ein Firmenname?
 - War dort eine Rechnungsnummer, ein Betrag oder eine Adresse?
 - War dort ein Projektname, der einer bestimmten Person zuordbar ist?
 
-Wenn Sie eine Frage mit Ja beantworten: Sie haben Personendaten verarbeitet. Prüfen Sie, welche KI-Version verwendet wurde. Gibt es dafür einen AVV?
+Wenn du eine Frage mit Ja beantwortest: Du hast Personendaten verarbeitet. Prüf, welche KI-Version verwendet wurde. Gibt es dafür einen AVV?
 
 Diese Bestandsaufnahme macht aus einem abstrakten Risiko eine konkrete Entscheidungsgrundlage. Wer weiss, was ins KI-Tool fliesst, kann gezielt handeln.
 
-## Wenn Sie das nicht selbst regeln wollen
+## Wenn du das nicht selbst regeln willst
 
 Nicht jeder Betrieb hat jemanden, der nDSG, AVV und KI-Nutzungsregeln kennt. Das ist normal, besonders bei KMU mit 5 bis 20 Mitarbeitenden, wo keine eigene IT-Abteilung vorhanden ist.
 
 Swellsystems hilft Schweizer KMU dabei, KI-gestützte Arbeitsprozesse datenschutzkonform aufzusetzen. In der Praxis heisst das: herausfinden, welche Prozesse heute KI-Tools nutzen. Die passende Version und den richtigen Vertrag klären. Eine verständliche interne Regel aufschreiben.
 
-Nicht jeder Betrieb braucht das. Wenn Ihr Team selten mit Kundendaten in KI-Prompts arbeitet und Sie bereits einen Team-Plan mit AVV nutzen, ist das Risiko überschaubar. Eine eigene kurze Regel reicht dann.
+Nicht jeder Betrieb braucht das. Wenn dein Team selten mit Kundendaten in KI-Prompts arbeitet und du bereits einen Team-Plan mit AVV nutzt, ist das Risiko überschaubar. Eine eigene kurze Regel reicht dann.
 
-Wenn Sie hingegen täglich KI-Tools für Kundenkorrespondenz, [Offerten](https://www.swellsystems.ch/de/blog/offertenprozess-automatisieren-kmu) oder Kreditoren einsetzen und noch keine Abklärungen gemacht haben, ist ein kurzes Gespräch sinnvoll. Ohne Druck, ohne Buchungslink. [swellsystems.ch](https://www.swellsystems.ch) oder auf [LinkedIn](https://www.linkedin.com/in/calvin-heim/).
+Wenn du hingegen täglich KI-Tools für Kundenkorrespondenz, [Offerten](https://www.swellsystems.ch/de/blog/offertenprozess-automatisieren-kmu) oder Kreditoren einsetzen und noch keine Abklärungen gemacht hast, ist ein kurzes Gespräch sinnvoll. Ohne Druck, ohne Buchungslink. [swellsystems.ch](https://www.swellsystems.ch/de) oder auf [LinkedIn](https://www.linkedin.com/in/calvin-heim/).
 
-*Dieser Beitrag dient der allgemeinen Information und ersetzt keine juristische Beratung. Für eine rechtliche Einschätzung Ihrer konkreten Situation wenden Sie sich an eine Anwältin oder einen Anwalt.*
+*Dieser Beitrag dient der allgemeinen Information und ersetzt keine juristische Beratung. Für eine rechtliche Einschätzung deiner konkreten Situation wende dich an eine Anwältin oder einen Anwalt.*
 
 ---
 
@@ -158,7 +158,7 @@ Das kommt auf die Version an. In ChatGPT Free und Plus gibt es keinen Auftragsbe
 
 ### Ab wann brauche ich einen Auftragsbearbeitungsvertrag für ChatGPT?
 
-Sobald Sie Personendaten an einen Drittanbieter weitergeben, verlangt das nDSG einen Auftragsbearbeitungsvertrag (AVV). Das gilt ab dem ersten Prompt, der einen Kundennamen enthält. Das revDSG kennt keine Grössenklausel für Kleinbetriebe in der Schweiz, die KI-Tools nutzen: Auch ein Einzelunternehmen braucht diesen Vertrag, sobald Personendaten ins Tool fliessen.
+Sobald du Personendaten an einen Drittanbieter weitergibst, verlangt das nDSG einen Auftragsbearbeitungsvertrag (AVV). Das gilt ab dem ersten Prompt, der einen Kundennamen enthält. Das revDSG kennt keine Grössenklausel für Kleinbetriebe in der Schweiz, die KI-Tools nutzen: Auch ein Einzelunternehmen braucht diesen Vertrag, sobald Personendaten ins Tool fliessen.
 
 ### Was ist Schatten-KI, und wie erkenne ich sie im KMU?
 
@@ -183,7 +183,7 @@ Externe Quellen:
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "Kundendaten und KI: Was Schweizer KMU täglich riskieren",
-  "description": "Wer KI-Tools für Texte nutzt, verarbeitet oft Kundendaten – ohne es zu wissen. Was das nDSG für Schweizer KMU bedeutet, und was Sie diese Woche klären können.",
+  "description": "Wer KI-Tools für Texte nutzt, verarbeitet oft Kundendaten – ohne es zu wissen. Was das nDSG für Schweizer KMU bedeutet, und was du diese Woche klären kannst.",
   "datePublished": "2026-09-30",
   "dateModified": "2026-09-30",
   "inLanguage": "de",

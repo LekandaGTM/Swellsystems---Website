@@ -1,8 +1,8 @@
 ---
-title: "Warum Ihre Offerten so lange dauern (und was wirklich hilft)"
+title: "Warum deine Offerten so lange dauern (und was wirklich hilft)"
 slug: "offertenprozess-automatisieren-kmu"
 meta_title: "Offertenprozess automatisieren KMU Schweiz"
-meta_description: "Schweizer KMU verlieren Stunden pro Offerte. Nicht wegen der Kalkulation, sondern wegen allem drumherum. So finden Sie den echten Engpass."
+meta_description: "Schweizer KMU verlieren Stunden pro Offerte. Nicht wegen der Kalkulation, sondern wegen allem drumherum. So findest du den echten Engpass."
 primary_keyword: "Offertenprozess automatisieren KMU"
 secondary_keywords:
   - "Offerte schreiben Zeitaufwand"
@@ -34,7 +34,7 @@ word_count: 1357
 status: "published"
 ---
 
-# Warum Ihre Offerten so lange dauern (und was wirklich hilft)
+# Warum deine Offerten so lange dauern (und was wirklich hilft)
 
 Der Offertenprozess in einem Schweizer KMU ist die Abfolge von Anfrage, Kalkulation, Texterstellung, Versand und Nachfassen einer Offerte. Und er dauert fast überall länger, als er müsste.
 
@@ -56,7 +56,7 @@ Wenn eine Offerte eine Stunde dauert, wie viel davon ist tatsächlich Kalkulatio
 
 Das [NZZ-KMU-Barometer 2026](https://unternehmen.nzz.ch/2026/06/nzz-kmu-barometer-2026-pessimistische-wirtschaftliche-aussichten-und-strategische-defizite-bei-schweizer-kmu/) beschreibt Schweizer KMU als "operativ stark, strategisch träge". Weniger als ein Drittel der 495 befragten Unternehmen kann sein Geschäftsmodell innert sechs Monaten anpassen. Der Offertenprozess ist ein gutes Beispiel dafür. Im Tagesgeschäft funktioniert er. Aber er funktioniert teuer.
 
-Rechnen Sie es für Ihren Betrieb durch:
+Rechne es für deinen Betrieb durch:
 
 | Schritt | Typischer Zeitaufwand | Wiederholung? |
 |---------|----------------------|---------------|
@@ -94,32 +94,32 @@ Drei Beispiele, wie der Zeitfresser im KMU schrumpft:
 
 - Textbausteine für die fünf häufigsten Offertentypen. Statt jede Offerte bei null zu beginnen.
 - Eine automatische Frist im System. Wer nach 10 Tagen nichts gehört hat, bekommt eine Nachfass-E-Mail.
-- Die Anfrage kommt strukturiert an. Ein Formular auf der Website fragt die nötigen Angaben ab, bevor Sie die Offerte schreiben.
+- Die Anfrage kommt strukturiert an. Ein Formular auf der Website fragt die nötigen Angaben ab, bevor du die Offerte schreibst.
 
 Für den nächsten Schritt kommen Werkzeuge wie n8n oder Make ins Spiel. Sie verbinden einzelne Schritte: eine Anfrage aus dem Formular landet als Entwurf im System. Fehlende Angaben werden automatisch nachgefragt. Nach zwei Wochen geht eine Erinnerung raus. Das ist keine Raketenwissenschaft. Es ist Ablauflogik.
 
-## Was Sie diese Woche tun können
+## Was du diese Woche tun kannst
 
-Nehmen Sie sich 30 Minuten und schreiben Sie die letzten fünf Offerten auf. Notieren Sie für jede:
+Nimm dir 30 Minuten und schreib die letzten fünf Offerten auf. Notiere für jede:
 
 1. Wie lange hat die Kalkulation gedauert?
 2. Wie lange hat alles andere gedauert?
-3. Haben Sie nachgefasst? Falls ja, wann? Falls nein, warum nicht?
+3. Hast du nachgefasst? Falls ja, wann? Falls nein, warum nicht?
 
 Die meisten Betriebe stellen dabei fest: Die Kalkulation ist schnell. Alles andere dauert drei- bis fünfmal so lange. Und das Nachfassen passiert in weniger als der Hälfte der Fälle.
 
-Dieses Bild reicht, um zu entscheiden, wo Sie anfangen. In der Regel zeigen sich zwei Muster:
+Dieses Bild reicht, um zu entscheiden, wo du anfängst. In der Regel zeigen sich zwei Muster:
 
 - **Muster 1: Die Kalkulation geht schnell, der Rest dauert.** Dann sind Textbausteine und ein Formular für die Anfrage der richtige erste Schritt.
 - **Muster 2: Offerten gehen raus, aber niemand fasst nach.** Dann braucht es eine feste Regel. Ein Kalendereintrag, eine Erinnerung im System oder eine automatische E-Mail nach 10 Tagen.
 
-## Wenn Sie es nicht selbst bauen wollen
+## Wenn du es nicht selbst bauen willst
 
-Swellsystems baut Systeme, die den Ablauf rund um die Offerte übernehmen. Von der Anfrage bis zur Nachfassung. Die Kalkulation bleibt bei Ihnen, der Rest läuft automatisch.
+Swellsystems baut Systeme, die den Ablauf rund um die Offerte übernehmen. Von der Anfrage bis zur Nachfassung. Die Kalkulation bleibt bei dir, der Rest läuft automatisch.
 
 Das passt für Betriebe ab etwa 5 Mitarbeitenden, die regelmässig Offerten schreiben und das Gefühl kennen, dass das Nachfassen untergeht. Nicht jeder Betrieb braucht das. Wer fünf Offerten im Monat schreibt, löst das mit einer Vorlage und einem Kalender. Wer zwanzig oder mehr schreibt, verliert ohne System Aufträge, die er nie sieht.
 
-Falls Sie wissen wollen, wo in Ihrem Offertenprozess die meiste Zeit liegen bleibt: [schreiben Sie mir](https://www.swellsystems.ch). Oder vernetzen Sie sich auf [LinkedIn](https://www.linkedin.com/in/calvin-heim/). Kein Verkaufsgespräch, sondern ein Blick auf Ihren Ablauf.
+Falls du wissen willst, wo in deinem Offertenprozess die meiste Zeit liegen bleibt: [schreib mir](https://www.swellsystems.ch/de). Oder vernetz dich auf [LinkedIn](https://www.linkedin.com/in/calvin-heim/). Kein Verkaufsgespräch, sondern ein Blick auf deinen Ablauf.
 
 ---
 
@@ -127,7 +127,7 @@ Falls Sie wissen wollen, wo in Ihrem Offertenprozess die meiste Zeit liegen blei
 
 ### Wie kann ich meinen Offertenprozess automatisieren, wenn ich keine IT-Abteilung habe?
 
-Fangen Sie nicht bei der Technik an, sondern beim Ablauf. Legen Sie Textbausteine für Ihre drei häufigsten Offertentypen an. Richten Sie eine automatische Erinnerung fürs Nachfassen ein, zum Beispiel im Kalender oder direkt im Buchhaltungstool. Das braucht kein IT-Wissen. Werkzeuge wie Bexio oder Klara können das bereits.
+Fang nicht bei der Technik an, sondern beim Ablauf. Leg Textbausteine für deine drei häufigsten Offertentypen an. Richte eine automatische Erinnerung fürs Nachfassen ein, zum Beispiel im Kalender oder direkt im Buchhaltungstool. Das braucht kein IT-Wissen. Werkzeuge wie Bexio oder Klara können das bereits.
 
 ### Lohnt es sich, den Offertenprozess in einer Treuhand zu automatisieren?
 
@@ -147,8 +147,8 @@ Ja. Strukturierte Word-Vorlagen mit festen Bausteinen sind bereits ein grosser S
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Warum Ihre Offerten so lange dauern (und was wirklich hilft)",
-  "description": "Schweizer KMU verlieren Stunden pro Offerte. Nicht wegen der Kalkulation, sondern wegen allem drumherum. So finden Sie den echten Engpass.",
+  "headline": "Warum deine Offerten so lange dauern (und was wirklich hilft)",
+  "description": "Schweizer KMU verlieren Stunden pro Offerte. Nicht wegen der Kalkulation, sondern wegen allem drumherum. So findest du den echten Engpass.",
   "datePublished": "2026-09-27",
   "dateModified": "2026-09-27",
   "author": {
