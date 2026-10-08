@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans, Poppins } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
+import { notFound } from "next/navigation";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { ORGANISATION_SCHEMA, SITE_NAME, SITE_URL, STANDARD_BILD, jsonLd } from "@/lib/seo";
 import "../globals.css";
@@ -52,6 +53,12 @@ export function generateStaticParams() {
   return [{ locale: "de" }];
 }
 
+// Nur die Sprachen aus generateStaticParams sind gueltig. Ohne das lieferte
+// jede Adresse mit Punkt im ersten Segment (/irgendwas.txt, /wp-login.php) die
+// ganze Website mit Status 200 und lang="irgendwas.txt" aus: ein Soft-404.
+// Die Middleware laesst Pfade mit Punkt bewusst durch, darum landen sie hier.
+export const dynamicParams = false;
+
 export default async function LocaleLayout({
   children,
   params,
@@ -60,6 +67,7 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  if (locale !== "de") notFound();
   setRequestLocale(locale);
   const messages = await getMessages();
 
