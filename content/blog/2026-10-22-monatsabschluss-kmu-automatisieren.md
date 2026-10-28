@@ -72,7 +72,7 @@ Bei einem KMU mit 80 bis 120 Belegen im Monat summiert sich allein die Belegerfa
 
 Drei Muster tauchen dabei fast immer auf:
 
-1. **Belege liegen in E-Mails, auf dem Schreibtisch und im Postfach.** Niemand hat einen Ort, an dem alles landet. Also sammelt jemand Ende Monat zusammen, was fehlt. Das kostet jedes Mal Stunden.
+1. **Belege liegen in E-Mails, auf dem Schreibtisch und im Postfach.** Niemand hat einen Ort, an dem alles landet. Also sammelt jemand Ende Monat zusammen, was fehlt. Das kostet jedes Mal Stunden. Spesenquittungen sind dabei die häufigsten Nachzügler, [dafür gibt es einen eigenen Ablauf](https://www.swellsystems.ch/de/blog/spesenabrechnung-automatisieren-kmu).
 
 2. **Der Bankabgleich passiert von Hand.** Die Kontobewegungen werden am Bildschirm mit der Buchhaltung verglichen. Posten für Posten. Bei QR-Rechnungen ist die Referenznummer eindeutig. Eine QR-Rechnung Belegverarbeitung automatisch abzugleichen, ist technisch gelöst. Es passiert nur nicht, weil es niemand eingerichtet hat.
 

@@ -81,7 +81,7 @@ Aber die Rechnung zeigt auch: Wenn die Kollegin einspringt, aber nicht weiss, wi
 
 Die AXA-Studie nennt Überlastung als Ursache Nummer eins für psychische Ausfälle: 36 Prozent der KMU sehen hier den zentralen Auslöser am Arbeitsplatz. Gleichzeitig setzen 25 Prozent keinerlei Präventionsmassnahmen um.
 
-Das ergibt einen Kreislauf. Die Arbeit hängt an wenigen Personen. Diese Personen sind überlastet, weil sie neben ihrer eigentlichen Arbeit noch Rapporte schreiben, Rechnungen prüfen und Termine koordinieren. Die Überlastung führt zu Ausfällen. Die Ausfälle belasten die verbliebenen Personen. Der Kreis schliesst sich.
+Das ergibt einen Kreislauf. Die Arbeit hängt an wenigen Personen. Diese Personen sind überlastet, weil sie neben ihrer eigentlichen Arbeit noch Rapporte schreiben, Rechnungen prüfen und Termine koordinieren. Die Überlastung führt zu Ausfällen. Die Ausfälle belasten die verbliebenen Personen. Der Kreis schliesst sich. Ein typischer Fall ist die Spesenabrechnung: Hängt jede Genehmigung an der Inhaberin, bleiben in ihren Ferien alle Abrechnungen liegen. [Wie sich Spesen und Genehmigungen automatisieren lassen](https://www.swellsystems.ch/de/blog/spesenabrechnung-automatisieren-kmu), ohne die Kontrolle abzugeben.
 
 Ein Beispiel: In einer 12-Personen-Agentur erstellt eine Person die Monatsreportings für alle Kunden. Fällt sie aus, übernimmt die Geschäftsführerin. Die hat aber bereits eine volle Woche. Also verzögern sich die Reports. Kunden fragen nach. Die Geschäftsführerin arbeitet abends. Nach zwei Wochen ist sie selbst am Limit.
 
