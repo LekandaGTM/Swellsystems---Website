@@ -1,16 +1,19 @@
 ---
-title: "Prozessautomatisierung im Schweizer KMU: 74 Prozent nutzen KI, 35 Prozent automatisieren"
+title: "Prozessautomatisierung im KMU: welcher Ablauf sich in der Schweiz zuerst lohnt"
 slug: "prozessautomatisierung-schweizer-kmu"
-meta_title: "Prozessautomatisierung Schweizer KMU: Zahlen 2026"
-meta_description: "74 Prozent der Schweizer KMU nutzen KI, nur 35 Prozent automatisieren Prozesse. Welcher Prozess sich zuerst eignet und was das nDSG verlangt."
+meta_title: "Prozessautomatisierung KMU: Wo anfangen? Leitfaden Schweiz"
+meta_description: "Prozessautomatisierung im KMU ohne IT-Abteilung: welcher Ablauf sich zuerst lohnt, vier Kriterien zum Selbsttest und ein Plan für die ersten vier Wochen."
 primary_keyword: "Prozessautomatisierung Schweizer KMU"
 secondary_keywords:
+  - "Prozessautomatisierung KMU"
+  - "Prozessautomatisierung Schweiz"
   - "KI-Automatisierung KMU Schweiz"
   - "n8n Schweiz"
   - "Workflow-Automatisierung KMU"
   - "Automatisierung Agentur Schweiz"
   - "nDSG KI Kundendaten"
 questions_answered:
+  - "Wie fange ich mit Prozessautomatisierung im KMU an?"
   - "Wie viele Schweizer KMU automatisieren ihre Prozesse wirklich?"
   - "Welcher Prozess lohnt sich zuerst?"
   - "Was unterscheidet eine Automation, die überlebt, von einer, die stirbt?"
@@ -21,15 +24,15 @@ cluster: "Prozessautomatisierung konkret"
 author: "Calvin Heim"
 author_url: "https://www.linkedin.com/in/calvin-heim/"
 datePublished: "2026-09-19"
-dateModified: "2026-09-19"
+dateModified: "2026-10-28"
 reading_time_min: 9
 word_count: 2044
 status: "published"
 ---
 
-# Prozessautomatisierung im Schweizer KMU: 74 Prozent nutzen KI, 35 Prozent automatisieren
+# Prozessautomatisierung im KMU: welcher Ablauf sich in der Schweiz zuerst lohnt
 
-Prozessautomatisierung ist die Übergabe eines wiederkehrenden Arbeitsablaufs an ein System, das ihn ohne Mensch auslöst, ausführt und protokolliert. Nicht zu verwechseln mit KI-Nutzung. Wer ChatGPT eine Mail schreiben lässt, nutzt KI. Der Prozess läuft weiterhin über einen Menschen, der ihn jedes Mal von Hand startet.
+Prozessautomatisierung im KMU heisst: Ein wiederkehrender Arbeitsablauf geht an ein System, das ihn ohne Mensch auslöst, ausführt und protokolliert. Nicht zu verwechseln mit KI-Nutzung. Wer ChatGPT eine Mail schreiben lässt, nutzt KI. Der Prozess läuft weiterhin über einen Menschen, der ihn jedes Mal von Hand startet.
 
 Genau dort steht die Schweiz gerade. Die AXA KMU-Arbeitsmarktstudie, publiziert am 15. September 2026, zeigt: drei Viertel der befragten KMU nutzen KI oder testen sie. 35 Prozent integrieren sie bewusst in Geschäftsprozesse, 39 Prozent erproben sie noch ([swissinfo](https://www.swissinfo.ch/ger/schweizer-kmu-sehen-k%C3%BCnstliche-intelligenz-nicht-als-jobkiller/92058408)).
 
@@ -64,7 +67,7 @@ Der zweite Unterschied ist die Disziplin. Werkzeuge werden vergessen. In stressi
 
 Für den Entscheid heisst das: Frag nicht, wo du KI einsetzen könntest. Frag, welcher Ablauf jede Woche gleich abläuft und trotzdem jedes Mal von Hand angestossen wird.
 
-## Welcher Prozess lohnt sich zuerst?
+## Prozessautomatisierung im KMU: Welcher Prozess lohnt sich zuerst?
 
 Der erste Prozess ist selten der grösste. Er ist der, bei dem Häufigkeit, Regelklarheit und Datenzugang zusammenfallen. Ein Ablauf, der täglich passiert, klaren Regeln folgt und dessen Daten digital vorliegen, ist in zwei bis vier Wochen automatisiert. Ein Ablauf, der zehnmal im Jahr passiert und jedes Mal anders, ist es nie.
 
@@ -81,14 +84,14 @@ Typische Kandidaten in Schweizer Betrieben ab fünf Mitarbeitenden:
 
 | Prozess | Häufigkeit | Regelklarheit | Typischer Aufwand vorher |
 |---------|-----------|---------------|--------------------------|
-| Eingangsrechnungen erfassen und zuordnen | täglich | hoch | 3 bis 8 Std./Monat |
+| [Eingangsrechnungen erfassen und zuordnen](/de/blog/monatsabschluss-kmu-automatisieren) | täglich | hoch | 3 bis 8 Std./Monat |
 | Termin- und Auftragsbestätigungen | täglich | hoch | 2 bis 5 Std./Monat |
-| Offerten aus Standardbausteinen | wöchentlich | mittel | 4 bis 10 Std./Monat |
-| Rapporte und Stundenerfassung nachtragen | wöchentlich | hoch | 3 bis 6 Std./Monat |
-| Kundenreporting in Agenturen | monatlich | hoch | 4 bis 12 Std./Monat |
-| Onboarding neuer Kunden oder Mitarbeitender | monatlich | mittel | 2 bis 6 Std./Monat |
+| [Offerten aus Standardbausteinen](/de/blog/offertenprozess-automatisieren-kmu) | wöchentlich | mittel | 4 bis 10 Std./Monat |
+| [Rapporte und Stundenerfassung nachtragen](/de/blog/zeiterfassung-kmu-schweiz) | wöchentlich | hoch | 3 bis 6 Std./Monat |
+| [Kundenreporting in Agenturen](/de/blog/agentur-reporting-automatisieren) | monatlich | hoch | 4 bis 12 Std./Monat |
+| [Onboarding neuer Kunden oder Mitarbeitender](/de/blog/kunden-onboarding-kmu-schweiz) | monatlich | mittel | 2 bis 6 Std./Monat |
 
-Die Aufwandsspannen sind Richtwerte aus Prozessgesprächen, keine Messwerte. Miss deinen eigenen Ablauf, bevor du rechnest. Eine Woche Strichliste reicht.
+Ein weiterer Kandidat, der in fast jedem Betrieb täglich anfällt, ist das [Sammelpostfach](/de/blog/email-postfach-automatisieren-kmu). Die Aufwandsspannen sind Richtwerte aus Prozessgesprächen, keine Messwerte. Miss deinen eigenen Ablauf, bevor du rechnest. Eine Woche Strichliste reicht.
 
 ## Was unterscheidet eine Automation, die überlebt, von einer, die stirbt?
 
@@ -107,7 +110,7 @@ Ein zweites Muster aus der Praxis: Automationen sollten idempotent sein. Das hei
 
 ## n8n, Zapier oder gar kein Tool?
 
-Für Schweizer KMU mit Datenschutzanspruch ist n8n meist die richtige Wahl, weil es selbst gehostet werden kann und pro Workflow-Durchlauf abrechnet statt pro Schritt. Bei sehr einfachen Verknüpfungen zwischen zwei Standard-Tools ist eine No-Code-Plattform schneller. Und manchmal braucht es gar kein Automatisierungstool.
+Für Schweizer KMU mit Datenschutzanspruch ist n8n meist die richtige Wahl, weil es selbst gehostet werden kann und pro Workflow-Durchlauf abrechnet statt pro Schritt. Bei sehr einfachen Verknüpfungen zwischen zwei Standard-Tools ist eine No-Code-Plattform schneller. Und manchmal braucht es gar kein Automatisierungstool. Ob du selbst baust oder jemanden holst, steht im Artikel [Automatisierung selber bauen oder einkaufen](/de/blog/automatisierung-selber-bauen-oder-einkaufen-kmu).
 
 | Situation | Empfehlung |
 |-----------|-----------|
@@ -158,6 +161,9 @@ Wer nach vier Wochen keinen produktiven Prozess hat, hat sich den falschen Proze
 
 ## Häufige Fragen
 
+**Wie fange ich mit Prozessautomatisierung im KMU an?**
+Mit einem einzigen Ablauf, nicht mit einem Konzept. Führ eine Woche lang eine Strichliste: wie oft, wie lange, wer, welche Sonderfälle. Bewerte den Ablauf mit den vier Kriterien aus diesem Artikel. Ab 14 Punkten lohnt sich der Bau, und nach vier Wochen sollte er produktiv laufen.
+
 **Ab welcher Betriebsgrösse lohnt sich Prozessautomatisierung?**
 Ab etwa fünf Mitarbeitenden, weil dann Abläufe zwischen Personen übergeben werden und Reibung entsteht. Entscheidend ist nicht die Kopfzahl, sondern ob ein Ablauf häufig, gleichförmig und digital ist.
 
@@ -195,11 +201,11 @@ Schreib mir über [swellsystems.ch](https://www.swellsystems.ch/de) oder direkt 
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Prozessautomatisierung im Schweizer KMU: 74 Prozent nutzen KI, 35 Prozent automatisieren",
-  "description": "74 Prozent der Schweizer KMU nutzen KI, nur 35 Prozent automatisieren Prozesse. Welcher Prozess sich zuerst eignet und was das nDSG verlangt.",
+  "headline": "Prozessautomatisierung im KMU: welcher Ablauf sich in der Schweiz zuerst lohnt",
+  "description": "Prozessautomatisierung im KMU ohne IT-Abteilung: welcher Ablauf sich zuerst lohnt, vier Kriterien zum Selbsttest und ein Plan für die ersten vier Wochen.",
   "inLanguage": "de-CH",
   "datePublished": "2026-09-19",
-  "dateModified": "2026-09-19",
+  "dateModified": "2026-10-28",
   "author": {
     "@type": "Person",
     "name": "Calvin Heim",
