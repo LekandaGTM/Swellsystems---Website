@@ -35,7 +35,7 @@ status: "published"
 
 # Personalausfall im KMU: Warum bessere Prozesse mehr helfen als bessere Prävention
 
-Ein Personalausfall im Schweizer KMU ist der Moment, in dem sichtbar wird, wie viel Wissen in einzelnen Köpfen steckt statt in einem System. 42 Prozent der Schweizer KMU melden steigende Kosten durch Absenzen, so die AXA KMU-Arbeitsmarktstudie 2026. Die meisten reagieren mit Gesundheitsprogrammen oder neuen Stelleninseraten. Das Problem liegt woanders.
+Ein Personalausfall im Schweizer KMU ist der Moment, in dem sichtbar wird, wie viel Wissen in einzelnen Köpfen steckt statt in einem System. 42 Prozent der Schweizer KMU melden steigende Kosten durch Absenzen, so die AXA KMU-Arbeitsmarktstudie 2026. Die meisten reagieren mit Gesundheitsprogrammen oder neuen Stelleninseraten, oft ohne zu prüfen, [ob es die zusätzliche Bürokraft überhaupt braucht](https://www.swellsystems.ch/de/blog/bueroarbeit-automatisieren-kmu). Das Problem liegt woanders.
 
 Nicht der Ausfall ist das eigentliche Risiko. Sondern dass die Arbeit stillsteht, weil sie an einer einzigen Person hängt.
 
