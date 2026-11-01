@@ -103,7 +103,7 @@ Nimm dir 10 Minuten und beantworte drei Fragen für den Prozess, der dich am mei
 
 Wenn die Antwort auf Frage 1 "eines" ist, Frage 2 einen Namen hat und Frage 3 "nein" lautet: bau es selber. Make, Zapier oder n8n reichen auch im KMU ohne grosse Vorkenntnisse. Die Grundversion kostet wenig oder nichts, und du hast an einem Nachmittag ein Ergebnis.
 
-Wenn bei einer der drei Fragen die Antwort anders ausfällt, lohnt sich ein Gespräch, bevor du anfängst zu bauen. [Welche Prozesse sich grundsätzlich lohnen](https://www.swellsystems.ch/de/blog/prozessautomatisierung-schweizer-kmu), habe ich in einem früheren Artikel beschrieben.
+Wenn bei einer der drei Fragen die Antwort anders ausfällt, lohnt sich ein Gespräch, bevor du anfängst zu bauen. [Welche Prozesse sich grundsätzlich lohnen](https://www.swellsystems.ch/de/blog/prozessautomatisierung-schweizer-kmu), habe ich in einem früheren Artikel beschrieben. Und ob statt einer zusätzlichen Bürokraft auch Automatisierung reicht, [habe ich hier durchgerechnet](https://www.swellsystems.ch/de/blog/bueroarbeit-automatisieren-kmu).
 
 ## Wenn du es nicht selber bauen willst
 
