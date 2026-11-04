@@ -72,7 +72,7 @@ Dazu kommt der interne Aufwand. Jede vergessene Willkommensmail erzeugt eine Rü
 
 Ein Kunden-Onboarding im KMU braucht keinen Prozessberater und keine Software-Einführung. Es braucht eine feste Abfolge, die jedes Mal gleich läuft. Drei Dinge reichen.
 
-Erstens: eine Checkliste mit fünf bis zehn Punkten, die bei jedem neuen Kunden abgehakt werden. Vertrag da, Zugang eingerichtet, Ansprechperson benannt, Willkommensmail verschickt, erster Termin steht. Eine Onboarding-Checkliste für einen neuen Kunden in der Schweiz muss nicht in einem Tool leben. Ein geteiltes Dokument genügt.
+Erstens: eine Checkliste mit fünf bis zehn Punkten, die bei jedem neuen Kunden abgehakt werden. Vertrag da, Zugang eingerichtet, Ansprechperson benannt, Willkommensmail verschickt, erster Termin steht. Warum beim ersten Termin der Kalender das Wenigste ist, steht im Artikel [Terminbuchung automatisieren im KMU](https://www.swellsystems.ch/de/blog/terminbuchung-automatisieren-kmu). Eine Onboarding-Checkliste für einen neuen Kunden in der Schweiz muss nicht in einem Tool leben. Ein geteiltes Dokument genügt.
 
 Zweitens: eine einzige Willkommensmail, die automatisch rausgeht. Darin steht, wer zuständig ist, was als Nächstes passiert und wo der Kunde seine Unterlagen findet. Kein Roman. Fünf Sätze.
 
