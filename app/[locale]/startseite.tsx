@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import {
@@ -23,11 +23,14 @@ import {
   AlertTriangle,
   Search,
   Check,
+  Star,
 } from "lucide-react";
+import Link from "next/link";
 import AnimatedSection from "@/components/AnimatedSection";
 import BlogTeaser from "@/components/BlogTeaser";
 
 const CAL_LINK = "https://cal.com/calvin-heim-swellsystems/30min";
+const GOOGLE_BEWERTUNGEN = "https://share.google/74mp6hpkXHQOcqt4J";
 
 // Bewusst ohne Intl.NumberFormat: Node und Browser liefern fuer de-CH
 // unterschiedliche Tausendertrennzeichen, was die Hydration bricht.
@@ -340,6 +343,168 @@ function KostenRechner() {
         tatsächlich drinliegt, zeigt die Analyse in Schritt 1.
       </p>
     </>
+  );
+}
+
+/* ─── Kundenstimmen: Google-Bewertungen, alle 5 Sterne ───────── */
+// Wortlaut wie auf Google, nur Tippfehler und Kommas korrigiert. Kein
+// Review-Schema: Google zeigt selbst ausgezeichnete Bewertungen nicht an.
+const STIMMEN: { name: string; rolle: string; absaetze: string[]; link?: string }[] = [
+  {
+    name: "Christoph Lienhard",
+    rolle: "Gründer, Kreativkind",
+    absaetze: [
+      "Die Zusammenarbeit mit Calvin von Swellsystems war für unsere Agentur ein echter Glücksgriff. Wir wollten uns agiler aufstellen und wiederkehrende Aufgaben automatisieren, um mehr Zeit für unsere Kundenprojekte zu haben. Uns war von Anfang an wichtig, mit einem Partner aus der Schweiz zu arbeiten. Also Automatisierung made in Switzerland, direkt in unserer Zeitzone und in unserer Sprache.",
+      "Calvin macht die Zusammenarbeit unglaublich unkompliziert und angenehm. Er bringt genau die richtigen Impulse mit und hat uns direkt blinde Flecke aufgezeigt, die uns selbst gar nicht mehr aufgefallen wären. Überrascht hat uns vor allem, wie schnell die neuen Abläufe bei uns im Team angekommen sind. Schon nach kurzer Zeit waren die Optimierungen aus unserem Arbeitsalltag gar nicht mehr wegzudenken.",
+      "Heute ist unser Schreibtisch spürbar leerer, wir sparen wertvolle Zeit und behalten trotzdem bei allem den vollen Überblick. Wir können die Zusammenarbeit jedem empfehlen, der repetitive Arbeitsprozesse automatisieren und wieder den Kopf fürs Wesentliche freibekommen möchte.",
+    ],
+  },
+  {
+    name: "Michael P.",
+    rolle: "Gründer, Maschinenbau-Firma",
+    absaetze: [
+      "Der Ablauf der Zusammenarbeit lief von A bis Z ohne Problem und wie besprochen. Die Prozesse wurden analysiert und dann automatisiert, sodass wir jede Woche mehrere Stunden zurückgewinnen konnten.",
+      "Jeder, der operative Aufgaben automatisieren möchte, ist hier genau richtig.",
+    ],
+  },
+  {
+    name: "Max Taubenheim",
+    rolle: "Flowzone Zürich, Personal Coaching",
+    absaetze: [
+      "Swellsystems hat mir geholfen, meine Prozesse zu verbessern und zu automatisieren, sodass ich mehr Kapazität frei habe, um weitere Kunden zu betreuen.",
+    ],
+  },
+  {
+    name: "Francisco Galan",
+    rolle: "Gründer, Doggyworld",
+    absaetze: ["Sehr gute Zusammenarbeit, sehr gute Ergebnisse. Kommunikation auch sehr gut. Rundum zufrieden."],
+    link: "/de/referenzen/doggyworld",
+  },
+];
+
+function FuenfSterne() {
+  return (
+    <div className="flex gap-0.5" role="img" aria-label="5 von 5 Sternen">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+      ))}
+    </div>
+  );
+}
+
+function Initialen({ name }: { name: string }) {
+  const kuerzel = name
+    .replace(".", "")
+    .split(" ")
+    .map((teil) => teil[0])
+    .join("")
+    .slice(0, 2);
+  return (
+    <div className="w-10 h-10 rounded-full bg-ocean-100 text-ocean-700 font-display font-bold text-sm flex items-center justify-center shrink-0">
+      {kuerzel}
+    </div>
+  );
+}
+
+// Zeigt den Anfang der Bewertung (4 Zeilen). "Mehr lesen" erscheint nur, wenn
+// der Text wirklich abgeschnitten ist; gemessen wird nach jedem Resize.
+function StimmeKarte({ name, rolle, absaetze, link }: (typeof STIMMEN)[number]) {
+  const [offen, setOffen] = useState(false);
+  const [gekuerzt, setGekuerzt] = useState(false);
+  const textRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = textRef.current;
+    if (!el || offen) return;
+    const messen = () => setGekuerzt(el.scrollHeight > el.clientHeight + 1);
+    messen();
+    const beobachter = new ResizeObserver(messen);
+    beobachter.observe(el);
+    return () => beobachter.disconnect();
+  }, [offen]);
+
+  return (
+    <figure className="bg-white border border-slate-100 rounded-2xl p-6 h-full flex flex-col hover:border-ocean-200 hover:shadow-lg hover:shadow-ocean-50 transition-all duration-300">
+      <FuenfSterne />
+      <blockquote className="text-slate-700 text-sm leading-relaxed mt-3 flex-1">
+        {offen ? (
+          <div className="space-y-3">
+            {absaetze.map((absatz) => (
+              <p key={absatz.slice(0, 24)}>{absatz}</p>
+            ))}
+          </div>
+        ) : (
+          <div ref={textRef} className="line-clamp-4 min-h-[5.7rem]">
+            {absaetze.join(" ")}
+          </div>
+        )}
+      </blockquote>
+      {/* Ohne Kuerzung unsichtbar, aber platzhaltend: alle Karten gleich hoch */}
+      <button
+        type="button"
+        onClick={() => setOffen(!offen)}
+        aria-expanded={offen}
+        aria-hidden={!(gekuerzt || offen)}
+        tabIndex={gekuerzt || offen ? 0 : -1}
+        className={`self-start text-ocean-600 hover:text-ocean-700 text-xs font-semibold mt-2 ${gekuerzt || offen ? "" : "invisible"}`}
+      >
+        {offen ? "Weniger anzeigen" : "Mehr lesen"}
+      </button>
+      <figcaption className="flex items-center gap-3 mt-5 pt-5 border-t border-slate-100 min-h-[4.75rem]">
+        <Initialen name={name} />
+        <div className="min-w-0">
+          <p className="font-display font-bold text-slate-900 text-sm">{name}</p>
+          <p className="text-slate-500 text-xs">{rolle}</p>
+          {link && (
+            <Link
+              href={link}
+              className="inline-flex items-center gap-1 text-ocean-600 hover:text-ocean-700 text-xs font-semibold mt-0.5"
+            >
+              Zur Fallstudie
+              <ArrowRight className="w-3 h-3" />
+            </Link>
+          )}
+        </div>
+      </figcaption>
+    </figure>
+  );
+}
+
+function Kundenstimmen() {
+  return (
+    <section id="kundenstimmen" className="py-20 px-6 scroll-mt-20">
+      <div className="max-w-6xl mx-auto">
+        <AnimatedSection className="text-center mb-10">
+          <span className="inline-flex items-center gap-2 bg-ocean-50 border border-ocean-200 text-ocean-700 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-6">
+            <Star className="w-3.5 h-3.5" />
+            Kundenstimmen
+          </span>
+          <h2 className="font-display font-bold text-4xl md:text-5xl text-slate-900 mb-4">Was Kunden sagen.</h2>
+          <p className="text-slate-600 text-lg max-w-2xl mx-auto">Bewertungen auf Google, alle mit fünf Sternen.</p>
+        </AnimatedSection>
+
+        {/* Mobil: horizontal wischen statt vier Karten untereinander */}
+        <AnimatedSection className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 items-start overflow-x-auto sm:overflow-visible snap-x snap-mandatory -mx-6 px-6 sm:mx-0 sm:px-0 pb-2 [scrollbar-width:none]">
+          {STIMMEN.map((stimme) => (
+            <div key={stimme.name} className="shrink-0 w-[85%] sm:w-auto snap-center">
+              <StimmeKarte {...stimme} />
+            </div>
+          ))}
+        </AnimatedSection>
+
+        <AnimatedSection className="text-center mt-8">
+          <a
+            href={GOOGLE_BEWERTUNGEN}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-slate-600 hover:text-ocean-600 text-sm font-semibold transition-colors"
+          >
+            Alle Bewertungen auf Google
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </AnimatedSection>
+      </div>
+    </section>
   );
 }
 
@@ -901,8 +1066,10 @@ export default function ProzessPage() {
         </svg>
       </div>
 
+      <Kundenstimmen />
+
       {/* ─── ABOUT ────────────────────────────────────────────────── */}
-      <section id="about" className="py-24 px-6 scroll-mt-20">
+      <section id="about" className="py-24 px-6 scroll-mt-20 border-t border-slate-100">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-14">
             <span className="inline-flex items-center gap-2 bg-ocean-50 border border-ocean-200 text-ocean-700 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-6">
