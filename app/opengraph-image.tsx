@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Swellsystems – Automatisierter Outbound für B2B";
+export const alt = "Swellsystems | Prozessautomatisierung für KMU und Agenturen";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -61,7 +61,7 @@ export default function Image() {
         >
           <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#0ea5e9" }} />
           <span style={{ color: "#0ea5e9", fontSize: 18, fontWeight: 600, letterSpacing: 2 }}>
-            AUTOMATISIERTES OUTBOUND FÜR B2B
+            PROZESSAUTOMATISIERUNG FÜR KMU
           </span>
         </div>
 
