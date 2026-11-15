@@ -111,7 +111,7 @@ Meist nicht viel pro Einzelfall, aber die Summe läppert sich. In unserem Rechen
 Die Information aus dem Fertigungsauftrag, etwa Stückzahl, Material und Zeit, wird am Entstehungsort erfasst. Per Foto, Scan oder einfachem Formular läuft sie direkt ins Buchhaltungs- oder ERP-System ein. Ein Mensch prüft nur noch die Ausnahmen, nicht jede Zeile einzeln.
 
 **Brauche ich dafür ein neues ERP-System?**
-Nicht zwingend. Viele Betriebe arbeiten bereits mit Bexio, Abacus oder SelectLine. Oft reicht es, den einen Übergang vom Papier ins bestehende System zu schliessen, statt die ganze Software zu ersetzen. Ein neues System lohnt sich erst, wenn mehrere solche Übergänge gleichzeitig anstehen, nicht für einen einzelnen Formulartyp.
+Nicht zwingend. Viele Betriebe arbeiten bereits mit Bexio, Abacus oder SelectLine. Oft reicht es, den einen Übergang vom Papier ins bestehende System zu schliessen, statt die ganze Software zu ersetzen. Ein neues System lohnt sich erst, wenn mehrere solche Übergänge gleichzeitig anstehen, nicht für einen einzelnen Formulartyp. Wie du das prüfst, steht im Artikel [Neue Software einführen im KMU](https://www.swellsystems.ch/de/blog/neue-software-einfuehren-kmu).
 
 ---
 
