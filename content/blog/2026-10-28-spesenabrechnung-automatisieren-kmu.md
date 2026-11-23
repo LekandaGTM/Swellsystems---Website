@@ -84,7 +84,7 @@ Ein Spesenreglement ist das Dokument, in dem ein Betrieb festhält, welche Ausla
 | Beleg in Euro oder Dollar | Fremdwährung | wird zum Kurs des Belegdatums umgerechnet |
 | jede zehnte genehmigte Spese | Stichprobe | landet trotzdem bei dir |
 
-Die Stichprobe ist wichtig. Sie hält alle ehrlich, auch die Regel selbst.
+Die Stichprobe ist wichtig. Sie hält alle ehrlich, auch die Regel selbst. Liest eine KI die Quittungen aus, gilt dasselbe. Wie du sie vorher an alten Fällen testest, steht im Artikel [KI-Ergebnisse prüfen](https://www.swellsystems.ch/de/blog/ki-ergebnisse-pruefen-kmu).
 
 ### Wo die Zeit wirklich verloren geht
 

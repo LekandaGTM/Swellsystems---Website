@@ -126,7 +126,7 @@ Ja. Ordnerregeln in Outlook richtest du selbst in einer Stunde ein. Ein Sortiere
 
 ### Schreibt die KI dann selbst Antworten an meine Kunden?
 
-Nein, das sollte sie nicht. Ein Antwortentwurf mit KI liegt bereit, ein Mensch liest ihn, passt ihn an und schickt ihn ab. So bleibt der Ton deiner, und Fehler fallen auf, bevor der Kunde sie sieht. Die Zeitersparnis kommt trotzdem, weil niemand mehr bei einem leeren Fenster anfangen muss.
+Nein, das sollte sie nicht. Ein Antwortentwurf mit KI liegt bereit, ein Mensch liest ihn, passt ihn an und schickt ihn ab. So bleibt der Ton deiner, und Fehler fallen auf, bevor der Kunde sie sieht. Die Zeitersparnis kommt trotzdem, weil niemand mehr bei einem leeren Fenster anfangen muss. Wie du vorher testest, wo die KI zuverlässig ist, steht im Artikel [KI-Ergebnisse prüfen](https://www.swellsystems.ch/de/blog/ki-ergebnisse-pruefen-kmu).
 
 ```json
 {
