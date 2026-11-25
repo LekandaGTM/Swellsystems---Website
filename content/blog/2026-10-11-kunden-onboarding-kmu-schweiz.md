@@ -96,7 +96,7 @@ Typische Werkzeuge dafür sind ein einfaches Automatisierungstool wie n8n oder M
 
 Das passt für KMU ab etwa 5 Mitarbeitenden, die regelmässig neue Kunden aufnehmen. Agenturen, Treuhandbüros, Beratungen, Handwerksbetriebe mit Projektgeschäft. Es passt nicht für Einzelunternehmer mit zwei Kunden pro Jahr und nicht für Betriebe, die jeden Kunden völlig anders behandeln müssen.
 
-Wenn du wissen willst, ob dein Onboarding ein Kandidat ist: [schreib mir auf LinkedIn](https://www.linkedin.com/in/calvin-heim/) oder melde dich über [swellsystems.ch](https://www.swellsystems.ch/de/kontakt). Kein Verkaufsgespräch. Ein kurzer Blick auf deinen Ablauf, und du weisst, ob es sich lohnt.
+Wenn du wissen willst, ob dein Onboarding ein Kandidat ist: [schreib mir auf LinkedIn](https://www.linkedin.com/in/calvin-heim/) oder [buch dir direkt ein Beratungsgespräch](https://cal.com/calvin-heim-swellsystems/swellsystems-beratungsgesprach). Kein Verkaufsgespräch. Ein kurzer Blick auf deinen Ablauf, und du weisst, ob es sich lohnt.
 
 ## Häufige Fragen
 
@@ -118,7 +118,7 @@ Weil Kunden sich nicht nur an die Qualität der Lieferung erinnern, sondern auch
 
 ---
 
-*Calvin Heim, Founder Swellsystems. [LinkedIn](https://www.linkedin.com/in/calvin-heim/) | [swellsystems.ch](https://www.swellsystems.ch/de/kontakt)*
+*Calvin Heim, Founder Swellsystems. [LinkedIn](https://www.linkedin.com/in/calvin-heim/) | [swellsystems.ch](https://www.swellsystems.ch/de)*
 
 Quellen:
 - [kmu.admin.ch: Fünf Tipps für dauerhafte Kundenbindung](https://www.kmu.admin.ch/de/fuenf-tipps-fuer-dauerhafte-kundenbindung)

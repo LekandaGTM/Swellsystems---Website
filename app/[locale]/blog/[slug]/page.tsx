@@ -6,7 +6,7 @@ import { setRequestLocale } from "next-intl/server";
 import { getAllPosts, getPost, formatDate } from "@/lib/blog";
 import { CALVIN_ID, ORG_ID, SITE_URL, brotkrumenSchema, jsonLd, seitenMetadaten } from "@/lib/seo";
 
-const CAL_LINK = "https://cal.com/calvin-heim-swellsystems/30min";
+const CAL_LINK = "https://cal.com/calvin-heim-swellsystems/swellsystems-beratungsgesprach";
 
 // Statisch beim Build gerendert. Frueher ging das nicht, weil next-intl im
 // Layout Request-Header las; seit setRequestLocale() im Layout schon.

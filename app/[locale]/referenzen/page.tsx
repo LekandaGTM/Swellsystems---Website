@@ -13,7 +13,7 @@ export const metadata = seitenMetadaten({
     "Echte Automatisierungsprojekte von Schweizer KMU und Onlineshops: Ausgangslage, Lösung und gemessene Ergebnisse.",
 });
 
-const CAL_LINK = "https://cal.com/calvin-heim-swellsystems/30min";
+const CAL_LINK = "https://cal.com/calvin-heim-swellsystems/swellsystems-beratungsgesprach";
 
 export default function Referenzen({ params }: { params: { locale: string } }) {
   const { locale } = params;

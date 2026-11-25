@@ -9,7 +9,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 import { REFERENZEN, referenzFinden } from "../referenzen-daten";
 import { inhaltFinden } from "../inhalte";
 
-const CAL_LINK = "https://cal.com/calvin-heim-swellsystems/30min";
+const CAL_LINK = "https://cal.com/calvin-heim-swellsystems/swellsystems-beratungsgesprach";
 
 /*
  * Frueher ohne generateStaticParams: das statische Rendern endete in einem 500,

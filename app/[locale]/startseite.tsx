@@ -29,7 +29,7 @@ import Link from "next/link";
 import AnimatedSection from "@/components/AnimatedSection";
 import BlogTeaser from "@/components/BlogTeaser";
 
-const CAL_LINK = "https://cal.com/calvin-heim-swellsystems/30min";
+const CAL_LINK = "https://cal.com/calvin-heim-swellsystems/swellsystems-beratungsgesprach";
 const GOOGLE_BEWERTUNGEN = "https://share.google/74mp6hpkXHQOcqt4J";
 
 // Bewusst ohne Intl.NumberFormat: Node und Browser liefern fuer de-CH

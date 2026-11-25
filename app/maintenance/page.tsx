@@ -48,7 +48,7 @@ export default function MaintenancePage() {
               Schreiben Sie uns
             </a>
             <a
-              href="https://cal.com/calvin-heim-swellsystems/30min"
+              href="https://cal.com/calvin-heim-swellsystems/swellsystems-beratungsgesprach"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-ocean-300 hover:text-ocean-700"

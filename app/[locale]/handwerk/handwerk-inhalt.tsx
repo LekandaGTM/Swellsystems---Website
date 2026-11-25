@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 
-const CAL_LINK = "https://cal.com/calvin-heim-swellsystems/30min";
+const CAL_LINK = "https://cal.com/calvin-heim-swellsystems/swellsystems-beratungsgesprach";
 
 function ChaosGraphic() {
   const notes: {

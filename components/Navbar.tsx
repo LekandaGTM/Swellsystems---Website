@@ -178,7 +178,7 @@ export default function Navbar({ locale }: NavbarProps) {
         {/* Right side */}
         <div className="hidden lg:flex items-center gap-4">
           <a
-            href="https://cal.com/calvin-heim-swellsystems/30min"
+            href="https://cal.com/calvin-heim-swellsystems/swellsystems-beratungsgesprach"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-ocean-700 hover:bg-ocean-800 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-ocean-200 hover:-translate-y-0.5"
@@ -254,7 +254,7 @@ export default function Navbar({ locale }: NavbarProps) {
               )}
               <div className="mt-3 pt-4 border-t border-slate-100 flex items-center justify-end">
                 <a
-                  href="https://cal.com/calvin-heim-swellsystems/30min"
+                  href="https://cal.com/calvin-heim-swellsystems/swellsystems-beratungsgesprach"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}
